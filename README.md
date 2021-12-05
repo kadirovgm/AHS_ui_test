@@ -1,0 +1,1 @@
+Covering by selenium tests: AHS internal project
