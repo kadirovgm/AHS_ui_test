@@ -60,3 +60,8 @@ class BasePage:
     def go_to_reports_page(self):
         reports = self.browser.find_element(*BasePageLocators.REPORTS_ICON)
         reports.click()
+
+    def go_to_help_page(self):
+        help_center = self.browser.find_element(*BasePageLocators.HELP_CENTER_ICON)
+        help_center.click()
+
