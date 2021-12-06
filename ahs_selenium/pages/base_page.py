@@ -42,3 +42,21 @@ class BasePage:
         return True
 
     # COMMON ACTIONS FROM ALL PAGES
+    def go_to_login_page(self):
+        ...
+
+    def go_to_positions_page(self):
+        positions = self.browser.find_element(*BasePageLocators.POSITIONS_ICON)
+        positions.click()
+
+    def go_to_pool_page(self):
+        pool = self.browser.find_element(*BasePageLocators.POOL_ICON)
+        pool.click()
+
+    def go_to_clients_projects_page(self):
+        clients_projects = self.browser.find_element(*BasePageLocators.CLIENTS_PROJECTS_ICON)
+        clients_projects.click()
+
+    def go_to_reports_page(self):
+        reports = self.browser.find_element(*BasePageLocators.REPORTS_ICON)
+        reports.click()
