@@ -29,3 +29,10 @@ class ClientsProjectsPageLocators:
     CLIENTS_PROJECTS_TEXT = (By.CSS_SELECTOR, "#root > section > section > header > div > div > div > b")
 
 
+class ReportsPageLocators:
+    REPORTS_TEXT = (By.CSS_SELECTOR, "#root > section > section > header > div > div > div > b")
+
+
+class HelpCenterLocators:
+    HELP_CENTER_TEXT = (By.CSS_SELECTOR, "#root > section > section > aside > div > h4")
+
