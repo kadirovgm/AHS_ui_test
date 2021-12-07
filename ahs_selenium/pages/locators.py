@@ -17,7 +17,15 @@ class BasePageLocators:
     HELP_CENTER_ICON = (By.CSS_SELECTOR, "#root>section>aside>div>div>a>svg")
 
 
+class PositionPageLocators:
+    POSITIONS_TEXT =(By.CSS_SELECTOR, "#root > section > section > header > div > div > div > b")
+
+
 class PoolPageLocators:
     POOL_TEXT = (By.CSS_SELECTOR, "#root > section > section > header > div > div > div > b")
+
+
+class ClientsProjectsPageLocators:
+    CLIENTS_PROJECTS_TEXT = (By.CSS_SELECTOR, "#root > section > section > header > div > div > div > b")
 
 
