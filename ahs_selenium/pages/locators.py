@@ -17,22 +17,31 @@ class BasePageLocators:
     HELP_CENTER_ICON = (By.CSS_SELECTOR, "#root>section>aside>div>div>a>svg")
 
 
+# Position page
 class PositionPageLocators:
-    POSITIONS_TEXT =(By.CSS_SELECTOR, "#root > section > section > header > div > div > div > b")
+    POSITIONS_TEXT = (By.CSS_SELECTOR, "#root > section > section > header > div > div > div > b")
 
 
+# Pool page
 class PoolPageLocators:
     POOL_TEXT = (By.CSS_SELECTOR, "#root > section > section > header > div > div > div > b")
 
+# Create person
+class CreatePersonModalLocators:
+    ...
 
+
+# Clients&Projects page
 class ClientsProjectsPageLocators:
     CLIENTS_PROJECTS_TEXT = (By.CSS_SELECTOR, "#root > section > section > header > div > div > div > b")
 
 
+# Reports page
 class ReportsPageLocators:
     REPORTS_TEXT = (By.CSS_SELECTOR, "#root > section > section > header > div > div > div > b")
 
 
+# Help center
 class HelpCenterLocators:
     HELP_CENTER_TEXT = (By.CSS_SELECTOR, "#root > section > section > aside > div > h4")
 
