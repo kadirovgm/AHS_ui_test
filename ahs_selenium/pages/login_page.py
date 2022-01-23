@@ -10,9 +10,19 @@ class LoginPage(BasePage):
         password = "P@ssw0rd1"
         self.should_be_login_page()
         self.fill_login_form(email, password)
-        time.sleep(1)
+        time.sleep(0.5)
         # should be authorized user ?
 
+    """Filling with correct data"""
+    def fill_login_form(self, email, password):
+        input_email = self.browser.find_element(*LoginPageLocators.EMAIL)
+        input_email.send_keys(email)
+        input_password = self.browser.find_element(*LoginPageLocators.PASSWORD)
+        input_password.send_keys(password)
+        button_login = self.browser.find_element(*LoginPageLocators.LOGIN_BUTTON)
+        button_login.click()
+
+    """Reset password"""
     def can_go_forgot_password_link(self):
         forgot_link = self.browser.find_element(*LoginPageLocators.FORGOT_LINK)
         forgot_link.click()
@@ -36,14 +46,5 @@ class LoginPage(BasePage):
 
     def should_be_forgot_password_link(self):
         assert self.is_element_present(*LoginPageLocators.FORGOT_LINK), "Forgot link element doesn't appear!"
-
-    """Filling with correct data"""
-    def fill_login_form(self, email, password):
-        input_email = self.browser.find_element(*LoginPageLocators.EMAIL)
-        input_email.send_keys(email)
-        input_password = self.browser.find_element(*LoginPageLocators.PASSWORD)
-        input_password.send_keys(password)
-        button_login = self.browser.find_element(*LoginPageLocators.LOGIN_BUTTON)
-        button_login.click()
 
 

@@ -7,10 +7,10 @@ from pages.clients_projects import ClientsProjectsPage
 from pages.positions_page import PositionsPage
 from pages.reports_page import ReportsPage
 from pages.help_center_page import HelpCenterPage
-
 LINK_LOGIN_PAGE = "http://192.168.52.122/login"
 
 
+@pytest.mark.e2e_1
 class TestBasePageActions:
     @pytest.fixture(scope="function", autouse=True)
     def setup(self, browser):
@@ -25,6 +25,7 @@ class TestBasePageActions:
         page_positions.go_to_positions_page()
         page_positions.should_be_positions_page_text()
 
+    # TODO think "how to run tests without closing browser"
     def test_user_can_go_to_pool(self, browser):
         page_pool = PoolPage(browser, browser.current_url)
         page_pool.go_to_pool_page()
@@ -45,4 +46,7 @@ class TestBasePageActions:
         page_help_center.go_to_help_page()
         page_help_center.should_be_help_center_page_text()
 
+
+class TestBaseTest:
+    ...
 

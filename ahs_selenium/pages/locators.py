@@ -5,8 +5,8 @@ class LoginPageLocators:
     WELCOME_TEXT = (By.CSS_SELECTOR, "#root > div > div > div.ant-card-head > div > div")
     EMAIL = (By.CSS_SELECTOR, "#email")
     PASSWORD = (By.CSS_SELECTOR, "#password")
-    LOGIN_BUTTON = (By.XPATH, "/html/body/div/div/div/div[2]/form/div[4]/div/div/div/button/span")
-    FORGOT_LINK = (By.CSS_SELECTOR, "#root > div > div > div.ant-card-body > form > div.sc-fzoxnE.GqMIW > a")
+    LOGIN_BUTTON = (By.XPATH, "/html/body/div/div/div/div[2]/div/div/form/button")
+    FORGOT_LINK = (By.XPATH, "/html/body/div/div/div/div[2]/div/div/form/div[2]/div[2]/div/div/button")
 
 
 class BasePageLocators:

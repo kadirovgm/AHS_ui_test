@@ -1,7 +1,6 @@
 # pytest -s -v --browser_name=chrome test_parser.py
 # pytest -v --tb=line --reruns 1 --browser_name=chrome test_rerun.py - for rerun
 # pytest --language=es test_items.py - for language
-
 import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
