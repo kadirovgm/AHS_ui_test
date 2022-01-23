@@ -1,2 +1,7 @@
 /win_venv_ahs/
 /mac_venv_ahs/
+
+chromedriver.exe
+
+__pycache__/
+pages/__pycache__/
