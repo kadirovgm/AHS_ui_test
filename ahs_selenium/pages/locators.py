@@ -31,7 +31,7 @@ class PositionPageLocators:
 # Pool page
 class PoolPageLocators:
     POOL_TEXT = (By.CSS_SELECTOR, "#root > section > section > header > div > div > div > b")
-    CREATE_PERSON = (By.CSS_SELECTOR, "#root > section > section > header > div > div > div > button")
+    ADD_PERSON = (By.CSS_SELECTOR, "#root > section > section > header > div > div > div > button")
 
 # Create person
 class CreatePersonModalLocators:
@@ -51,6 +51,7 @@ class CreatePersonModalLocators:
     COUNTRY = (By.CSS_SELECTOR, "#country-select-default")
     CITY = (By.CSS_SELECTOR, "#city-select-default")
     CONTEXT_COMMENT = (By.CSS_SELECTOR, "#comment")
+    SALARY_TEXT = (By.CSS_SELECTOR, "#PersonForm > div > div:nth-child(2) > section:nth-child(2) > h2 > div > span")
     SALARY_ICON = (By.XPATH, "/html/body/div[2]/div/div[2]/div/div[2]/div[2]/form/div"
                                     "/div[2]/section[2]/h2/div/button")
     FULL_SALARY = (By.CSS_SELECTOR, "#salaryInfoSalaryAmount")
@@ -72,19 +73,14 @@ class CreatePersonModalLocators:
     WANT_RELOCATE = (By.XPATH, "/html/body/div[2]/div/div[2]/div/div[2]/div[2]/form/div/div[2]/section[5]"
                                "/div[2]/div[1]/div/div[2]/div/div/div/div")
     WANT_RELOCATE_COMMENT = (By.CSS_SELECTOR, "#relocation_comment")
-    ADD_CONTACT = (By.XPATH, "/html/body/div[2]/div/div[2]/div/div[2]/div[2]/form/div/div[2]/section[6]/div/div/button")
+    ADD_ONE_MORE_CONTACT = (By.XPATH, "/html/body/div[2]/div/div[2]/div/div[2]/div[2]/form/div/div[2]/section[6]/div/div/button")
     CONTACT_TYPE = (By.CSS_SELECTOR, "#contacts_0_contact_type")
-    CONTACT_INFO = (By.CSS_SELECTOR, "#contacts_0_value")
+    CONTACT_VALUE = (By.CSS_SELECTOR, "#contacts_0_value")
 
     CREATE_PERSON_BUTTON = (By.XPATH, "/html/body/div[2]/div/div[2]/div/div[2]/div[3]/button[2]")
     CANCEL_CREATE_PERSON_BUTTON = (By.XPATH, "/html/body/div[2]/div/div[2]/div/div[2]/div[3]/button[1]")
 
     CROSS_EXIT = (By.XPATH, "/html/body/div[2]/div/div[2]/div/div[2]/button")
-
-
-
-
-
 
 # Clients&Projects page
 class ClientsProjectsPageLocators:

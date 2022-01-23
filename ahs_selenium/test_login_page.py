@@ -1,7 +1,7 @@
 import pytest
 import time
 from pages.login_page import LoginPage
-LINK_LOGIN_PAGE = "http://192.168.52.122/login"
+from conftest import LINK_LOGIN_PAGE
 
 
 @pytest.mark.e2e_1

@@ -3,11 +3,11 @@ import time
 from pages.base_page import BasePage
 from pages.login_page import LoginPage
 from pages.pool_page import PoolPage
-from pages.clients_projects import ClientsProjectsPage
+from pages.clients_projects_page import ClientsProjectsPage
 from pages.positions_page import PositionsPage
 from pages.reports_page import ReportsPage
 from pages.help_center_page import HelpCenterPage
-LINK_LOGIN_PAGE = "http://192.168.52.122/login"
+from conftest import LINK_LOGIN_PAGE
 
 
 @pytest.mark.e2e_3
