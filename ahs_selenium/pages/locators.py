@@ -9,6 +9,12 @@ class LoginPageLocators:
     FORGOT_LINK = (By.XPATH, "/html/body/div/div/div/div[2]/div/div/form/div[2]/div[2]/div/div/button")
 
 
+class ResetPageLocators:
+    RESET_TEXT = (By.XPATH, "/html/body/div/div/div/div/div/div/div[1]/div/div")
+    EMAIL = (By.CSS_SELECTOR, "#email")
+    SEND_BUTTON = (By.XPATH, "/html/body/div/div/div/div/div/div/div[2]/form/div[2]/button")
+    GO_BACK_TO_LOGIN = (By.XPATH, "/html/body/div/div/div/div/div/div/div[2]/div[2]/button")
+
 class BasePageLocators:
     POSITIONS_ICON = (By.XPATH, "/html/body/div/section/aside/div/div/div[2]/a[1]")
     POOL_ICON = (By.XPATH, "/html/body/div/section/aside/div/div/div[2]/a[2]")

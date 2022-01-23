@@ -10,15 +10,15 @@ from pages.help_center_page import HelpCenterPage
 LINK_LOGIN_PAGE = "http://192.168.52.122/login"
 
 
-@pytest.mark.e2e_1
+@pytest.mark.e2e_3
 class TestBasePageActions:
     @pytest.fixture(scope="function", autouse=True)
     def setup(self, browser):
         link = LINK_LOGIN_PAGE
-        self.page = LoginPage(browser, link)
-        self.page.open()
+        page = LoginPage(browser, link)
+        page.open()
         time.sleep(0.5)
-        self.page.login_new_user()
+        page.login_new_user()
 
     def test_user_can_go_to_positions(self, browser):
         page_positions = PositionsPage(browser, browser.current_url)
@@ -46,7 +46,4 @@ class TestBasePageActions:
         page_help_center.go_to_help_page()
         page_help_center.should_be_help_center_page_text()
 
-
-class TestBaseTest:
-    ...
 

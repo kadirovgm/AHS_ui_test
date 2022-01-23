@@ -1,5 +1,6 @@
 from .base_page import BasePage
 from .locators import LoginPageLocators
+from .locators import ResetPageLocators
 import time
 
 
@@ -8,10 +9,8 @@ class LoginPage(BasePage):
     def login_new_user(self):
         email = "admin@admin.com"
         password = "P@ssw0rd1"
-        self.should_be_login_page()
         self.fill_login_form(email, password)
         time.sleep(0.5)
-        # should be authorized user ?
 
     """Filling with correct data"""
     def fill_login_form(self, email, password):
@@ -21,11 +20,6 @@ class LoginPage(BasePage):
         input_password.send_keys(password)
         button_login = self.browser.find_element(*LoginPageLocators.LOGIN_BUTTON)
         button_login.click()
-
-    """Reset password"""
-    def can_go_forgot_password_link(self):
-        forgot_link = self.browser.find_element(*LoginPageLocators.FORGOT_LINK)
-        forgot_link.click()
 
     """Checking for correct login page"""
     def should_be_login_page(self):
@@ -47,4 +41,16 @@ class LoginPage(BasePage):
     def should_be_forgot_password_link(self):
         assert self.is_element_present(*LoginPageLocators.FORGOT_LINK), "Forgot link element doesn't appear!"
 
+    """Reset password"""
+    def go_forgot_password_link(self):
+        forgot_link = self.browser.find_element(*LoginPageLocators.FORGOT_LINK)
+        forgot_link.click()
+
+    def should_be_reset_password_page(self):
+        assert self.is_element_present(*ResetPageLocators.RESET_TEXT), "'Reset password' text isn't present!"
+        assert self.browser.find_element(*ResetPageLocators.RESET_TEXT).text == "Reset password", \
+            "Incorrect Reset text!"
+        assert self.is_element_present(*ResetPageLocators.EMAIL), "Email field doesn't appear!"
+        assert self.is_element_present(*ResetPageLocators.SEND_BUTTON), "'Send link' button doesn't appear!"
+        assert self.is_element_present(*ResetPageLocators.GO_BACK_TO_LOGIN), "'Back to login button doesn't appear'"
 
