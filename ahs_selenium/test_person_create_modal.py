@@ -14,6 +14,7 @@ class TestAddPerson:
         time.sleep(0.5)
         page.login_new_user()
 
+    @pytest.mark.skip
     def test_correct_create_person_modal(self, browser):
         pool_page = PoolPage(browser, browser.current_url)
         pool_page.go_to_pool_page()
@@ -21,10 +22,11 @@ class TestAddPerson:
         person_create_modal_page = CreatePersonModal(browser, browser.current_url)
         person_create_modal_page.should_be_create_person_modal()
 
-    @pytest.mark.skip
     def test_add_person(self, browser):
         pool_page = PoolPage(browser, browser.current_url)
         pool_page.go_to_pool_page()
         pool_page.add_person_button_click()
         person_create_page = CreatePersonModal(browser, browser.current_url)
+        person_create_page.add_new_person()
+        time.sleep(3)
 
