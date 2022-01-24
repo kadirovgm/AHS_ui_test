@@ -1,9 +1,15 @@
 from .base_page import BasePage
 from .locators import CreatePersonModalLocators
+import names, string, random
+from ..randomData.random_person import RandomPersonData
+
+# class RandomPersonData:
+#     first_name = names.get_first_name()
+#     last_name = names.get_last_name()
 
 
 class CreatePersonModal(BasePage):
-    def should_be_create_person_modal(self, ):
+    def should_be_create_person_modal(self):
         assert self.is_element_present(*CreatePersonModalLocators.CREATE_NEW_PERSON_TEXT), "Text in top doesn't appear!"
         assert self.is_element_present(*CreatePersonModalLocators.UPLOAD_PHOTO), "Upload photo field doesn't appear!"
         assert self.is_element_present(*CreatePersonModalLocators.UPLOAD_OTHER_CV), \
@@ -47,3 +53,8 @@ class CreatePersonModal(BasePage):
         assert self.is_element_present(*CreatePersonModalLocators.CANCEL_CREATE_PERSON_BUTTON), \
             "CANCEL_CREATE_PERSON_BUTTON doesn't appear!"
         assert self.is_element_present(*CreatePersonModalLocators.CROSS_EXIT), "Exit cross doesn't appear!"
+
+    def add_new_person(self):
+        first_name = self.browser.find_element(*CreatePersonModalLocators.FIRST_NAME)
+        first_name.send_keys(RandomPersonData.first_name)
+

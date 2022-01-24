@@ -27,4 +27,4 @@ class TestAddPerson:
         pool_page.go_to_pool_page()
         pool_page.add_person_button_click()
         person_create_page = CreatePersonModal(browser, browser.current_url)
-        # TODO add person
+
