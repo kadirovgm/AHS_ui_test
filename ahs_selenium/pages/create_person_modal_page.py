@@ -65,6 +65,27 @@ class CreatePersonModal(BasePage):
         city.select_by_value(RandomPersonData.city)
         context_comment = self.browser.find_element(*CreatePersonModalLocators.CONTEXT_COMMENT)
         context_comment.send_keys(RandomPersonData.context_comment)
+        english_level = Select(self.browser.find_element(*CreatePersonModalLocators.ENGLISH_LEVEL))
+        english_level.select_by_value(RandomPersonData.english_level)
+
+        # TODO think how to make it easy
+        primary_skill = self.browser.find_element(*CreatePersonModalLocators.PRIMARY_SKILL)
+        primary_skill.send_keys(RandomPersonData.skill1)
+        primary_skill = Select(self.browser.find_element(*CreatePersonModalLocators.PRIMARY_SKILL))
+        primary_skill.select_by_value(RandomPersonData.skill1)
+
+        grade = Select(self.browser.find_element(*CreatePersonModalLocators.PRIMARY_SKILL_GRADE))
+        grade.select_by_value(RandomPersonData.grade)
+
+        contact_type = Select(self.browser.find_element(*CreatePersonModalLocators.CONTACT_TYPE))
+        contact_type.select_by_value(RandomPersonData.contact_type)
+        contact_value = Select(self.browser.find_element(*CreatePersonModalLocators.CONTACT_VALUE))
+        contact_value.select_by_value(RandomPersonData.email)
+
+
+
+
+
 
 
 

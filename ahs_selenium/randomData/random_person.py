@@ -11,11 +11,14 @@ class RandomPersonData:
     country = "Russia"
     city = "Kazan"
     context_comment = "This bot was made by Rushat"
+    english_level = "Advanced"
     english_comment = "Test comment"
     skill1 = "python"
     skill2 = "java"
+    grade = "Middle"
     other_skill1 = "sql"
     want_relocate = "United States"
+    contact_type = "Email"
     email = "".join(random.choices(string.ascii_lowercase, k=10)) + "@akvelon.com"
 
 
