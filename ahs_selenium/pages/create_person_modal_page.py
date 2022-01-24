@@ -1,11 +1,6 @@
 from .base_page import BasePage
 from .locators import CreatePersonModalLocators
-import names, string, random
 from ..randomData.random_person import RandomPersonData
-
-# class RandomPersonData:
-#     first_name = names.get_first_name()
-#     last_name = names.get_last_name()
 
 
 class CreatePersonModal(BasePage):
@@ -57,4 +52,5 @@ class CreatePersonModal(BasePage):
     def add_new_person(self):
         first_name = self.browser.find_element(*CreatePersonModalLocators.FIRST_NAME)
         first_name.send_keys(RandomPersonData.first_name)
+
 
