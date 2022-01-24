@@ -55,6 +55,8 @@ class CreatePersonModal(BasePage):
         first_name.send_keys(RandomPersonData.first_name)
         last_name = self.browser.find_element(*CreatePersonModalLocators.LAST_NAME)
         last_name.send_keys(RandomPersonData.last_name)
+        recruiter = Select(self.browser.find_element(*CreatePersonModalLocators.RECRUITER))
+        recruiter.select_by_value(RandomPersonData.recruiter)
         roles = Select(self.browser.find_element(*CreatePersonModalLocators.ROLES))
         roles.select_by_value(RandomPersonData.role)
         office = Select(self.browser.find_element(*CreatePersonModalLocators.OFFICE))
@@ -74,6 +76,7 @@ class CreatePersonModal(BasePage):
         primary_skill = Select(self.browser.find_element(*CreatePersonModalLocators.PRIMARY_SKILL))
         primary_skill.select_by_value(RandomPersonData.skill1)
 
+        # нужна прокрутка?
         grade = Select(self.browser.find_element(*CreatePersonModalLocators.PRIMARY_SKILL_GRADE))
         grade.select_by_value(RandomPersonData.grade)
 
@@ -81,6 +84,9 @@ class CreatePersonModal(BasePage):
         contact_type.select_by_value(RandomPersonData.contact_type)
         contact_value = Select(self.browser.find_element(*CreatePersonModalLocators.CONTACT_VALUE))
         contact_value.select_by_value(RandomPersonData.email)
+
+        create_person_button = self.browser.find_element(*CreatePersonModalLocators.CREATE_PERSON_BUTTON)
+        create_person_button.click()
 
 
 
