@@ -1,6 +1,7 @@
 from .base_page import BasePage
 from .locators import CreatePersonModalLocators
 from ..randomData.random_person import RandomPersonData
+from selenium.webdriver.support.ui import Select            # for dropdown list
 
 
 class CreatePersonModal(BasePage):
@@ -52,5 +53,25 @@ class CreatePersonModal(BasePage):
     def add_new_person(self):
         first_name = self.browser.find_element(*CreatePersonModalLocators.FIRST_NAME)
         first_name.send_keys(RandomPersonData.first_name)
+        last_name = self.browser.find_element(*CreatePersonModalLocators.LAST_NAME)
+        last_name.send_keys(RandomPersonData.last_name)
+        roles = Select(self.browser.find_element(*CreatePersonModalLocators.ROLES))
+        roles.select_by_value(RandomPersonData.role)
+        office = Select(self.browser.find_element(*CreatePersonModalLocators.OFFICE))
+        office.select_by_value(RandomPersonData.office)
+        country = Select(self.browser.find_element(*CreatePersonModalLocators.COUNTRY))
+        country.select_by_value(RandomPersonData.country)
+        city = Select(self.browser.find_element(*CreatePersonModalLocators.CITY))
+        city.select_by_value(RandomPersonData.city)
+        context_comment = self.browser.find_element(*CreatePersonModalLocators.CONTEXT_COMMENT)
+        context_comment.send_keys(RandomPersonData.context_comment)
+
+
+
+
+
+
+
+
 
 

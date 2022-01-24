@@ -4,6 +4,12 @@ import names, random, string
 class RandomPersonData:
     first_name = names.get_first_name()
     last_name = names.get_last_name()
+    roles_list = ["SDE", "SDET", "STE", "SRE", "Starter", "PM", "TPM"]
+    role = random.choice(roles_list)
+    office_list = ["Kazan", "Ivanovo", "Yaroslavl"]
+    office = random.choice(office_list)
+    country = "Russia"
+    city = "Kazan"
     context_comment = "This bot was made by Rushat"
     english_comment = "Test comment"
     skill1 = "python"
