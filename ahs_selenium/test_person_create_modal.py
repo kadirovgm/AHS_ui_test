@@ -3,7 +3,7 @@ import time
 from pages.login_page import LoginPage
 from pages.pool_page import PoolPage
 from pages.create_person_modal_page import CreatePersonModal
-from conftest import LINK_LOGIN_PAGE
+from conftest import LINK_LOGIN_PAGE, POOL_EXTERNAL_TAB
 
 
 @pytest.mark.e2e_4
@@ -26,5 +26,10 @@ class TestAddPerson:
 
     def test_add_person(self, browser):
         person_create_page = CreatePersonModal(browser, browser.current_url)
-        person_create_page.add_new_person()
+        created_first_name, created_second_name = person_create_page.add_new_person()
+        external_person_search = PoolPage(browser, browser.current_url)
+        external_person_search.go_to_external_tab()
+        external_person_search.search_for_person(created_first_name, created_second_name)
+        time.sleep(1)
+
 

@@ -33,6 +33,14 @@ class PositionPageLocators:
 class PoolPageLocators:
     POOL_TEXT = (By.CSS_SELECTOR, "#root > section > section > header > div > div > div > b")
     ADD_PERSON = (By.CSS_SELECTOR, "#root > section > section > header > div > div > div > button")
+    SEARCH_NAME = (By.XPATH, "/html/body/div/section/section/main/div/div[1]/div/div[1]/div/div[1]/span/input")
+    EXTERNAL_TAB = (By.CSS_SELECTOR, "#root > section > section > header > div > div > ul > li:nth-child(4)")
+    FIRST_PERSON_NAME = (By.XPATH, "/html/body/div/section/section/main/div/div[2]/div/div/div/div/div/div/table/tbody/tr[1]/td[1]/a/div/span")
+    FIRST_PERSON = (By.XPATH, "/html/body/div/section/section/main/div/div[2]/div/div/div/div/div/div/table/tbody/tr[1]/td[1]")
+
+
+class PersonPageLocators:
+    NAME = (By.XPATH, "/html/body/div/section/section/div/div/main/div[2]/div[1]/div/div/div/div[1]/div/div/span[1]")
 
 
 # Create person

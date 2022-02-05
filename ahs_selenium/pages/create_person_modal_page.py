@@ -9,6 +9,7 @@ import time
 
 class CreatePersonModal(BasePage):
     def should_be_create_person_modal(self):
+        print("Checking that 'Add person modal' is correct")
         assert self.is_element_present(*CreatePersonModalLocators.CREATE_NEW_PERSON_TEXT), "Text in top doesn't appear!"
         assert self.is_element_present(*CreatePersonModalLocators.UPLOAD_PHOTO), "Upload photo field doesn't appear!"
         assert self.is_element_present(*CreatePersonModalLocators.UPLOAD_OTHER_CV), \
@@ -54,14 +55,15 @@ class CreatePersonModal(BasePage):
         assert self.is_element_present(*CreatePersonModalLocators.CROSS_EXIT), "Exit cross doesn't appear!"
 
     def add_new_person(self):
-        first_name = self.browser.find_element(*CreatePersonModalLocators.FIRST_NAME).send_keys(RandomPersonData.first_name)
-        last_name = self.browser.find_element(*CreatePersonModalLocators.LAST_NAME).send_keys(RandomPersonData.last_name)
+        print(f"Creating a new external person!")
+        _ = self.browser.find_element(*CreatePersonModalLocators.FIRST_NAME).send_keys(RandomPersonData.first_name)
+        _ = self.browser.find_element(*CreatePersonModalLocators.LAST_NAME).send_keys(RandomPersonData.last_name)
 
         # TODO How to handle "Select with search field" in ant-design? This is not works
         # recruiter = Select(self.browser.find_element(*CreatePersonModalLocators.RECRUITER))
         # recruiter.select_by_visible_text(RandomPersonData.recruiter)  # select_by_visible_text
 
-        # TODO: My kostylnyi decision))
+        # TODO: My kostylnyi decision:
         recruiter = self.browser.find_element(*CreatePersonModalLocators.RECRUITER)
         recruiter.send_keys(RandomPersonData.recruiter, Keys.ENTER)
         roles = self.browser.find_element(*CreatePersonModalLocators.ROLES)
@@ -95,6 +97,9 @@ class CreatePersonModal(BasePage):
         contact_value.send_keys(RandomPersonData.email)
         create_person_button = self.browser.find_element(*CreatePersonModalLocators.CREATE_PERSON_BUTTON)
         create_person_button.click()
+
+        print(f"Created person's name is: {RandomPersonData.first_name}")
+        return RandomPersonData.first_name, RandomPersonData.last_name   # for checking that person is created and in external tab
 
 
 
