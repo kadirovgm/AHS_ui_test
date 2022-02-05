@@ -94,5 +94,5 @@ class ReportsPageLocators:
 
 # Help center
 class HelpCenterLocators:
-    HELP_CENTER_TEXT = (By.CSS_SELECTOR, "#root > section > section > aside > div > h4")
+    HELP_CENTER_TEXT = (By.CSS_SELECTOR, "#root > section > section > aside > div > h5")
 
