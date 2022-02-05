@@ -67,7 +67,7 @@ class CreatePersonModal(BasePage):
         roles = self.browser.find_element(*CreatePersonModalLocators.ROLES)
         roles.send_keys(RandomPersonData.role, Keys.ENTER)
         office = self.browser.find_element(*CreatePersonModalLocators.OFFICE)
-        office.send_keys(RandomPersonData.office, Keys.ENTER)
+        office.send_keys(RandomPersonData.office, Keys.DOWN, Keys.ENTER)
         country = self.browser.find_element(*CreatePersonModalLocators.COUNTRY)
         country.send_keys(RandomPersonData.country)
         time.sleep(0.7)     # wait for the countries to load

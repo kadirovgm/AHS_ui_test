@@ -15,7 +15,7 @@ class TestAddPerson:
         time.sleep(0.5)
         page.login_new_user(email="admin@admin.com", password="P@ssw0rd1")
 
-    def test_go_to_create_person_modal(self,browser):
+    def test_go_to_create_person_modal(self, browser):
         pool_page = PoolPage(browser, browser.current_url)
         pool_page.go_to_pool_page()
         pool_page.add_person_button_click()
