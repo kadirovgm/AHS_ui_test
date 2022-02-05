@@ -6,6 +6,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 LINK_LOGIN_PAGE = "http://192.168.52.122/login"
 
+
 # default options
 def pytest_addoption(parser):
     parser.addoption('--browser_name',
@@ -21,16 +22,17 @@ def pytest_addoption(parser):
 @pytest.fixture(scope="function")
 def browser(request):
     browser_name = request.config.getoption("browser_name")
-    # browser = None
-    user_language = request.config.getoption("language")
+    # user_language = request.config.getoption("language")
     user_language = None
     if browser_name == "chrome":
         options = Options()
         options.add_experimental_option('prefs', {'intl.accept_languages': user_language})
+
         print("\nStart chrome browser for test..")
         browser = webdriver.Chrome(options=options)
         browser.maximize_window()                   # maximize window
         browser.implicitly_wait(3)                  # implicitly wait
+
     elif browser_name == "firefox":
         fp = webdriver.FirefoxProfile()
         fp.set_preference("intl.accept_languages", user_language)
@@ -39,6 +41,7 @@ def browser(request):
     else:
         raise pytest.UsageError("--browser_name should be chrome or firefox")
     yield browser
+
     print("\nquit browser..")
     browser.quit()
 

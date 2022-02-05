@@ -1,7 +1,7 @@
 from .base_page import BasePage
 from .locators import CreatePersonModalLocators
 # from ahs_selenium.pages.random_person import RandomPersonData
-from .random_person import RandomPersonData
+from .random_data_person import RandomPersonData
 from selenium.webdriver.support.ui import Select            # for dropdown list
 
 
