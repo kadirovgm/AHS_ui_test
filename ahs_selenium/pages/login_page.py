@@ -6,9 +6,7 @@ import time
 
 class LoginPage(BasePage):
     """Login user"""
-    def login_new_user(self):
-        email = "admin@admin.com"
-        password = "P@ssw0rd1"
+    def login_new_user(self, email, password):
         self.fill_login_form(email, password)
         time.sleep(0.5)
 

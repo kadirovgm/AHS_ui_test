@@ -18,7 +18,7 @@ class TestBasePageActions:
         page = LoginPage(browser, link)
         page.open()
         time.sleep(0.5)
-        page.login_new_user()
+        page.login_new_user(email="admin@admin.com", password="P@ssw0rd1")
 
     def test_user_can_go_to_positions(self, browser):
         page_positions = PositionsPage(browser, browser.current_url)

@@ -12,7 +12,7 @@ class TestAddPerson:
         page = LoginPage(browser, LINK_LOGIN_PAGE)
         page.open()
         time.sleep(0.5)
-        page.login_new_user()
+        page.login_new_user(email="admin@admin.com", password="P@ssw0rd1")
 
     @pytest.mark.skip
     def test_correct_create_person_modal(self, browser):
