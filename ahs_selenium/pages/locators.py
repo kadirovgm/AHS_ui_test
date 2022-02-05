@@ -15,6 +15,7 @@ class ResetPageLocators:
     SEND_BUTTON = (By.XPATH, "/html/body/div[1]/div/div/div[2]/div/div/form/div[2]/button")
     GO_BACK_TO_LOGIN = (By.XPATH, "/html/body/div/div/div/div[2]/div/div/div[2]/button")
 
+
 class BasePageLocators:
     POSITIONS_ICON = (By.XPATH, "/html/body/div/section/aside/div/div/div[2]/a[1]")
     POOL_ICON = (By.XPATH, "/html/body/div/section/aside/div/div/div[2]/a[2]")
@@ -33,6 +34,7 @@ class PoolPageLocators:
     POOL_TEXT = (By.CSS_SELECTOR, "#root > section > section > header > div > div > div > b")
     ADD_PERSON = (By.CSS_SELECTOR, "#root > section > section > header > div > div > div > button")
 
+
 # Create person
 class CreatePersonModalLocators:
     CREATE_NEW_PERSON_TEXT = (By.CSS_SELECTOR, "#rcDialogTitle0")
@@ -45,8 +47,8 @@ class CreatePersonModalLocators:
     LAST_NAME = (By.CSS_SELECTOR, "#last_name")
     MIDDLE_NAME = (By.CSS_SELECTOR, "#middle_name")
     RECRUITER = (By.CSS_SELECTOR, "#assigned_hr")
-    ROLES = (By.CSS_SELECTOR, "#PersonForm > div > div:nth-child(2) > section:nth-child(1) > "
-                              "div:nth-child(3) > div > div > div.ant-col.ant-form-item-control > div > div > div")
+    ROLES = (By.XPATH, "/html/body/div[2]/div/div[2]/div/div[2]/div[2]/form/div/div[2]"
+                              "/section[1]/div[2]/div/div/div[2]/div/div/div/div/div/div")
     OFFICE = (By.CSS_SELECTOR, "#office")
     COUNTRY = (By.CSS_SELECTOR, "#country-select-default")
     CITY = (By.CSS_SELECTOR, "#city-select-default")
@@ -81,6 +83,7 @@ class CreatePersonModalLocators:
     CANCEL_CREATE_PERSON_BUTTON = (By.XPATH, "/html/body/div[2]/div/div[2]/div/div[2]/div[3]/button[1]")
 
     CROSS_EXIT = (By.XPATH, "/html/body/div[2]/div/div[2]/div/div[2]/button")
+
 
 # Clients&Projects page
 class ClientsProjectsPageLocators:

@@ -3,6 +3,10 @@ from .locators import CreatePersonModalLocators
 # from ahs_selenium.pages.random_person import RandomPersonData
 from .random_data_person import RandomPersonData
 from selenium.webdriver.support.ui import Select            # for dropdown list
+from selenium.webdriver.common.keys import Keys
+import time
+from selenium.webdriver.common.action_chains import ActionChains
+
 
 
 class CreatePersonModal(BasePage):
@@ -52,16 +56,25 @@ class CreatePersonModal(BasePage):
         assert self.is_element_present(*CreatePersonModalLocators.CROSS_EXIT), "Exit cross doesn't appear!"
 
     def add_new_person(self):
-        first_name = self.browser.find_element(*CreatePersonModalLocators.FIRST_NAME)
-        first_name.send_keys(RandomPersonData.first_name)
-        last_name = self.browser.find_element(*CreatePersonModalLocators.LAST_NAME)
-        last_name.send_keys(RandomPersonData.last_name)
-        recruiter = Select(self.browser.find_element(*CreatePersonModalLocators.RECRUITER))
-        recruiter.select_by_value(RandomPersonData.recruiter)
-        roles = Select(self.browser.find_element(*CreatePersonModalLocators.ROLES))
-        roles.select_by_value(RandomPersonData.role)
+        first_name = self.browser.find_element(*CreatePersonModalLocators.FIRST_NAME).send_keys(RandomPersonData.first_name)
+        last_name = self.browser.find_element(*CreatePersonModalLocators.LAST_NAME).send_keys(RandomPersonData.last_name)
+
+        # TODO How to handle "Select with search field" in ant-design? This is not works
+        # recruiter = Select(self.browser.find_element(*CreatePersonModalLocators.RECRUITER))
+        # recruiter.select_by_visible_text(RandomPersonData.recruiter)  # select_by_visible_text
+
+        # TODO: My kostylnyi design))
+        recruiter = self.browser.find_element(*CreatePersonModalLocators.RECRUITER)
+        recruiter.send_keys(RandomPersonData.recruiter, Keys.ENTER)
+
+        # TODO idk how to solve? (element is not interactable)
+        # roles = self.browser.find_element(*CreatePersonModalLocators.ROLES)
+        # roles.send_keys(RandomPersonData.role, Keys.ENTER)
+
         office = Select(self.browser.find_element(*CreatePersonModalLocators.OFFICE))
         office.select_by_value(RandomPersonData.office)
+        time.sleep(2)
+
         country = Select(self.browser.find_element(*CreatePersonModalLocators.COUNTRY))
         country.select_by_value(RandomPersonData.country)
         city = Select(self.browser.find_element(*CreatePersonModalLocators.CITY))

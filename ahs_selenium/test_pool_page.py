@@ -6,7 +6,7 @@ from pages.create_person_modal_page import CreatePersonModal
 from conftest import LINK_LOGIN_PAGE
 
 
-
+@pytest.mark.skip
 class TestPoolPageInternalFiltering:
     @pytest.fixture(scope="function", autouse=True)
     def setup(self, browser):
