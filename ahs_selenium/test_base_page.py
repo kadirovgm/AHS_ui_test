@@ -1,6 +1,6 @@
 import pytest
 import time
-from pages.base_page import BasePage
+
 from pages.login_page import LoginPage
 from pages.pool_page import PoolPage
 from pages.clients_projects_page import ClientsProjectsPage
@@ -12,7 +12,7 @@ from conftest import LINK_LOGIN_PAGE
 
 @pytest.mark.e2e_3
 class TestBasePageActions:
-    @pytest.fixture(scope="function", autouse=True)
+    @pytest.fixture(scope="class", autouse=True)  # scope=class because don't need to close browser everytime
     def setup(self, browser):
         link = LINK_LOGIN_PAGE
         page = LoginPage(browser, link)
@@ -25,7 +25,6 @@ class TestBasePageActions:
         page_positions.go_to_positions_page()
         page_positions.should_be_positions_page_text()
 
-    # TODO think "how to run tests without closing browser"
     def test_user_can_go_to_pool(self, browser):
         page_pool = PoolPage(browser, browser.current_url)
         page_pool.go_to_pool_page()
