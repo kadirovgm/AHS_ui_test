@@ -15,18 +15,16 @@ class TestAddPerson:
         time.sleep(0.5)
         page.login_new_user(email="admin@admin.com", password="P@ssw0rd1")
 
-    def test_correct_create_person_modal(self, browser):
+    def test_go_to_create_person_modal(self,browser):
         pool_page = PoolPage(browser, browser.current_url)
         pool_page.go_to_pool_page()
         pool_page.add_person_button_click()
+
+    def test_check_create_person_modal(self, browser):
         person_create_modal = CreatePersonModal(browser, browser.current_url)
         person_create_modal.should_be_create_person_modal()
 
     def test_add_person(self, browser):
-        # pool_page = PoolPage(browser, browser.current_url)
-        # pool_page.go_to_pool_page()
-        # pool_page.add_person_button_click()
         person_create_page = CreatePersonModal(browser, browser.current_url)
         person_create_page.add_new_person()
-        time.sleep(1)
 

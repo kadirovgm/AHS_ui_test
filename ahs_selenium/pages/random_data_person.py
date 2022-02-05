@@ -20,6 +20,6 @@ class RandomPersonData:
     other_skill1 = "sql"
     want_relocate = "United States"
     contact_type = "Email"
-    email = "".join(random.choices(string.ascii_lowercase, k=10)) + "@akvelon.com"
+    email = "".join(random.choices(string.ascii_lowercase, k=4)) + "@akvelon.com"
 
 

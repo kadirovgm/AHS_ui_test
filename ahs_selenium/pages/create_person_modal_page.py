@@ -5,8 +5,6 @@ from .random_data_person import RandomPersonData
 from selenium.webdriver.support.ui import Select            # for dropdown list
 from selenium.webdriver.common.keys import Keys
 import time
-from selenium.webdriver.common.action_chains import ActionChains
-
 
 
 class CreatePersonModal(BasePage):
@@ -63,44 +61,41 @@ class CreatePersonModal(BasePage):
         # recruiter = Select(self.browser.find_element(*CreatePersonModalLocators.RECRUITER))
         # recruiter.select_by_visible_text(RandomPersonData.recruiter)  # select_by_visible_text
 
-        # TODO: My kostylnyi design))
+        # TODO: My kostylnyi decision))
         recruiter = self.browser.find_element(*CreatePersonModalLocators.RECRUITER)
         recruiter.send_keys(RandomPersonData.recruiter, Keys.ENTER)
-
-        # TODO idk how to solve? (element is not interactable)
-        # roles = self.browser.find_element(*CreatePersonModalLocators.ROLES)
-        # roles.send_keys(RandomPersonData.role, Keys.ENTER)
-
-        office = Select(self.browser.find_element(*CreatePersonModalLocators.OFFICE))
-        office.select_by_value(RandomPersonData.office)
-        time.sleep(2)
-
-        country = Select(self.browser.find_element(*CreatePersonModalLocators.COUNTRY))
-        country.select_by_value(RandomPersonData.country)
-        city = Select(self.browser.find_element(*CreatePersonModalLocators.CITY))
-        city.select_by_value(RandomPersonData.city)
+        roles = self.browser.find_element(*CreatePersonModalLocators.ROLES)
+        roles.send_keys(RandomPersonData.role, Keys.ENTER)
+        office = self.browser.find_element(*CreatePersonModalLocators.OFFICE)
+        office.send_keys(RandomPersonData.office, Keys.ENTER)
+        country = self.browser.find_element(*CreatePersonModalLocators.COUNTRY)
+        country.send_keys(RandomPersonData.country)
+        time.sleep(0.7)     # wait for the countries to load
+        country.send_keys(Keys.ENTER)
+        city = self.browser.find_element(*CreatePersonModalLocators.CITY)
+        city.send_keys(RandomPersonData.city)
+        time.sleep(0.7)  # wait for the countries to load
+        city.send_keys(Keys.ENTER)
+        # _ = self.browser.find_element(*CreatePersonModalLocators.CREATE_NEW_PERSON_TEXT).click()
         context_comment = self.browser.find_element(*CreatePersonModalLocators.CONTEXT_COMMENT)
         context_comment.send_keys(RandomPersonData.context_comment)
-        english_level = Select(self.browser.find_element(*CreatePersonModalLocators.ENGLISH_LEVEL))
-        english_level.select_by_value(RandomPersonData.english_level)
-
-        # TODO think how to make it easy
+        english_level = self.browser.find_element(*CreatePersonModalLocators.ENGLISH_LEVEL)
+        english_level.send_keys(RandomPersonData.english_level, Keys.ENTER)
         primary_skill = self.browser.find_element(*CreatePersonModalLocators.PRIMARY_SKILL)
         primary_skill.send_keys(RandomPersonData.skill1)
-        primary_skill = Select(self.browser.find_element(*CreatePersonModalLocators.PRIMARY_SKILL))
-        primary_skill.select_by_value(RandomPersonData.skill1)
-
-        # нужна прокрутка?
-        grade = Select(self.browser.find_element(*CreatePersonModalLocators.PRIMARY_SKILL_GRADE))
-        grade.select_by_value(RandomPersonData.grade)
-
-        contact_type = Select(self.browser.find_element(*CreatePersonModalLocators.CONTACT_TYPE))
-        contact_type.select_by_value(RandomPersonData.contact_type)
-        contact_value = Select(self.browser.find_element(*CreatePersonModalLocators.CONTACT_VALUE))
-        contact_value.select_by_value(RandomPersonData.email)
-
+        time.sleep(0.7)
+        primary_skill.send_keys(Keys.ENTER)
+        grade = self.browser.find_element(*CreatePersonModalLocators.PRIMARY_SKILL_GRADE)
+        grade.send_keys(RandomPersonData.grade)
+        time.sleep(0.7)
+        grade.send_keys(Keys.ENTER)
+        contact_type = self.browser.find_element(*CreatePersonModalLocators.CONTACT_TYPE)
+        contact_type.send_keys(RandomPersonData.contact_type, Keys.DOWN, Keys.ENTER)
+        contact_value = self.browser.find_element(*CreatePersonModalLocators.CONTACT_VALUE)
+        contact_value.send_keys(RandomPersonData.email)
         create_person_button = self.browser.find_element(*CreatePersonModalLocators.CREATE_PERSON_BUTTON)
         create_person_button.click()
+
 
 
 

@@ -47,8 +47,7 @@ class CreatePersonModalLocators:
     LAST_NAME = (By.CSS_SELECTOR, "#last_name")
     MIDDLE_NAME = (By.CSS_SELECTOR, "#middle_name")
     RECRUITER = (By.CSS_SELECTOR, "#assigned_hr")
-    ROLES = (By.XPATH, "/html/body/div[2]/div/div[2]/div/div[2]/div[2]/form/div/div[2]"
-                              "/section[1]/div[2]/div/div/div[2]/div/div/div/div/div/div")
+    ROLES = (By.CSS_SELECTOR, "#roles")
     OFFICE = (By.CSS_SELECTOR, "#office")
     COUNTRY = (By.CSS_SELECTOR, "#country-select-default")
     CITY = (By.CSS_SELECTOR, "#city-select-default")
