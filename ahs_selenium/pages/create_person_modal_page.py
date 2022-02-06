@@ -55,6 +55,8 @@ class CreatePersonModal(BasePage):
         assert self.is_element_present(*CreatePersonModalLocators.CROSS_EXIT), "Exit cross doesn't appear!"
 
     def add_new_person(self):
+        # TODO to think about loading time!
+        loading_time = 1.7 # city,country,skills
         print(f"Creating a new external person!")
         _ = self.browser.find_element(*CreatePersonModalLocators.FIRST_NAME).send_keys(RandomPersonData.first_name)
         _ = self.browser.find_element(*CreatePersonModalLocators.LAST_NAME).send_keys(RandomPersonData.last_name)
@@ -72,11 +74,11 @@ class CreatePersonModal(BasePage):
         office.send_keys(RandomPersonData.office, Keys.DOWN, Keys.ENTER)
         country = self.browser.find_element(*CreatePersonModalLocators.COUNTRY)
         country.send_keys(RandomPersonData.country)
-        time.sleep(0.7)     # wait for the countries to load
+        time.sleep(loading_time)     # wait for the countries to load
         country.send_keys(Keys.ENTER)
         city = self.browser.find_element(*CreatePersonModalLocators.CITY)
         city.send_keys(RandomPersonData.city)
-        time.sleep(0.7)  # wait for the countries to load
+        time.sleep(loading_time)  # wait for the cities to load 
         city.send_keys(Keys.ENTER)
         # _ = self.browser.find_element(*CreatePersonModalLocators.CREATE_NEW_PERSON_TEXT).click()
         context_comment = self.browser.find_element(*CreatePersonModalLocators.CONTEXT_COMMENT)
@@ -85,11 +87,11 @@ class CreatePersonModal(BasePage):
         english_level.send_keys(RandomPersonData.english_level, Keys.ENTER)
         primary_skill = self.browser.find_element(*CreatePersonModalLocators.PRIMARY_SKILL)
         primary_skill.send_keys(RandomPersonData.skill1)
-        time.sleep(0.7)
+        time.sleep(loading_time)  # wait for the skills to load 
         primary_skill.send_keys(Keys.ENTER)
         grade = self.browser.find_element(*CreatePersonModalLocators.PRIMARY_SKILL_GRADE)
         grade.send_keys(RandomPersonData.grade)
-        time.sleep(0.7)
+        # time.sleep(0.7) 
         grade.send_keys(Keys.ENTER)
         contact_type = self.browser.find_element(*CreatePersonModalLocators.CONTACT_TYPE)
         contact_type.send_keys(RandomPersonData.contact_type, Keys.DOWN, Keys.ENTER)

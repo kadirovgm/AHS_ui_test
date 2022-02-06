@@ -5,6 +5,7 @@ import os
 import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
 
 LINK_LOGIN_PAGE = "http://192.168.52.122/login"
 POOL_EXTERNAL_TAB = "http://192.168.52.122/pool/internal"
@@ -28,6 +29,8 @@ def browser(request):
     DRIVER_BIN = os.path.join(PROJECT_ROOT, "../bin/chromedriver") # execute in mac
     # DRIVER_BIN = os.path.join(PROJECT_ROOT, "../bin/chromedriver.exe") # execute in windows
 
+    ser = Service(DRIVER_BIN)
+
     browser_name = request.config.getoption("browser_name")
     # user_language = request.config.getoption("language")
     user_language = None
@@ -36,7 +39,7 @@ def browser(request):
         options.add_experimental_option('prefs', {'intl.accept_languages': user_language})
 
         print("\nStart chrome browser for test..")
-        browser = webdriver.Chrome(options=options, executable_path=DRIVER_BIN)
+        browser = webdriver.Chrome(options=options, service=ser) # executable_path=DRIVER_BIN - deprecated
         browser.maximize_window()                       # maximize window
         browser.implicitly_wait(3)                      # implicitly wait
 
