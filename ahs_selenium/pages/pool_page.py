@@ -16,8 +16,9 @@ class PoolPage(BasePage):
         print("Start to check internal pool page fields")
         internal_fields_locator = ["NAME", "TYPE", "ROLE", "SKILLS", "CITY_COUNTRY", "OFFICE", "ENG_LEVEL", "VISA", "ACTIVE_PROJECTS", "HR"]
         internal_fields_text = ["Name", "Type", "Roles", "Skills", "City | Country", "Ofice", "Eng. level", "Visa status", "Active projects", "HR"]
-        for locator, field in internal_fields_locator, internal_fields_text:
-            if self.is_element_present(*PoolPageLocators.locator):
+        for locator, field in zip(internal_fields_locator, internal_fields_text):
+            print(f"This is locator's value {locator}")
+            if self.is_element_present(*PoolPageLocators.locator): # Как сделать так чтобы .locator был равен значению итерации?
                 assert self.browser.find_element(*PoolPageLocators.locator).text == field, \
                 f"Incorrect value of field: {locator} is not equal to {field}"
             else:

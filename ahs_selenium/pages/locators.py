@@ -58,6 +58,7 @@ class PersonPageLocators:
 
 # Create person
 class CreatePersonModalLocators:
+
     CREATE_NEW_PERSON_TEXT = (By.CSS_SELECTOR, "#rcDialogTitle0")
     UPLOAD_PHOTO = (By.XPATH, "/html/body/div[2]/div/div[2]/div/div[2]/div[2]"
                               "/form/div/div[1]/div[1]/div/div/div/div/span/div/span/input")
