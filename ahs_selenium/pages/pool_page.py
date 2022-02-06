@@ -14,7 +14,7 @@ class PoolPage(BasePage):
         add_person = self.browser.find_element(*PoolPageLocators.ADD_PERSON)
         add_person.click()
 
-    '''Internal, External, Blacklist tabs'''
+    """Internal, External, Blacklist tabs"""
     def go_to_internal_tab(self):
         _ = self.browser.find_element(*PoolPageLocators.INTERNAL_TAB).click()
 
@@ -24,6 +24,7 @@ class PoolPage(BasePage):
     def go_to_blacklist_tab(self):
         _ = self.browser.find_element(*PoolPageLocators.BLACKLIST_TAB).click()
 
+    """Searching in pool"""
     def search_for_person(self, first_name, second_name):
         print(f"Searching for {first_name} {second_name} in Pool->External")
         if self.is_element_present(*PoolPageLocators.FIRST_PERSON):

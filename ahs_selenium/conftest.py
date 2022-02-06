@@ -7,9 +7,6 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 
-LINK_LOGIN_PAGE = "http://192.168.52.122/login"
-POOL_EXTERNAL_TAB = "http://192.168.52.122/pool/internal"
-
 
 # default options
 def pytest_addoption(parser):

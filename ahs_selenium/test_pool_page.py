@@ -3,7 +3,20 @@ import time
 from pages.login_page import LoginPage
 from pages.pool_page import PoolPage
 from pages.create_person_modal_page import CreatePersonModal
-from conftest import LINK_LOGIN_PAGE
+from links import LINK_LOGIN_PAGE
+
+
+@pytest.mark.skip
+class TestPoolPageFieldsCorrectness:
+    @pytest.fixture(scope="class", autouse=True)
+    def setup(self, browser):
+        page = LoginPage(browser, LINK_LOGIN_PAGE)
+        page.open()
+        time.sleep(0.5)
+        page.login_new_user(email="admin@admin.com", password="P@ssw0rd1")
+
+    def test_internal_fileds(self, browser):
+        internal = PoolPage(browser, browser.current_url)
 
 
 @pytest.mark.skip
