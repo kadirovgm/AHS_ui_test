@@ -7,7 +7,7 @@ from pages.clients_projects_page import ClientsProjectsPage
 from pages.positions_page import PositionsPage
 from pages.reports_page import ReportsPage
 from pages.help_center_page import HelpCenterPage
-from links import LINK_LOGIN_PAGE
+from urls import LINK_LOGIN_PAGE
 
 
 @pytest.mark.e2e_3

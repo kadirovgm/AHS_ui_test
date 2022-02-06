@@ -3,7 +3,7 @@ import time
 from pages.login_page import LoginPage
 from pages.pool_page import PoolPage
 from pages.create_person_modal_page import CreatePersonModal
-from links import LINK_LOGIN_PAGE
+from urls import LINK_LOGIN_PAGE
 
 
 @pytest.mark.skip
