@@ -8,7 +8,7 @@ from conftest import LINK_LOGIN_PAGE
 
 @pytest.mark.skip
 class TestPoolPageInternalFiltering:
-    @pytest.fixture(scope="function", autouse=True)
+    @pytest.fixture(scope="class", autouse=True)
     def setup(self, browser):
         page = LoginPage(browser, LINK_LOGIN_PAGE)
         page.open()
