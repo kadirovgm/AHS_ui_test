@@ -25,8 +25,8 @@ def pytest_addoption(parser):
 @pytest.fixture(scope="class")  # "function" if want to initialize on every function
 def browser(request):
     PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
-    DRIVER_BIN = os.path.join(PROJECT_ROOT, "bin/chromedriver_for_mac") # execute in mac
-    # DRIVER_BIN = os.path.join(PROJECT_ROOT, "bin/chromedriver_for_win.exe") # execute in windows
+    DRIVER_BIN = os.path.join(PROJECT_ROOT, "../bin/chromedriver") # execute in mac
+    # DRIVER_BIN = os.path.join(PROJECT_ROOT, "../bin/chromedriver.exe") # execute in windows
 
     browser_name = request.config.getoption("browser_name")
     # user_language = request.config.getoption("language")
@@ -36,9 +36,9 @@ def browser(request):
         options.add_experimental_option('prefs', {'intl.accept_languages': user_language})
 
         print("\nStart chrome browser for test..")
-        browser = webdriver.Chrome(options=options, executable_path = DRIVER_BIN)
-        browser.maximize_window()                   # maximize window
-        browser.implicitly_wait(3)                  # implicitly wait
+        browser = webdriver.Chrome(options=options, executable_path=DRIVER_BIN)
+        browser.maximize_window()                       # maximize window
+        browser.implicitly_wait(3)                      # implicitly wait
 
     elif browser_name == "firefox":
         fp = webdriver.FirefoxProfile()
