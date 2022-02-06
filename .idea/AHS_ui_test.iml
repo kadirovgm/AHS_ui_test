@@ -6,8 +6,9 @@
       <excludeFolder url="file://$MODULE_DIR$/win_venv_ahs" />
       <excludeFolder url="file://$MODULE_DIR$/.pytest_cache" />
       <excludeFolder url="file://$MODULE_DIR$/ahs_selenium/.pytest_cache" />
+      <excludeFolder url="file://$MODULE_DIR$/mac_venv_ahs" />
     </content>
-    <orderEntry type="jdk" jdkName="Python 3.10 (AHS_ui_test)" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="Python 3.9 (AHS_ui_test)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
 </module>
