@@ -14,13 +14,16 @@ class PoolPage(BasePage):
     # TODO not working right now!
     def should_be_correct_fields_internal(self):
         print("Start to check internal pool page fields")
-        internal_fields_locator = ["NAME", "TYPE", "ROLE", "SKILLS", "CITY_COUNTRY", "OFFICE", "ENG_LEVEL", "VISA", "ACTIVE_PROJECTS", "HR"]
+        # internal_fields_locator = ["NAME", "TYPE", "ROLE", "SKILLS", "CITY_COUNTRY", "OFFICE", "ENG_LEVEL", "VISA", "ACTIVE_PROJECTS", "HR"]
+        # internal_fields_locator = [eval("PoolPageLocators."+i) for i in internal_fields_locator]
+        internal_fields_locator = [PoolPageLocators.NAME, PoolPageLocators.TYPE, PoolPageLocators.ROLE, PoolPageLocators.SKILLS, \
+        PoolPageLocators.CITY_COUNTRY, PoolPageLocators.OFFICE, PoolPageLocators.ENG_LEVEL, PoolPageLocators.VISA, PoolPageLocators.ACTIVE_PROJECTS, PoolPageLocators.HR]
         internal_fields_text = ["Name", "Type", "Roles", "Skills", "City | Country", "Ofice", "Eng. level", "Visa status", "Active projects", "HR"]
+
         for locator, field in zip(internal_fields_locator, internal_fields_text):
-            print(f"This is locator's value {locator}")
-            if self.is_element_present(*PoolPageLocators.locator): # Как сделать так чтобы .locator был равен значению итерации?
-                assert self.browser.find_element(*PoolPageLocators.locator).text == field, \
-                f"Incorrect value of field: {locator} is not equal to {field}"
+            if self.is_element_present(*locator):
+                assert self.browser.find_element(*locator).text == field, \
+                f"Incorrect value of field: {field}"
             else:
                 assert f"{field} field is NOT present!"
 

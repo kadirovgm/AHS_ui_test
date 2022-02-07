@@ -21,7 +21,6 @@ class TestPoolPageFieldsCorrectness:
         internal.should_be_correct_fields_internal()
 
 
-
 @pytest.mark.skip
 class TestPoolPageInternalFiltering:
     @pytest.fixture(scope="class", autouse=True)
