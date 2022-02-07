@@ -1,8 +1,10 @@
 from .base_page import BasePage
 from .locators import PoolPageLocators
-from .locators import PersonPageLocators
 import time
 
+# TODO For future:
+# class PoolPageCommonActions
+# class PoolPageInternal, PoolPageExternal, PoolPageBlacklist
 
 class PoolPage(BasePage):
     """Correct Pool page"""
@@ -11,19 +13,31 @@ class PoolPage(BasePage):
         assert self.browser.find_element(*PoolPageLocators.POOL_TEXT).text == "Pool", "Incorrect pool page!"
         assert self.is_element_present(*PoolPageLocators.ADD_PERSON), "Add person button doesn't appear!"
     
-    def should_be_correct_fields_internal(self):
-        # internal_fields_locator = ["NAME", "TYPE", "ROLE", "SKILLS", "CITY_COUNTRY", "OFFICE", "ENG_LEVEL", "VISA", "ACTIVE_PROJECTS", "HR"]
-        # internal_fields_locator = [eval("PoolPageLocators."+i) for i in internal_fields_locator]
-        internal_fields_locator = [PoolPageLocators.NAME, PoolPageLocators.TYPE, PoolPageLocators.ROLE, PoolPageLocators.SKILLS, \
-        PoolPageLocators.CITY_COUNTRY, PoolPageLocators.OFFICE, PoolPageLocators.ENG_LEVEL, PoolPageLocators.VISA, PoolPageLocators.ACTIVE_PROJECTS, PoolPageLocators.HR]
-        internal_fields_text = ["Name", "Type", "Roles", "Skills", "City | Country", "Office", "Eng. level", "Visa status", "Active projects", "HR"]
-
-        for locator, field in zip(internal_fields_locator, internal_fields_text):
+    """*Pool fields checking*"""
+    def checking_pool_fields(self, locators, fields):
+        for locator, field in zip(locators, fields):
             if self.is_element_present(*locator):
                 assert self.browser.find_element(*locator).text == field, \
                 f"Incorrect value of field: {field}"
             else:
                 assert f"{field} field is NOT present!"
+    
+    def should_be_correct_fields_internal(self):
+        # internal_fields_locator = ["NAME", "TYPE", "ROLE", "SKILLS", "CITY_COUNTRY", "OFFICE", "ENG_LEVEL", "VISA", "ACTIVE_PROJECTS", "HR"]
+        # internal_fields_locator = [eval("PoolPageLocators."+i) for i in internal_fields_locator]
+        internal_fields_locator = \
+            [PoolPageLocators.NAME_i, PoolPageLocators.TYPE_i, PoolPageLocators.ROLE_i, PoolPageLocators.SKILLS_i, \
+            PoolPageLocators.CITY_COUNTRY_i, PoolPageLocators.OFFICE_i, PoolPageLocators.ENG_LEVEL_i, PoolPageLocators.VISA_i, \
+            PoolPageLocators.ACTIVE_PROJECTS_i, PoolPageLocators.HR_i]
+        internal_fields_text = ["Name", "Type", "Roles", "Skills", "City | Country", "Office", "Eng. level", "Visa status", "Active projects", "HR"]
+        self.checking_pool_fields(internal_fields_locator, internal_fields_text)
+
+    def should_be_correct_fields_external_blacklist(self):
+        external_fields_locator = \
+            [PoolPageLocators.NAME_e, PoolPageLocators.ROLE_e, PoolPageLocators.SKILLS_e, PoolPageLocators.CITY_COUNTRY_e, \
+            PoolPageLocators.OFFICE_e, PoolPageLocators.ENG_LEVEL_e, PoolPageLocators.VISA_e, PoolPageLocators.HR_e]
+        external_fields_text = ["Name", "Roles", "Skills", "City | Country", "Office", "Eng. level", "Visa status", "HR"]
+        self.checking_pool_fields(external_fields_locator, external_fields_text)
 
     """Add new person"""
     def add_person_button_click(self):
@@ -41,7 +55,7 @@ class PoolPage(BasePage):
         _ = self.browser.find_element(*PoolPageLocators.BLACKLIST_TAB).click()
 
 
-    """Searching in pool"""
+    """*Searching in pool*"""
     def search_for_person(self, first_name, second_name):
         print(f"Searching for {first_name} {second_name} in Pool->External")
         if self.is_element_present(*PoolPageLocators.FIRST_PERSON):

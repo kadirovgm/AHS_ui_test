@@ -6,3 +6,4 @@
 2. e2e_2 - test reset password page
 3. e2e_3 - test can go to main pages (positions, pool, clients, reports, help center)
 4. e2e_4 - test person create modal
+5. e2e_5 - test correct pool page fields (internal, external, blacklist tabs)

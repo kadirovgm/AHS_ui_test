@@ -19,6 +19,18 @@ class TestPoolPageFieldsCorrectness:
         internal = PoolPage(browser, Urls.POOL_INTERNAL)
         internal.open()
         internal.should_be_correct_fields_internal()
+    
+    def test_external_fields(self, browser):
+        internal = PoolPage(browser, Urls.POOL_EXTERNAL)
+        internal.open()
+        internal.should_be_correct_fields_external_blacklist()
+    
+    def test_blacklist_fields(self, browser):
+        blacklist = PoolPage(browser, Urls.POOL_BLACKLIST)
+        blacklist.open()
+        blacklist.should_be_correct_fields_external_blacklist()
+
+    
 
 
 @pytest.mark.skip
