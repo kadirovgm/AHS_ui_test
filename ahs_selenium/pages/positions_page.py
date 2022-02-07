@@ -11,29 +11,33 @@ class PositionsPage(BasePage):
         assert self.browser.find_element(*PositionPageLocators.POSITIONS_TEXT).text == \
                "Positions", "Incorrect Positions page!"
     
+    """Add position button"""
+    def add_position_button_click(self):
+        _ = self.browser.find_element(*PositionPageLocators.ADD_POSITION).click()
+
     """Add new Client Project Position"""
     def add_client_project_position_button_click(self):
-        _ = self.browser.find_element(*PositionPageLocators.ADD_POSITION).click()
+        self.add_position_button_click()
         _ = self.browser.find_element(*PositionPageLocators.ADD_CLIENT_PROJECT_POS).click()
 
     """Add new Internal Project Position"""
     def add_internal_project_position_button_click(self):
-        _ = self.browser.find_element(*PositionPageLocators.ADD_POSITION).click()
+        self.add_position_button_click()
         _ = self.browser.find_element(*PositionPageLocators.ADD_INTERNAL_PROJECT_POS).click()
 
     """Add new Bench Position"""
     def add_bench_position_button_click(self):
-        _ = self.browser.find_element(*PositionPageLocators.ADD_POSITION).click()
+        self.add_position_button_click()
         _ = self.browser.find_element(*PositionPageLocators.ADD_BENCH_POS).click()
 
     """Add new Pre-offer Position"""
     def add_pre_offer_position_button_click(self):
-        _ = self.browser.find_element(*PositionPageLocators.ADD_POSITION).click()
+        self.add_position_button_click()
         _ = self.browser.find_element(*PositionPageLocators.ADD_PRE_OFFER_POS).click()
     
     """Add new Trainee Position"""
     def add_trainee_position_button_click(self):
-        _ = self.browser.find_element(*PositionPageLocators.ADD_POSITION).click()
+        self.add_position_button_click()
         _ = self.browser.find_element(*PositionPageLocators.ADD_TRAINEE_POS).click()
 
 
