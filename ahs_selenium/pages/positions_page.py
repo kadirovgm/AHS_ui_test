@@ -9,3 +9,5 @@ class PositionsPage(BasePage):
             "Position text doesn't appear!"
         assert self.browser.find_element(*PositionPageLocators.POSITIONS_TEXT).text == \
                "Positions", "Incorrect Positions page!"
+    
+    

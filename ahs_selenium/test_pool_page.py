@@ -31,9 +31,8 @@ class TestPoolPageFieldsCorrectness:
         blacklist.should_be_correct_fields_external_blacklist()
 
     
-
-
-@pytest.mark.skip
+# TODO pool filtering
+@pytest.mark.e2e_6
 class TestPoolPageInternalFiltering:
     @pytest.fixture(scope="class", autouse=True)
     def setup(self, browser):

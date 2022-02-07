@@ -13,15 +13,6 @@ class PoolPage(BasePage):
         assert self.browser.find_element(*PoolPageLocators.POOL_TEXT).text == "Pool", "Incorrect pool page!"
         assert self.is_element_present(*PoolPageLocators.ADD_PERSON), "Add person button doesn't appear!"
     
-    """*Pool fields checking*"""
-    def checking_pool_fields(self, locators, fields):
-        for locator, field in zip(locators, fields):
-            if self.is_element_present(*locator):
-                assert self.browser.find_element(*locator).text == field, \
-                f"Incorrect value of field: {field}"
-            else:
-                assert f"{field} field is NOT present!"
-    
     def should_be_correct_fields_internal(self):
         # internal_fields_locator = ["NAME", "TYPE", "ROLE", "SKILLS", "CITY_COUNTRY", "OFFICE", "ENG_LEVEL", "VISA", "ACTIVE_PROJECTS", "HR"]
         # internal_fields_locator = [eval("PoolPageLocators."+i) for i in internal_fields_locator]
@@ -30,14 +21,14 @@ class PoolPage(BasePage):
             PoolPageLocators.CITY_COUNTRY_i, PoolPageLocators.OFFICE_i, PoolPageLocators.ENG_LEVEL_i, PoolPageLocators.VISA_i, \
             PoolPageLocators.ACTIVE_PROJECTS_i, PoolPageLocators.HR_i]
         internal_fields_text = ["Name", "Type", "Roles", "Skills", "City | Country", "Office", "Eng. level", "Visa status", "Active projects", "HR"]
-        self.checking_pool_fields(internal_fields_locator, internal_fields_text)
+        self.checking_fields(internal_fields_locator, internal_fields_text)
 
     def should_be_correct_fields_external_blacklist(self):
         external_fields_locator = \
             [PoolPageLocators.NAME_e, PoolPageLocators.ROLE_e, PoolPageLocators.SKILLS_e, PoolPageLocators.CITY_COUNTRY_e, \
             PoolPageLocators.OFFICE_e, PoolPageLocators.ENG_LEVEL_e, PoolPageLocators.VISA_e, PoolPageLocators.HR_e]
         external_fields_text = ["Name", "Roles", "Skills", "City | Country", "Office", "Eng. level", "Visa status", "HR"]
-        self.checking_pool_fields(external_fields_locator, external_fields_text)
+        self.checking_fields(external_fields_locator, external_fields_text)
 
     """Add new person"""
     def add_person_button_click(self):
