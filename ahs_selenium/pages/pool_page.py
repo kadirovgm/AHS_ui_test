@@ -13,6 +13,7 @@ class PoolPage(BasePage):
         assert self.browser.find_element(*PoolPageLocators.POOL_TEXT).text == "Pool", "Incorrect pool page!"
         assert self.is_element_present(*PoolPageLocators.ADD_PERSON), "Add person button doesn't appear!"
     
+    """Internal"""
     def should_be_correct_fields_internal(self):
         # internal_fields_locator = ["NAME", "TYPE", "ROLE", "SKILLS", "CITY_COUNTRY", "OFFICE", "ENG_LEVEL", "VISA", "ACTIVE_PROJECTS", "HR"]
         # internal_fields_locator = [eval("PoolPageLocators."+i) for i in internal_fields_locator]
@@ -23,6 +24,7 @@ class PoolPage(BasePage):
         internal_fields_text = ["Name", "Type", "Roles", "Skills", "City | Country", "Office", "Eng. level", "Visa status", "Active projects", "HR"]
         self.checking_fields(internal_fields_locator, internal_fields_text)
 
+    """External (Blacklist)"""
     def should_be_correct_fields_external_blacklist(self):
         external_fields_locator = \
             [PoolPageLocators.NAME_e, PoolPageLocators.ROLE_e, PoolPageLocators.SKILLS_e, PoolPageLocators.CITY_COUNTRY_e, \
@@ -44,7 +46,6 @@ class PoolPage(BasePage):
 
     def go_to_blacklist_tab(self):
         _ = self.browser.find_element(*PoolPageLocators.BLACKLIST_TAB).click()
-
 
     """*Searching in pool*"""
     def search_for_person(self, first_name, second_name):
