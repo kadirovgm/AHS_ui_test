@@ -11,14 +11,12 @@ class PoolPage(BasePage):
         assert self.browser.find_element(*PoolPageLocators.POOL_TEXT).text == "Pool", "Incorrect pool page!"
         assert self.is_element_present(*PoolPageLocators.ADD_PERSON), "Add person button doesn't appear!"
     
-    # TODO not working right now!
     def should_be_correct_fields_internal(self):
-        print("Start to check internal pool page fields")
         # internal_fields_locator = ["NAME", "TYPE", "ROLE", "SKILLS", "CITY_COUNTRY", "OFFICE", "ENG_LEVEL", "VISA", "ACTIVE_PROJECTS", "HR"]
         # internal_fields_locator = [eval("PoolPageLocators."+i) for i in internal_fields_locator]
         internal_fields_locator = [PoolPageLocators.NAME, PoolPageLocators.TYPE, PoolPageLocators.ROLE, PoolPageLocators.SKILLS, \
         PoolPageLocators.CITY_COUNTRY, PoolPageLocators.OFFICE, PoolPageLocators.ENG_LEVEL, PoolPageLocators.VISA, PoolPageLocators.ACTIVE_PROJECTS, PoolPageLocators.HR]
-        internal_fields_text = ["Name", "Type", "Roles", "Skills", "City | Country", "Ofice", "Eng. level", "Visa status", "Active projects", "HR"]
+        internal_fields_text = ["Name", "Type", "Roles", "Skills", "City | Country", "Office", "Eng. level", "Visa status", "Active projects", "HR"]
 
         for locator, field in zip(internal_fields_locator, internal_fields_text):
             if self.is_element_present(*locator):

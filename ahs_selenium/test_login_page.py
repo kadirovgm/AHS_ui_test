@@ -1,13 +1,13 @@
 import pytest
 import time
 from pages.login_page import LoginPage
-from urls import LINK_LOGIN_PAGE
+from urls import Urls
 
 
 @pytest.mark.e2e_1
 class TestLoginPage:
     def test_correct_login_page(self, browser):
-        link = LINK_LOGIN_PAGE
+        link = Urls.LINK_LOGIN_PAGE
         page = LoginPage(browser, link)
         page.open()
         time.sleep(0.5)
@@ -17,7 +17,7 @@ class TestLoginPage:
 @pytest.mark.e2e_2
 class TestResetPage:
     def test_correct_reset_password_page(self, browser):
-        link = LINK_LOGIN_PAGE
+        link = Urls.LINK_LOGIN_PAGE
         page = LoginPage(browser, link)
         page.open()
         time.sleep(0.5)

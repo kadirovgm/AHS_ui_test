@@ -7,14 +7,14 @@ from pages.clients_projects_page import ClientsProjectsPage
 from pages.positions_page import PositionsPage
 from pages.reports_page import ReportsPage
 from pages.help_center_page import HelpCenterPage
-from urls import LINK_LOGIN_PAGE
+from urls import Urls
 
 
 @pytest.mark.e2e_3
 class TestBasePageActions:
     @pytest.fixture(scope="class", autouse=True)  # scope=class because don't need to close browser everytime
     def setup(self, browser):
-        link = LINK_LOGIN_PAGE
+        link = Urls.LINK_LOGIN_PAGE
         page = LoginPage(browser, link)
         page.open()
         time.sleep(0.5)

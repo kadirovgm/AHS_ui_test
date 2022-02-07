@@ -3,20 +3,20 @@ import time
 from pages.login_page import LoginPage
 from pages.pool_page import PoolPage
 from pages.create_person_modal_page import CreatePersonModal
-from urls import LINK_LOGIN_PAGE, POOL_INTERNAL
+from urls import Urls
 
 
 @pytest.mark.e2e_5
 class TestPoolPageFieldsCorrectness:
     @pytest.fixture(scope="class", autouse=True)
     def setup(self, browser):
-        page = LoginPage(browser, LINK_LOGIN_PAGE)
+        page = LoginPage(browser, Urls.LINK_LOGIN_PAGE)
         page.open()
         time.sleep(0.5)
         page.login_new_user(email="admin@admin.com", password="P@ssw0rd1")
 
     def test_internal_fileds(self, browser):
-        internal = PoolPage(browser, POOL_INTERNAL)
+        internal = PoolPage(browser, Urls.POOL_INTERNAL)
         internal.open()
         internal.should_be_correct_fields_internal()
 
@@ -25,7 +25,7 @@ class TestPoolPageFieldsCorrectness:
 class TestPoolPageInternalFiltering:
     @pytest.fixture(scope="class", autouse=True)
     def setup(self, browser):
-        page = LoginPage(browser, LINK_LOGIN_PAGE)
+        page = LoginPage(browser, Urls.LINK_LOGIN_PAGE)
         page.open()
         time.sleep(0.5)
         page.login_new_user(email="admin@admin.com", password="P@ssw0rd1")

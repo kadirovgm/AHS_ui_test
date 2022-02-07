@@ -3,14 +3,14 @@ import time
 from pages.login_page import LoginPage
 from pages.pool_page import PoolPage
 from pages.create_person_modal_page import CreatePersonModal
-from urls import LINK_LOGIN_PAGE
+from urls import Urls
 
 
 @pytest.mark.e2e_4
 class TestAddPerson:
     @pytest.fixture(scope="class", autouse=True)
     def setup(self, browser):
-        page = LoginPage(browser, LINK_LOGIN_PAGE)
+        page = LoginPage(browser, Urls.LINK_LOGIN_PAGE)
         page.open()
         time.sleep(0.5)
         page.login_new_user(email="admin@admin.com", password="P@ssw0rd1")
