@@ -15,17 +15,21 @@ class TestClientProjectPosition:
     def test_create_client_project_position(self, browser):
         ...
 
+
 @pytest.mark.skip
 class TestInternalProjectPosition:
     ...
+
 
 @pytest.mark.skip
 class TestBenchPosition:
     ...
 
+
 @pytest.mark.skip
 class TestPreOfferPosition:
     ...
+
 
 @pytest.mark.skip
 class TestTraineePosition:

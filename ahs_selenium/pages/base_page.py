@@ -46,10 +46,9 @@ class BasePage:
         for locator, field in zip(locators, fields):
             if self.is_element_present(*locator):
                 assert self.browser.find_element(*locator).text == field, \
-                f"Incorrect value of field: {field}"
+                    f"Incorrect value of field: {field}"
             else:
                 assert f"{field} field is NOT present!"
-
 
     # COMMON ACTIONS FROM ALL PAGES
     def go_to_login_page(self):

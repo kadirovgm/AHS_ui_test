@@ -40,7 +40,6 @@ class PositionsPage(BasePage):
         self.add_position_button_click()
         _ = self.browser.find_element(*PositionPageLocators.ADD_TRAINEE_POS).click()
 
-
     """Go to Internal, External, Blacklist tabs"""
     def go_to_active_tab(self):
         _ = self.browser.find_element(*PositionPageLocators.ACTIVE_TAB).click()

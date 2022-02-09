@@ -23,8 +23,8 @@ def pytest_addoption(parser):
 @pytest.fixture(scope="class")  # "function" if want to initialize on every function
 def browser(request):
     PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
-    DRIVER_BIN = os.path.join(PROJECT_ROOT, "../bin/chromedriver") # execute in mac
-    # DRIVER_BIN = os.path.join(PROJECT_ROOT, "../bin/chromedriver.exe") # execute in windows
+    # DRIVER_BIN = os.path.join(PROJECT_ROOT, "../bin/chromedriver")  # execute in mac
+    DRIVER_BIN = os.path.join(PROJECT_ROOT, "../bin/chromedriver.exe")  # execute in windows
 
     ser = Service(DRIVER_BIN)
 

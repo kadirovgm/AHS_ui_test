@@ -6,6 +6,7 @@ import time
 # class PoolPageCommonActions
 # class PoolPageInternal, PoolPageExternal, PoolPageBlacklist
 
+
 class PoolPage(BasePage):
     """Correct Pool page"""
     def should_be_pool_page_text(self):
@@ -18,17 +19,17 @@ class PoolPage(BasePage):
         # internal_fields_locator = ["NAME", "TYPE", "ROLE", "SKILLS", "CITY_COUNTRY", "OFFICE", "ENG_LEVEL", "VISA", "ACTIVE_PROJECTS", "HR"]
         # internal_fields_locator = [eval("PoolPageLocators."+i) for i in internal_fields_locator]
         internal_fields_locator = \
-            [PoolPageLocators.NAME_i, PoolPageLocators.TYPE_i, PoolPageLocators.ROLE_i, PoolPageLocators.SKILLS_i, \
-            PoolPageLocators.CITY_COUNTRY_i, PoolPageLocators.OFFICE_i, PoolPageLocators.ENG_LEVEL_i, PoolPageLocators.VISA_i, \
-            PoolPageLocators.ACTIVE_PROJECTS_i, PoolPageLocators.HR_i]
+            [PoolPageLocators.NAME_i, PoolPageLocators.TYPE_i, PoolPageLocators.ROLE_i, PoolPageLocators.SKILLS_i,
+             PoolPageLocators.CITY_COUNTRY_i, PoolPageLocators.OFFICE_i, PoolPageLocators.ENG_LEVEL_i, PoolPageLocators.VISA_i,
+             PoolPageLocators.ACTIVE_PROJECTS_i, PoolPageLocators.HR_i]
         internal_fields_text = ["Name", "Type", "Roles", "Skills", "City | Country", "Office", "Eng. level", "Visa status", "Active projects", "HR"]
         self.checking_fields(internal_fields_locator, internal_fields_text)
 
     """External (Blacklist)"""
     def should_be_correct_fields_external_blacklist(self):
         external_fields_locator = \
-            [PoolPageLocators.NAME_e, PoolPageLocators.ROLE_e, PoolPageLocators.SKILLS_e, PoolPageLocators.CITY_COUNTRY_e, \
-            PoolPageLocators.OFFICE_e, PoolPageLocators.ENG_LEVEL_e, PoolPageLocators.VISA_e, PoolPageLocators.HR_e]
+            [PoolPageLocators.NAME_e, PoolPageLocators.ROLE_e, PoolPageLocators.SKILLS_e, PoolPageLocators.CITY_COUNTRY_e,
+             PoolPageLocators.OFFICE_e, PoolPageLocators.ENG_LEVEL_e, PoolPageLocators.VISA_e, PoolPageLocators.HR_e]
         external_fields_text = ["Name", "Roles", "Skills", "City | Country", "Office", "Eng. level", "Visa status", "HR"]
         self.checking_fields(external_fields_locator, external_fields_text)
 

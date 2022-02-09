@@ -1,6 +1,6 @@
 class Urls:
 
-    host = "http://192.168.52.137/"
+    host = "http://192.168.52.122/"
 
     """LOGIN"""
     LINK_LOGIN_PAGE = f"{host}login"
