@@ -1,6 +1,6 @@
 from .base_page import BasePage
-from .locators import LoginPageLocators
-from .locators import ResetPageLocators
+from .locators.locators import LoginPageLocators
+from .locators.locators import ResetPageLocators
 import time
 
 

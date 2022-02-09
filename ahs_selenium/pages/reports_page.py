@@ -1,6 +1,5 @@
 from .base_page import BasePage
-from .locators import ReportsPageLocators
-import time
+from .locators.locators import ReportsPageLocators
 
 
 class ReportsPage(BasePage):

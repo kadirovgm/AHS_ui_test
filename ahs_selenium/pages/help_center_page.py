@@ -1,6 +1,5 @@
 from .base_page import BasePage
-from .locators import HelpCenterLocators
-import time
+from .locators.locators import HelpCenterLocators
 
 
 class HelpCenterPage(BasePage):

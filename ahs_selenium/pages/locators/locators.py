@@ -39,9 +39,6 @@ class PositionPageLocators:
     HISTORY_TAB = (By.XPATH, "/html/body/div[1]/section/section/header/div/div/ul/li[6]")
 
 
-
-
-
 # Pool page
 class PoolPageLocators:
     POOL_TEXT = (By.CSS_SELECTOR, "#root > section > section > header > div > div > div > b")
@@ -55,7 +52,6 @@ class PoolPageLocators:
     FIRST_PERSON_NAME = (By.XPATH, "/html/body/div/section/section/main/div/div[2]/div/div/div/div/div/div/table/tbody/tr[1]/td[1]/a/div/span")
     FIRST_PERSON = (By.XPATH, "/html/body/div/section/section/main/div/div[2]/div/div/div/div/div/div/table/tbody/tr[1]/td[1]")
 
-    
     """Internal fields"""
     NAME_i = (By.XPATH, "/html/body/div[1]/section/section/main/div/div[2]/div/div/div/div/div/div/table/thead/tr/th[1]/div/span[1]")
     TYPE_i = (By.XPATH, "/html/body/div[1]/section/section/main/div/div[2]/div/div/div/div/div/div/table/thead/tr/th[2]/div/span[1]")
@@ -77,6 +73,7 @@ class PoolPageLocators:
     ENG_LEVEL_e = (By.XPATH, "/html/body/div[1]/section/section/main/div/div[2]/div/div/div/div/div/div/table/thead/tr/th[6]/div/span[1]")
     VISA_e = (By.XPATH, "/html/body/div[1]/section/section/main/div/div[2]/div/div/div/div/div/div/table/thead/tr/th[7]/div/span[1]")
     HR_e = (By.XPATH, "/html/body/div[1]/section/section/main/div/div[2]/div/div/div/div/div/div/table/thead/tr/th[8]/div/span[1]")
+
 
 class PersonPageLocators:
     NAME = (By.XPATH, "/html/body/div/section/section/div/div/main/div[2]/div[1]/div/div/div/div[1]/div/div/span[1]")

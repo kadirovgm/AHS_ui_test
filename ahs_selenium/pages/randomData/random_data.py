@@ -1,4 +1,6 @@
-import names, random, string
+import names
+import random
+import string
 
 
 class RandomPersonData:

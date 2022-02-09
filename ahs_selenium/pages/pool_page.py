@@ -1,5 +1,5 @@
 from .base_page import BasePage
-from .locators import PoolPageLocators
+from .locators.locators import PoolPageLocators
 import time
 
 # TODO For future:
