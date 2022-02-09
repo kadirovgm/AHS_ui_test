@@ -15,7 +15,7 @@ class TestPoolPageFieldsCorrectness:
         time.sleep(0.5)
         page.login_new_user(email="admin@admin.com", password="P@ssw0rd1")
 
-    def test_internal_fileds(self, browser):
+    def test_internal_fields(self, browser):
         internal = PoolPage(browser, Urls.POOL_INTERNAL)
         internal.open()
         internal.should_be_correct_fields_internal()

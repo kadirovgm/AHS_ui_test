@@ -3,6 +3,7 @@ import time
 from pages.login_page import LoginPage
 from urls import Urls
 
+
 @pytest.mark.skip
 class TestClientProjectPosition:
     @pytest.fixture(scope="class", autouse=True)
