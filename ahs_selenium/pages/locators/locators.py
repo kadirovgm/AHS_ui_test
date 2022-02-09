@@ -39,7 +39,8 @@ class PositionPageLocators:
     ACTIVE_TAB = (By.XPATH, "/html/body/div[1]/section/section/header/div/div/ul/li[2]")
     MINE_TAB = (By.XPATH, "/html/body/div[1]/section/section/header/div/div/ul/li[4]")
     HISTORY_TAB = (By.XPATH, "/html/body/div[1]/section/section/header/div/div/ul/li[6]")
-    """Active tab fields"""
+
+    """Active/Mine tab fields"""
     NAME_a = (By.XPATH, "/html/body/div[1]/section/section/main/div[2]/div/div/div/div/div"
                         "/div/table/thead/tr/th[2]/div/span[1]")
     CL_PROJ_a = (By.XPATH, "/html/body/div[1]/section/section/main/div[2]/div/div/div/div/div"
@@ -56,6 +57,16 @@ class PositionPageLocators:
                         "/table/thead/tr/th[8]/div/span[1]")
     HR_a = (By.XPATH, "/html/body/div[1]/section/section/main/div[2]/div/div/div/div"
                       "/div/div/table/thead/tr/th[9]/div/span[1]")
+
+    """History tab"""
+    CREATE_DATE = (By.XPATH, "/html/body/div[1]/section/section/main/div[2]/div/div/div"
+                             "/div/div/div/table/thead/tr/th[4]/div/div")
+    FINISH_DATE = (By.XPATH, "/html/body/div[1]/section/section/main/div[2]/div/div"
+                             "/div/div/div/div/table/thead/tr/th[5]/div/div")
+    LOC_h = (By.XPATH, "/html/body/div[1]/section/section/main/div[2]/div/div/div"
+                       "/div/div/div/table/thead/tr/th[6]/div/span[1]")
+    REASON = (By.XPATH, "/html/body/div[1]/section/section/main/div[2]/div/div/div/div/div/div/table/thead/tr/th[7]")
+
 
 
 

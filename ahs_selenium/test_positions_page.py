@@ -19,13 +19,11 @@ class TestPoolPageFieldsCorrectness:
         active.open()
         active.should_be_correct_fields_active()
 
-    @pytest.mark.skip
     def test_mine_tab_fields(self, browser):
         mine = PositionsPage(browser, Urls.POSITIONS_MINE)
         mine.open()
         mine.should_be_correct_fields_mine()
 
-    @pytest.mark.skip
     def test_history_tab_fields(self, browser):
         history = PositionsPage(browser, Urls.POSITIONS_HISTORY)
         history.open()

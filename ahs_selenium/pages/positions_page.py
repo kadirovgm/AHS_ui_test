@@ -49,7 +49,7 @@ class PositionsPage(BasePage):
     def go_to_history_tab(self):
         _ = self.browser.find_element(*PositionPageLocators.HISTORY_TAB).click()
 
-    # TODO
+    """Correct Active/Mine/History"""
     def should_be_correct_fields_active(self):
         active_fields_locator = \
             [PositionPageLocators.NAME_a, PositionPageLocators.CL_PROJ_a, PositionPageLocators.LOC_a,
@@ -60,8 +60,23 @@ class PositionsPage(BasePage):
              "Deadline", "Status", "HR’s"]
         self.checking_fields(active_fields_locator, active_fields_text)
 
+    # difference from active tab is "HR" tab's absence
     def should_be_correct_fields_mine(self):
-        ...
+        mine_fields_locator = \
+            [PositionPageLocators.NAME_a, PositionPageLocators.CL_PROJ_a, PositionPageLocators.LOC_a,
+             PositionPageLocators.OFFICE_a, PositionPageLocators.REQ_CAN_a, PositionPageLocators.DEAD_a,
+             PositionPageLocators.STAT_a]
+        mine_fields_text = \
+            ["Position name", "Client | Project", "Position location", "Office", "Required | Candidates",
+             "Deadline", "Status"]
+        self.checking_fields(mine_fields_locator, mine_fields_text)
 
     def should_be_correct_fields_history(self):
-        ...
+        history_fields_locator = \
+            [PositionPageLocators.NAME_a, PositionPageLocators.CL_PROJ_a, PositionPageLocators.CREATE_DATE,
+             PositionPageLocators.FINISH_DATE, PositionPageLocators.LOC_h, PositionPageLocators.REASON,
+             PositionPageLocators.STAT_a, PositionPageLocators.HR_a]
+        history_fields_text = \
+            ["Position name", "Client | Project", "Creation Date", "Finish Date", "Position location",
+             "Reason", "Status", "HR’s"]
+        self.checking_fields(history_fields_locator, history_fields_text)

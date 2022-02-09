@@ -19,7 +19,7 @@
 - test create position (any types)
 
 ### test_positions_page.py
-- test correct position page fields (Active, Mine, History)
+6. e2e_6 - test correct position page fields (Active, Mine, History) [PASSED]
 - test correct filtering
 
 
