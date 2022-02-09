@@ -1,5 +1,7 @@
 class Urls:
 
+    # TODO: include in dockerfile?
+
     host = "http://192.168.52.122/"
 
     """LOGIN"""
