@@ -48,3 +48,20 @@ class PositionsPage(BasePage):
 
     def go_to_history_tab(self):
         _ = self.browser.find_element(*PositionPageLocators.HISTORY_TAB).click()
+
+    # TODO
+    def should_be_correct_fields_active(self):
+        active_fields_locator = \
+            [PositionPageLocators.NAME_a, PositionPageLocators.CL_PROJ_a, PositionPageLocators.LOC_a,
+             PositionPageLocators.OFFICE_a, PositionPageLocators.REQ_CAN_a, PositionPageLocators.DEAD_a,
+             PositionPageLocators.STAT_a, PositionPageLocators.HR_a]
+        active_fields_text = \
+            ["Position name", "Client | Project", "Position location", "Office", "Required | Candidates",
+             "Deadline", "Status", "HR’s"]
+        self.checking_fields(active_fields_locator, active_fields_text)
+
+    def should_be_correct_fields_mine(self):
+        ...
+
+    def should_be_correct_fields_history(self):
+        ...

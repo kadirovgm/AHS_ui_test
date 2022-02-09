@@ -26,6 +26,8 @@ class BasePageLocators:
 
 # Position page
 class PositionPageLocators:
+
+    """Add position buttons"""
     POSITIONS_TEXT = (By.CSS_SELECTOR, "#root > section > section > header > div > div > div > b")
     ADD_POSITION = (By.CSS_SELECTOR, "#root > section > section > header > div > div > div > button")
     ADD_CLIENT_PROJECT_POS = (By.XPATH, "/html/body/div[6]/div/div/ul/li[1]")
@@ -33,10 +35,29 @@ class PositionPageLocators:
     ADD_BENCH_POS = (By.XPATH, "/html/body/div[6]/div/div/ul/li[3]")
     ADD_PRE_OFFER_POS = (By.XPATH, "/html/body/div[6]/div/div/ul/li[4]")
     ADD_TRAINEE_POS = (By.XPATH, "/html/body/div[6]/div/div/ul/li[5]")
-
+    """TABS"""
     ACTIVE_TAB = (By.XPATH, "/html/body/div[1]/section/section/header/div/div/ul/li[2]")
     MINE_TAB = (By.XPATH, "/html/body/div[1]/section/section/header/div/div/ul/li[4]")
     HISTORY_TAB = (By.XPATH, "/html/body/div[1]/section/section/header/div/div/ul/li[6]")
+    """Active tab fields"""
+    NAME_a = (By.XPATH, "/html/body/div[1]/section/section/main/div[2]/div/div/div/div/div"
+                        "/div/table/thead/tr/th[2]/div/span[1]")
+    CL_PROJ_a = (By.XPATH, "/html/body/div[1]/section/section/main/div[2]/div/div/div/div/div"
+                           "/div/table/thead/tr/th[3]/div/span[1]")
+    LOC_a = (By.XPATH, "/html/body/div[1]/section/section/main/div[2]/div/div/div/div/div/div"
+                       "/table/thead/tr/th[4]/div/span[1]")
+    OFFICE_a = (By.XPATH, "/html/body/div[1]/section/section/main/div[2]/div/div/div/div/div/div"
+                          "/table/thead/tr/th[5]/div/span[1]")
+    REQ_CAN_a = (By.XPATH, "/html/body/div[1]/section/section/main/div[2]/div/div/div/div/div/div"
+                           "/table/thead/tr/th[6]/div/span[1]")
+    DEAD_a = (By.XPATH, "/html/body/div[1]/section/section/main/div[2]/div"
+                        "/div/div/div/div/div/table/thead/tr/th[7]/div/div")
+    STAT_a = (By.XPATH, "/html/body/div[1]/section/section/main/div[2]/div/div/div/div/div/div"
+                        "/table/thead/tr/th[8]/div/span[1]")
+    HR_a = (By.XPATH, "/html/body/div[1]/section/section/main/div[2]/div/div/div/div"
+                      "/div/div/table/thead/tr/th[9]/div/span[1]")
+
+
 
 
 # Pool page
