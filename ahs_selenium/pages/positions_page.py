@@ -49,7 +49,7 @@ class PositionsPage(BasePage):
     def go_to_history_tab(self):
         _ = self.browser.find_element(*PositionPageLocators.HISTORY_TAB).click()
 
-    """Correct Active/Mine/History"""
+    """Correct Active"""
     def should_be_correct_fields_active(self):
         active_fields_locator = \
             [PositionPageLocators.NAME_a, PositionPageLocators.CL_PROJ_a, PositionPageLocators.LOC_a,
@@ -60,6 +60,15 @@ class PositionsPage(BasePage):
              "Deadline", "Status", "HR’s"]
         self.checking_fields(active_fields_locator, active_fields_text)
 
+    def should_be_correct_filters_active(self):
+        active_filters_locators = \
+            ["F_PRIORITY", "F_TYPE", "F_CLIENT", "F_LOCATION", "F_OFFICE", "S_REQUIRED",
+             "S_DEADLINE", "F_STATUS", "F_HRS"]
+        active_filters_locators = [eval("PositionPageLocators." + i) for i in active_filters_locators]
+        for locator in active_filters_locators:
+            assert self.is_element_present(*locator), f"{locator} filter doesn't present!"
+
+    """Correct Mine"""
     # difference from active tab is "HR" tab's absence
     def should_be_correct_fields_mine(self):
         mine_fields_locator = \
@@ -71,6 +80,15 @@ class PositionsPage(BasePage):
              "Deadline", "Status"]
         self.checking_fields(mine_fields_locator, mine_fields_text)
 
+    def should_be_correct_filters_mine(self):
+        mine_filters_locators = \
+            ["F_PRIORITY", "F_TYPE", "F_CLIENT", "F_LOCATION", "F_OFFICE", "S_REQUIRED",
+             "S_DEADLINE", "F_STATUS"]
+        mine_filters_locators = [eval("PositionPageLocators." + i) for i in mine_filters_locators]
+        for locator in mine_filters_locators:
+            assert self.is_element_present(*locator), f"{locator} filter doesn't present!"
+
+    """Correct History"""
     def should_be_correct_fields_history(self):
         history_fields_locator = \
             [PositionPageLocators.NAME_a, PositionPageLocators.CL_PROJ_a, PositionPageLocators.CREATE_DATE,
@@ -80,3 +98,10 @@ class PositionsPage(BasePage):
             ["Position name", "Client | Project", "Creation Date", "Finish Date", "Position location",
              "Reason", "Status", "HR’s"]
         self.checking_fields(history_fields_locator, history_fields_text)
+
+    def should_be_correct_filters_history(self):
+        active_filters_locators = \
+            ["F_PRIORITY", "F_TYPE", "F_CLIENT", "S_CREATE_DATE", "S_FINISH_DATE", "F_LOCATION_h", "F_STATUS", "F_HRS"]
+        active_filters_locators = [eval("PositionPageLocators." + i) for i in active_filters_locators]
+        for locator in active_filters_locators:
+            assert self.is_element_present(*locator), f"{locator} filter doesn't present!"
