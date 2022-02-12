@@ -25,3 +25,12 @@ class RandomPersonData:
     email = "".join(random.choices(string.ascii_lowercase, k=4)) + "@akvelon.com"
 
 
+class FixturesInternalPerson:
+    # TODO use dict for randoming
+    # first_names = ["Olga"]
+    # last_names = ["Shakirova"]
+    # first, last = random.choice(first_names), random.choice(last_names)
+
+    first_name = "Olga"
+    last_name = "Shakirova"
+
