@@ -21,6 +21,7 @@ class TestAddPerson:
         person_create_modal = CreatePersonModal(browser, browser.current_url)
         person_create_modal.should_be_create_person_modal()
 
+    @pytest.mark.skip
     def test_add_person(self, browser):
         person_create_page = CreatePersonModal(browser, browser.current_url)
         created_first_name, created_second_name = person_create_page.add_new_person()

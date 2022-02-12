@@ -1,5 +1,6 @@
 from .base_page import BasePage
 from .locators.locators import PoolPageLocators
+from .locators.locators import CreatePersonModalLocators
 import time
 
 # TODO For future:
@@ -54,6 +55,8 @@ class PoolPage(BasePage):
     def add_person_button_click(self):
         add_person = self.browser.find_element(*PoolPageLocators.ADD_PERSON)
         add_person.click()
+        assert self.is_element_present(*CreatePersonModalLocators.CREATE_NEW_PERSON_TEXT), \
+            "Create person modal incorrect appeared"
 
     """Go to Internal, External, Blacklist tabs"""
     def go_to_internal_tab(self):
