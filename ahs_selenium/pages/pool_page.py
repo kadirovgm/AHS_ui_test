@@ -20,10 +20,20 @@ class PoolPage(BasePage):
         # internal_fields_locator = [eval("PoolPageLocators."+i) for i in internal_fields_locator]
         internal_fields_locator = \
             [PoolPageLocators.NAME_i, PoolPageLocators.TYPE_i, PoolPageLocators.ROLE_i, PoolPageLocators.SKILLS_i,
-             PoolPageLocators.CITY_COUNTRY_i, PoolPageLocators.OFFICE_i, PoolPageLocators.ENG_LEVEL_i, PoolPageLocators.VISA_i,
-             PoolPageLocators.ACTIVE_PROJECTS_i, PoolPageLocators.HR_i]
-        internal_fields_text = ["Name", "Type", "Roles", "Skills", "City | Country", "Office", "Eng. level", "Visa status", "Active projects", "HR"]
+             PoolPageLocators.CITY_COUNTRY_i, PoolPageLocators.OFFICE_i, PoolPageLocators.ENG_LEVEL_i,
+             PoolPageLocators.VISA_i, PoolPageLocators.ACTIVE_PROJECTS_i, PoolPageLocators.HR_i]
+        internal_fields_text = \
+            ["Name", "Type", "Roles", "Skills", "City | Country", "Office", "Eng. level",
+             "Visa status", "Active projects", "HR"]
         self.checking_fields(internal_fields_locator, internal_fields_text)
+
+    def should_be_filters_internal(self):
+        internal_filters_locators = \
+            ["F_LABEL_i", "F_TYPE_i", "F_ROLE_i", "F_SKILLS_i", "F_CITY_i", "F_OFFICE_i",
+             "F_ENG_i", "F_VISA_i", "F_ACTIVE_I", "F_HR_I"]
+        internal_filters_locators = [eval("PoolPageLocators." + i) for i in internal_filters_locators]
+        for locator in internal_filters_locators:
+            assert self.is_element_present(*locator), f"{locator} filter doesn't present!"
 
     """External (Blacklist)"""
     def should_be_correct_fields_external_blacklist(self):
@@ -32,6 +42,13 @@ class PoolPage(BasePage):
              PoolPageLocators.OFFICE_e, PoolPageLocators.ENG_LEVEL_e, PoolPageLocators.VISA_e, PoolPageLocators.HR_e]
         external_fields_text = ["Name", "Roles", "Skills", "City | Country", "Office", "Eng. level", "Visa status", "HR"]
         self.checking_fields(external_fields_locator, external_fields_text)
+
+    def should_be_filters_external_blacklist(self):
+        external_filters_locators = \
+            ["F_LABEL_e", "F_ROLE_e", "F_SKILLS_e", "F_CITY_e", "F_OFFICE_e", "F_ENG_e", "F_VISA_e", "F_HR_e"]
+        external_filters_locators = [eval("PoolPageLocators." + i) for i in external_filters_locators]
+        for locator in external_filters_locators:
+            assert self.is_element_present(*locator), f"{locator} filter doesn't present!"
 
     """Add new person"""
     def add_person_button_click(self):

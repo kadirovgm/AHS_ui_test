@@ -5,7 +5,7 @@ from pages.positions_page import PositionsPage
 from urls import Urls
 
 
-@pytest.mark.e2e_6
+@pytest.mark.e2e_7
 class TestPoolPageFieldsCorrectness:
     @pytest.fixture(scope="class", autouse=True)
     def setup(self, browser):

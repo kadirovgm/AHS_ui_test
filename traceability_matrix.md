@@ -13,13 +13,14 @@
    
 ### test_pool_page.py
 5. e2e_5 - test correct pool page fields (internal, external, blacklist tabs) [PASSED]
+6. e2e_7 - test correct pool page filters (internal, external, blacklist tabs) [IN PROGRESS]
 - test correct filtering [IN PROGRESS]
 
 ### test_position_create.py
 - test create position (any types) [TODO]
 
 ### test_positions_page.py
-6. e2e_6 - test correct position page fields (Active, Mine, History) [PASSED]
+7. e2e_6 - test correct position page fields (Active, Mine, History) [PASSED]
 - test correct filtering
 
 

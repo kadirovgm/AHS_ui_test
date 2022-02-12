@@ -20,20 +20,48 @@ class TestPoolPageFieldsCorrectness:
         internal = PoolPage(browser, Urls.POOL_INTERNAL)
         internal.open()
         internal.should_be_correct_fields_internal()
+        # internal.should_be_filters_internal()
     
     def test_external_fields(self, browser):
-        internal = PoolPage(browser, Urls.POOL_EXTERNAL)
-        internal.open()
-        internal.should_be_correct_fields_external_blacklist()
+        external = PoolPage(browser, Urls.POOL_EXTERNAL)
+        external.open()
+        external.should_be_correct_fields_external_blacklist()
+        # external.should_be_filters_external_blacklist()
     
     def test_blacklist_fields(self, browser):
         blacklist = PoolPage(browser, Urls.POOL_BLACKLIST)
         blacklist.open()
         blacklist.should_be_correct_fields_external_blacklist()
+        # blacklist.should_be_filters_external_blacklist()
 
-    
+
+@pytest.mark.e2e_6
+class TestPoolPageFiltersCorrectness:
+    @pytest.fixture(scope="class", autouse=True)
+    def setup(self, browser):
+        page = LoginPage(browser, Urls.LINK_LOGIN_PAGE)
+        page.open()
+        time.sleep(0.5)
+        page.login_new_user(email="admin@admin.com", password="P@ssw0rd1")
+
+    def test_internal_filters(self, browser):
+        internal = PoolPage(browser, Urls.POOL_INTERNAL)
+        internal.open()
+        internal.should_be_filters_internal()
+
+    def test_external_filters(self, browser):
+        external = PoolPage(browser, Urls.POOL_EXTERNAL)
+        external.open()
+        external.should_be_filters_external_blacklist()
+
+    def test_blacklist_filters(self, browser):
+        blacklist = PoolPage(browser, Urls.POOL_BLACKLIST)
+        blacklist.open()
+        blacklist.should_be_filters_external_blacklist()
+
+
 # TODO pool filtering
-@pytest.mark.e2e_7
+@pytest.mark.skip
 class TestPoolPageInternalFiltering:
     @pytest.fixture(scope="class", autouse=True)
     def setup(self, browser):
@@ -42,6 +70,8 @@ class TestPoolPageInternalFiltering:
         time.sleep(0.5)
         page.login_new_user(email="admin@admin.com", password="P@ssw0rd1")
 
+    # To avoid interrupting the test
+    # TODO how to improve? (remove 2 repeatable lines)
     def test_internal_search(self, browser):
         internal = PoolPage(browser, Urls.POOL_INTERNAL)
         internal.open()
