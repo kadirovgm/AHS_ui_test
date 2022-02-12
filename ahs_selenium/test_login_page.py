@@ -1,7 +1,7 @@
 import pytest
 import time
 from pages.login_page import LoginPage
-from urls import Urls
+from settings import Urls
 
 
 @pytest.mark.e2e_1

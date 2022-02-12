@@ -1,7 +1,7 @@
 import pytest
 import time
 from pages.login_page import LoginPage
-from urls import Setup
+from settings import Setup
 
 
 @pytest.mark.skip

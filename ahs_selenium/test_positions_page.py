@@ -3,7 +3,7 @@ import time
 from pages.login_page import LoginPage
 from pages.base_page import BasePage
 from pages.positions_page import PositionsPage
-from urls import Urls, Setup
+from settings import Urls, Setup
 
 
 @pytest.mark.e2e_7

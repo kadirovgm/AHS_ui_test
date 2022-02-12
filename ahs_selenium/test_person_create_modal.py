@@ -3,7 +3,7 @@ import time
 from pages.login_page import LoginPage
 from pages.pool_page import PoolPage
 from pages.create_person_modal_page import CreatePersonModal
-from urls import Setup
+from settings import Urls, Setup
 
 
 @pytest.mark.e2e_4
@@ -13,8 +13,8 @@ class TestAddPerson:
         Setup.setup_help(browser, browser)
 
     def test_go_to_create_person_modal(self, browser):
-        pool_page = PoolPage(browser, browser.current_url)
-        pool_page.go_to_pool_page()
+        pool_page = PoolPage(browser, Urls.POOL_INTERNAL)
+        pool_page.open()
         pool_page.add_person_button_click()
 
     def test_check_create_person_modal(self, browser):
@@ -27,6 +27,6 @@ class TestAddPerson:
         external_tab = PoolPage(browser, browser.current_url)
         external_tab.go_to_external_tab()
         external_tab.search_for_person(created_first_name, created_second_name)
-        time.sleep(1)
+        time.sleep(1)   # just visual identifying
 
 

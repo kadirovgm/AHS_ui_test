@@ -4,7 +4,7 @@ from pages.login_page import LoginPage
 from pages.pool_page import PoolPage
 from pages.create_person_modal_page import CreatePersonModal
 from pages.randomData.random_data import FixturesInternalPerson
-from urls import Urls, Setup
+from settings import Urls, Setup
 
 
 @pytest.mark.e2e_5
