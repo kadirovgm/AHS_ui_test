@@ -50,6 +50,14 @@ class BasePage:
             else:
                 assert f"{field} field is NOT present!"
 
+    """Is element clickable"""
+    def is_element_clickable(self, how, what, timeout=3):
+        try:
+            WebDriverWait(self.browser, timeout).until(EC.element_to_be_clickable((how, what)))
+        except TimeoutException:
+            return True
+        return False
+
     # COMMON ACTIONS FROM ALL PAGES
     def go_to_login_page(self):
         ...

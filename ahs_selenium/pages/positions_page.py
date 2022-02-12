@@ -67,6 +67,7 @@ class PositionsPage(BasePage):
         active_filters_locators = [eval("PositionPageLocators." + i) for i in active_filters_locators]
         for locator in active_filters_locators:
             assert self.is_element_present(*locator), f"{locator} filter doesn't present!"
+            # assert self.is_element_clickable(*locator), f"{locator} filter doesn't clickable!"
 
     """Correct Mine"""
     # difference from active tab is "HR" tab's absence
@@ -87,6 +88,7 @@ class PositionsPage(BasePage):
         mine_filters_locators = [eval("PositionPageLocators." + i) for i in mine_filters_locators]
         for locator in mine_filters_locators:
             assert self.is_element_present(*locator), f"{locator} filter doesn't present!"
+            # assert self.is_element_clickable(*locator), f"{locator} filter doesn't clickable!"
 
     """Correct History"""
     def should_be_correct_fields_history(self):
@@ -105,3 +107,4 @@ class PositionsPage(BasePage):
         active_filters_locators = [eval("PositionPageLocators." + i) for i in active_filters_locators]
         for locator in active_filters_locators:
             assert self.is_element_present(*locator), f"{locator} filter doesn't present!"
+            # assert self.is_element_clickable(*locator), f"{locator} filter doesn't clickable!"

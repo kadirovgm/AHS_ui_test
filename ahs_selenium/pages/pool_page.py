@@ -35,6 +35,7 @@ class PoolPage(BasePage):
         internal_filters_locators = [eval("PoolPageLocators." + i) for i in internal_filters_locators]
         for locator in internal_filters_locators:
             assert self.is_element_present(*locator), f"{locator} filter doesn't present!"
+            # assert self.is_element_clickable(*locator), f"{locator} filter doesn't clickable!"
 
     """External (Blacklist)"""
     def should_be_correct_fields_external_blacklist(self):
@@ -50,6 +51,7 @@ class PoolPage(BasePage):
         external_filters_locators = [eval("PoolPageLocators." + i) for i in external_filters_locators]
         for locator in external_filters_locators:
             assert self.is_element_present(*locator), f"{locator} filter doesn't present!"
+            # assert self.is_element_clickable(*locator), f"{locator} filter doesn't clickable!"
 
     """Add new person"""
     def add_person_button_click(self):
