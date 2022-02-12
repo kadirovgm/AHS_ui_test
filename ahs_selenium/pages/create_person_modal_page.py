@@ -21,9 +21,7 @@ class CreatePersonModal(BasePage):
         for locator in create_person_locator:
             assert self.is_element_present(*locator), f"{locator} field doesn't present!"
 
-    def add_new_person(self):
-        # TODO to think about loading time!
-        loading_time = 0.7  # city,country,skills
+    def add_new_person(self, loading_time):
         print(f"Creating a new external person!")
         _ = self.browser.find_element(*CreatePersonModalLocators.FIRST_NAME).send_keys(RandomPersonData.first_name)
         _ = self.browser.find_element(*CreatePersonModalLocators.LAST_NAME).send_keys(RandomPersonData.last_name)

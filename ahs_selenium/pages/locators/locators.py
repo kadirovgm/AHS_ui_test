@@ -28,8 +28,9 @@ class BasePageLocators:
 class PositionPageLocators:
     """Add position buttons"""
     POSITIONS_TEXT = (By.CSS_SELECTOR, "#root > section > section > header > div > div > div > b")
+
     ADD_POSITION = (By.CSS_SELECTOR, "#root > section > section > header > div > div > div > button")
-    ADD_CLIENT_PROJECT_POS = (By.XPATH, "/html/body/div[6]/div/div/ul/li[1]")
+    ADD_CLIENT_PROJECT_POS = (By.XPATH, "/html/body/div[2]/div/div/ul/li[1]")
     ADD_INTERNAL_PROJECT_POS = (By.XPATH, "/html/body/div[6]/div/div/ul/li[2]")
     ADD_BENCH_POS = (By.XPATH, "/html/body/div[6]/div/div/ul/li[3]")
     ADD_PRE_OFFER_POS = (By.XPATH, "/html/body/div[6]/div/div/ul/li[4]")
@@ -74,6 +75,21 @@ class PositionPageLocators:
     S_CREATE_DATE = (By.XPATH, "/html/body/div[1]/section/section/main/div[2]/div/div/div/div/div/div/table/thead/tr/th[4]/div/div/span[2]")
     S_FINISH_DATE = (By.XPATH, "/html/body/div[1]/section/section/main/div[2]/div/div/div/div/div/div/table/thead/tr/th[5]/div/div/span[2]")
     F_LOCATION_h = (By.XPATH, "/html/body/div[1]/section/section/main/div[2]/div/div/div/div/div/div/table/thead/tr/th[6]/div/span[2]/span")
+
+
+class CreatePositionModalLocators:
+    NEW_PROJ_POSITION_TEXT = (By.XPATH, "/html/body/div[3]/div/div[2]/div/div[2]/div[1]/div")
+
+    """tabs"""
+    POS_DETAIL_TAB = (By.XPATH, "/html/body/div[3]/div/div[2]/div/div[2]/div[2]/div/div/form/div/div[1]/div[1]/div/div[1]")
+    ASSIGNS_TAB = (By.XPATH, "/html/body/div[3]/div/div[2]/div/div[2]/div[2]/div/div/form/div/div[1]/div[1]/div/div[2]")
+    REQUESTS_TAB = (By.XPATH, "/html/body/div[3]/div/div[2]/div/div[2]/div[2]/div/div/form/div/div[1]/div[1]/div/div[3]")
+
+    """buttons"""
+    CANCEL = (By.XPATH, "/html/body/div[3]/div/div[2]/div/div[2]/div[2]/div/div/form/div/div[2]/div/div[1]/div/div[1]/button")
+    NEXT_DETAILS = (By.XPATH, "/html/body/div[3]/div/div[2]/div/div[2]/div[2]/div/div/form/div/div[2]/div/div[1]/div/div[2]/button")
+    NEXT_ASSIGNS = (By.XPATH, "/html/body/div[3]/div/div[2]/div/div[2]/div[2]/div/div/form/div/div[2]/div/div[2]/section/div[4]/div[2]/button")
+    SUBMIT = (By.XPATH, "/html/body/div[3]/div/div[2]/div/div[2]/div[2]/div/div/form/div/div[2]/div/div[3]/div/div[2]/button")
 
 
 # Pool page
