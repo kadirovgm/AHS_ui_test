@@ -7,18 +7,14 @@ from pages.clients_projects_page import ClientsProjectsPage
 from pages.positions_page import PositionsPage
 from pages.reports_page import ReportsPage
 from pages.help_center_page import HelpCenterPage
-from urls import Urls
+from urls import Setup
 
 
 @pytest.mark.e2e_3
 class TestBasePageActions:
-    @pytest.fixture(scope="class", autouse=True)  # scope=class because don't need to close browser everytime
+    @pytest.fixture(scope="class", autouse=True)
     def setup(self, browser):
-        link = Urls.LINK_LOGIN_PAGE
-        page = LoginPage(browser, link)
-        page.open()
-        time.sleep(0.5)
-        page.login_new_user(email="admin@admin.com", password="P@ssw0rd1")
+        Setup.setup_help(browser, browser)
 
     def test_user_can_go_to_positions(self, browser):
         page_positions = PositionsPage(browser, browser.current_url)

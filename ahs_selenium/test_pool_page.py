@@ -4,17 +4,14 @@ from pages.login_page import LoginPage
 from pages.pool_page import PoolPage
 from pages.create_person_modal_page import CreatePersonModal
 from pages.randomData.random_data import FixturesInternalPerson
-from urls import Urls
+from urls import Urls, Setup
 
 
 @pytest.mark.e2e_5
 class TestPoolPageFieldsCorrectness:
     @pytest.fixture(scope="class", autouse=True)
     def setup(self, browser):
-        page = LoginPage(browser, Urls.LINK_LOGIN_PAGE)
-        page.open()
-        time.sleep(0.5)
-        page.login_new_user(email="admin@admin.com", password="P@ssw0rd1")
+        Setup.setup_help(browser, browser)
 
     def test_internal_fields(self, browser):
         internal = PoolPage(browser, Urls.POOL_INTERNAL)
@@ -39,10 +36,7 @@ class TestPoolPageFieldsCorrectness:
 class TestPoolPageFiltersCorrectness:
     @pytest.fixture(scope="class", autouse=True)
     def setup(self, browser):
-        page = LoginPage(browser, Urls.LINK_LOGIN_PAGE)
-        page.open()
-        time.sleep(0.5)
-        page.login_new_user(email="admin@admin.com", password="P@ssw0rd1")
+        Setup.setup_help(browser, browser)
 
     def test_internal_filters(self, browser):
         internal = PoolPage(browser, Urls.POOL_INTERNAL)
@@ -65,10 +59,7 @@ class TestPoolPageFiltersCorrectness:
 class TestPoolPageInternalFiltering:
     @pytest.fixture(scope="class", autouse=True)
     def setup(self, browser):
-        page = LoginPage(browser, Urls.LINK_LOGIN_PAGE)
-        page.open()
-        time.sleep(0.5)
-        page.login_new_user(email="admin@admin.com", password="P@ssw0rd1")
+        Setup.setup_help(browser, browser)
 
     # To avoid interrupting the test
     # TODO how to improve? (remove 2 repeatable lines)
@@ -112,10 +103,7 @@ class TestPoolPageInternalFiltering:
 class TestPoolPageExternalFiltering:
     @pytest.fixture(scope="class", autouse=True)
     def setup(self, browser):
-        page = LoginPage(browser, Urls.LINK_LOGIN_PAGE)
-        page.open()
-        time.sleep(0.5)
-        page.login_new_user(email="admin@admin.com", password="P@ssw0rd1")
+        Setup.setup_help(browser, browser)
 
     def test_filter_by_label(self, browser):
         ...
@@ -146,10 +134,7 @@ class TestPoolPageExternalFiltering:
 class TestPoolPageBlacklistFiltering:
     @pytest.fixture(scope="class", autouse=True)
     def setup(self, browser):
-        page = LoginPage(browser, Urls.LINK_LOGIN_PAGE)
-        page.open()
-        time.sleep(0.5)
-        page.login_new_user(email="admin@admin.com", password="P@ssw0rd1")
+        Setup.setup_help(browser, browser)
 
     def test_filter_by_label(self, browser):
         ...

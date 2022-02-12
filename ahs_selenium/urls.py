@@ -1,3 +1,15 @@
+import time
+from pages.login_page import LoginPage
+
+
+class Setup:
+    def setup_help(self, browser):
+        page = LoginPage(browser, Urls.LINK_LOGIN_PAGE)
+        page.open()
+        time.sleep(0.5)
+        page.login_new_user(email="admin@admin.com", password="P@ssw0rd1")
+
+
 class Urls:
 
     # TODO: include in dockerfile?
