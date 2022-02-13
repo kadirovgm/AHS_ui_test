@@ -55,46 +55,59 @@ class TestPoolPageFiltersCorrectness:
 
 
 # TODO pool filtering
-@pytest.mark.skip
+@pytest.mark.e2e_9
 class TestPoolPageInternalFiltering:
     @pytest.fixture(scope="class", autouse=True)
     def setup(self, browser):
         Setup.setup_help(browser, browser)
-
-    # To avoid interrupting the test
-    # TODO how to improve? (remove 2 repeatable lines)
-    def test_internal_search(self, browser):
         internal = PoolPage(browser, Urls.POOL_INTERNAL)
         internal.open()
+
+    """Test searching"""
+    def test_internal_search(self, browser):
+        internal = PoolPage(browser, browser.current_url)
         internal.search_for_person(FixturesInternalPerson.first_name, FixturesInternalPerson.last_name)
 
+    """Bench label searching"""
+    @pytest.mark.xfail
     def test_filter_by_label(self, browser):
-        ...
+        internal = PoolPage(browser, browser.current_url)
+        internal.clear_filters()
+        internal.filter_label("bench")
 
+    @pytest.mark.skip
     def test_filter_by_type(self, browser):
         ...
 
+    @pytest.mark.skip
     def test_filter_in_search_by_role(self, browser):
         ...
 
+    @pytest.mark.skip
     def test_filter_in_search_by_skills(self, browser):
         ...
 
+    @pytest.mark.skip
     def test_filter_in_search_by_city(self, browser):
         ...
 
+    @pytest.mark.skip
     def test_filter_by_office(self, browser):
         ...
 
+    @pytest.mark.skip
     def test_filter_by_eng_level(self, browser):
         ...
 
+    @pytest.mark.skip
     def test_filter_in_search_by_visa(self, browser):
         ...
 
+    @pytest.mark.skip
     def test_filter_in_search_by_active_projects(self, browser):
         ...
 
+    @pytest.mark.skip
     def test_filter_by_hr(self, browser):
         ...
 

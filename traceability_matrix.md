@@ -12,17 +12,17 @@
 4. e2e_4 - test person create modal [PASSED]
 
 ### test_position_create.py
-5. test create position (any types) [TODO]
+5. e2e_11 - test create position (any types) [PASSED]
    
 ### test_pool_page.py
 6. e2e_5 - test correct pool page fields (internal, external, blacklist tabs) [PASSED]
 7. e2e_6 - test correct pool page filters (internal, external, blacklist tabs) [PASSED]
-8. test correct filtering [IN PROGRESS]
+8. e2e_9 - test correct filtering [IN PROGRESS]
 
 ### test_positions_page.py
 9. e2e_7 - test correct position page fields (Active, Mine, History) [PASSED]
 10. e2e_8 - test correct position page filters (Active, Mine, History) [PASSED]
-11. test correct filtering [IN PROGRESS]
+11. e2e_10 - test correct filtering [IN PROGRESS]
 
 
 
