@@ -40,3 +40,9 @@ class RandomPositionData:
     orig_loc = "United States"
     comment = "This position was made by Rushat for testing"
     skill = "python"
+
+    primary_offices = ["Kazan", "Ivanovo", "Yaroslavl"]
+    primary_office = random.choice(primary_offices)
+
+    other_offices = ["Seattle", "Belgrade (Kazan)"]
+    other_office = random.choice(other_offices)

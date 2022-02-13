@@ -89,11 +89,11 @@ class CreatePositionModalLocators:
     UNCONFIRMED_RADIO = (By.CSS_SELECTOR, "#is_confirmed > label:nth-child(1) > span.ant-radio")
     CONFIRMED_RADIO = (By.CSS_SELECTOR, "#is_confirmed > label:nth-child(2) > span.ant-radio")
     PRIORITY = (By.XPATH, "/html/body/div[3]/div/div[2]/div/div[2]/div[2]/div/div/form/div/div[2]/div/div[1]/section[1]/div[2]/div[1]/div/div[2]/div/div/div/div/span[1]")
-    CLIENT = (By.CSS_SELECTOR, "#rc-tabs-0-panel-details > section:nth-child(1) > div:nth-child(3) > div:nth-child(2) > div > div.ant-col.ant-form-item-control > div > div > div > div")
-    PROJECT = (By.CSS_SELECTOR, "#rc-tabs-0-panel-details > section:nth-child(1) > div:nth-child(3) > div:nth-child(3) > div > div.ant-col.ant-form-item-control > div > div > div > div")
+    CLIENT = (By.CSS_SELECTOR, "#client")
+    PROJECT = (By.CSS_SELECTOR, "#project")
     ORIG_LOCATION = (By.CSS_SELECTOR, "#origin_location_country")
-    REMOTE_TYPE = (By.XPATH, "/html/body/div[3]/div/div[2]/div/div[2]/div[2]/div/div/form/div/div[2]/div/div[1]/section[1]/div[3]/div[2]/div/div[2]/div/div/div/div/div")
-    COMMENT = (By.XPATH, "/html/body/div[3]/div/div[2]/div/div[2]/div[2]/div/div/form/div/div[2]/div/div[1]/section[1]/div[4]/div/div/div[2]/div/div/input")
+    REMOTE_TYPE = (By.CSS_SELECTOR, "#remote_types")
+    COMMENT = (By.CSS_SELECTOR, "#comment")
     POS_NAME = (By.CSS_SELECTOR, "#title")
     ROLE = (By.CSS_SELECTOR, "#role")
     ENG_LEVEL = (By.CSS_SELECTOR, "#english_level")
@@ -102,10 +102,10 @@ class CreatePositionModalLocators:
     GRADE = (By.CSS_SELECTOR, "#rc_select_8")
 
     """Assigns tab"""
-    PRIMARY_OFFICE = (By.XPATH, "")
-    OTHER_OFFICE = (By.XPATH, "")
-    ALL_OFFICES_CHECK = (By.XPATH, "")
-    RECRUITERS = (By.XPATH, "")
+    PRIMARY_OFFICE = (By.CSS_SELECTOR, "#primary_offices")
+    OTHER_OFFICE = (By.CSS_SELECTOR, "#other_offices")
+    ALL_OFFICES_CHECK = (By.CSS_SELECTOR, "#all_offices")
+    RECRUITERS = (By.CSS_SELECTOR, "#recruiters")
 
     """Requests tab"""
     ADD_CR = (By.XPATH, "")

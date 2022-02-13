@@ -65,6 +65,16 @@ class CreateClientPositionModal(BasePage):
         _ = self.browser.find_element(*CreatePositionModalLocators.NEXT_DETAILS).click()
 
         """Assigns tab"""
+        primary_office = self.browser.find_element(*CreatePositionModalLocators.PRIMARY_OFFICE)
+        primary_office.send_keys(RandomPositionData.primary_office, Keys.ENTER)
+
+        other_office = self.browser.find_element(*CreatePositionModalLocators.OTHER_OFFICE)
+        other_office.send_keys(RandomPositionData.other_office, Keys.ENTER)
+
+        recruiter = self.browser.find_element(*CreatePositionModalLocators.RECRUITERS)
+        ActionChains(self.browser).move_to_element(recruiter).click(recruiter).send_keys(Keys.DOWN + Keys.ENTER).perform()
+
+
         time.sleep(2)
 
 
