@@ -23,7 +23,6 @@ class TestClientProjectPosition:
     def test_create_client_project_position(self, browser):
         position_create_modal = CreateClientPositionModal(browser, browser.current_url)
         result = position_create_modal.add_new_client_project_position(loading_time=0.7)
-        time.sleep(2)
 
 
 @pytest.mark.skip

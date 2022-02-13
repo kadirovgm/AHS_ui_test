@@ -85,6 +85,38 @@ class CreatePositionModalLocators:
     ASSIGNS_TAB = (By.XPATH, "/html/body/div[3]/div/div[2]/div/div[2]/div[2]/div/div/form/div/div[1]/div[1]/div/div[2]")
     REQUESTS_TAB = (By.XPATH, "/html/body/div[3]/div/div[2]/div/div[2]/div[2]/div/div/form/div/div[1]/div[1]/div/div[3]")
 
+    """Position details tab"""
+    UNCONFIRMED_RADIO = (By.CSS_SELECTOR, "#is_confirmed > label:nth-child(1) > span.ant-radio")
+    CONFIRMED_RADIO = (By.CSS_SELECTOR, "#is_confirmed > label:nth-child(2) > span.ant-radio")
+    PRIORITY = (By.XPATH, "/html/body/div[3]/div/div[2]/div/div[2]/div[2]/div/div/form/div/div[2]/div/div[1]/section[1]/div[2]/div[1]/div/div[2]/div/div/div/div/span[1]")
+    CLIENT = (By.CSS_SELECTOR, "#rc-tabs-0-panel-details > section:nth-child(1) > div:nth-child(3) > div:nth-child(2) > div > div.ant-col.ant-form-item-control > div > div > div > div")
+    PROJECT = (By.CSS_SELECTOR, "#rc-tabs-0-panel-details > section:nth-child(1) > div:nth-child(3) > div:nth-child(3) > div > div.ant-col.ant-form-item-control > div > div > div > div")
+    ORIG_LOCATION = (By.CSS_SELECTOR, "#origin_location_country")
+    REMOTE_TYPE = (By.XPATH, "/html/body/div[3]/div/div[2]/div/div[2]/div[2]/div/div/form/div/div[2]/div/div[1]/section[1]/div[3]/div[2]/div/div[2]/div/div/div/div/div")
+    COMMENT = (By.XPATH, "/html/body/div[3]/div/div[2]/div/div[2]/div[2]/div/div/form/div/div[2]/div/div[1]/section[1]/div[4]/div/div/div[2]/div/div/input")
+    POS_NAME = (By.CSS_SELECTOR, "#title")
+    ROLE = (By.CSS_SELECTOR, "#role")
+    ENG_LEVEL = (By.CSS_SELECTOR, "#english_level")
+    ADD_ONE_MORE_SKILL = (By.CSS_SELECTOR, "#rc-tabs-0-panel-details > section:nth-child(2) > section > div > div.ant-col.ant-form-item-control > div > div > div > div > div > div > button")
+    SKILL = (By.CSS_SELECTOR, "#rc_select_7")
+    GRADE = (By.CSS_SELECTOR, "#rc_select_8")
+
+    """Assigns tab"""
+    PRIMARY_OFFICE = (By.XPATH, "")
+    OTHER_OFFICE = (By.XPATH, "")
+    ALL_OFFICES_CHECK = (By.XPATH, "")
+    RECRUITERS = (By.XPATH, "")
+
+    """Requests tab"""
+    ADD_CR = (By.XPATH, "")
+    NEW_BUSINESS_RADIO = (By.XPATH, "")
+    UPSELL_RADIO = (By.XPATH, "")
+    BILLABLE_STAT = (By.XPATH, "")
+    JOB_TYPE = (By.XPATH, "")
+    HOURS = (By.XPATH, "")
+    DEADLINE = (By.XPATH, "")
+    REQUIRED = (By.XPATH, "")
+
     """buttons"""
     CANCEL = (By.XPATH, "/html/body/div[3]/div/div[2]/div/div[2]/div[2]/div/div/form/div/div[2]/div/div[1]/div/div[1]/button")
     NEXT_DETAILS = (By.XPATH, "/html/body/div[3]/div/div[2]/div/div[2]/div[2]/div/div/form/div/div[2]/div/div[1]/div/div[2]/button")

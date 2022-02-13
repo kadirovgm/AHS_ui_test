@@ -34,3 +34,9 @@ class FixturesInternalPerson:
     first_name = "Olga"
     last_name = "Shakirova"
 
+
+class RandomPositionData:
+    name = "Position UI tesing n=" + str(random.randint(0, 10000))
+    orig_loc = "United States"
+    comment = "This position was made by Rushat for testing"
+    skill = "python"
