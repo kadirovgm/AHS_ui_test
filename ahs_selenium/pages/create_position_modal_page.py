@@ -42,7 +42,7 @@ class CreateClientPositionModal(BasePage):
 
         _ = self.browser.find_element(*CreatePositionModalLocators.COMMENT).send_keys(RandomPositionData.comment)
 
-        pos_name = self.browser.find_element(*CreatePositionModalLocators.POS_NAME).send_keys(RandomPositionData.name)
+        _ = self.browser.find_element(*CreatePositionModalLocators.POS_NAME).send_keys(RandomPositionData.name)
 
         n = random.randint(1, 20)
         role = self.browser.find_element(*CreatePositionModalLocators.ROLE)
@@ -66,20 +66,35 @@ class CreateClientPositionModal(BasePage):
 
         """Assigns tab"""
         primary_office = self.browser.find_element(*CreatePositionModalLocators.PRIMARY_OFFICE)
-        primary_office.send_keys(RandomPositionData.primary_office, Keys.ENTER)
-
-        other_office = self.browser.find_element(*CreatePositionModalLocators.OTHER_OFFICE)
-        other_office.send_keys(RandomPositionData.other_office, Keys.ENTER)
+        ActionChains(self.browser).move_to_element(primary_office).click(primary_office).send_keys(Keys.DOWN + Keys.ENTER).perform()
+        _ = self.browser.find_element(*CreatePositionModalLocators.ASSIGNS_TAB).click()
 
         recruiter = self.browser.find_element(*CreatePositionModalLocators.RECRUITERS)
         ActionChains(self.browser).move_to_element(recruiter).click(recruiter).send_keys(Keys.DOWN + Keys.ENTER).perform()
 
+        _ = self.browser.find_element(*CreatePositionModalLocators.NEXT_ASSIGNS).click()
 
-        time.sleep(2)
+        """Requests tab"""
+        _ = self.browser.find_element(*CreatePositionModalLocators.ADD_CR).click()
 
+        engagement_type = [CreatePositionModalLocators.NEW_BUSINESS_RADIO, CreatePositionModalLocators.UPSELL_RADIO]
+        _ = self.browser.find_element(*(random.choice(engagement_type))).click()
 
+        billable = self.browser.find_element(*CreatePositionModalLocators.BILLABLE_STAT)
+        ActionChains(self.browser).move_to_element(billable).click(billable).send_keys(Keys.DOWN + Keys.ENTER).perform()
 
-        return pos_name
+        jt = self.browser.find_element(*CreatePositionModalLocators.JOB_TYPE)
+        ActionChains(self.browser).move_to_element(jt).click(jt).send_keys(Keys.ENTER).perform()
 
+        _ = self.browser.find_element(*CreatePositionModalLocators.HOURS).send_keys("8")
+
+        _ = self.browser.find_element(*CreatePositionModalLocators.DEADLINE).send_keys(RandomPositionData.deadline + Keys.ENTER)
+
+        _ = self.browser.find_element(*CreatePositionModalLocators.REQUIRED).send_keys("1")
+
+        _ = self.browser.find_element(*CreatePositionModalLocators.SUBMIT).click()
+
+        print(f"Created Position's title is: {RandomPositionData.name}")
+        return RandomPositionData.name  # for checking that position is created and in active tab
 
 

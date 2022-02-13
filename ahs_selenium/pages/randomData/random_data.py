@@ -46,3 +46,5 @@ class RandomPositionData:
 
     other_offices = ["Seattle", "Belgrade (Kazan)"]
     other_office = random.choice(other_offices)
+
+    deadline = "15 Feb 2023"

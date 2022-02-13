@@ -109,3 +109,24 @@ class PositionsPage(BasePage):
         for locator in active_filters_locators:
             assert self.is_element_present(*locator), f"{locator} filter doesn't present!"
             # assert self.is_element_clickable(*locator), f"{locator} filter doesn't clickable!"
+
+    """*Searching in positions page*"""
+    def search_for_position(self, position_name):
+        print(f"Searching for {position_name} in Positions page")
+        if self.is_element_present(*PositionPageLocators.FIRST_POSITION):
+            _ = self.browser.find_element(*PositionPageLocators.SEARCH).send_keys(position_name)
+            time.sleep(1.0)  # waiting for searching results
+            assert self.browser.find_element(
+                *PositionPageLocators.FIRST_POSITION_TITLE).text == position_name, \
+                "Position wasn't created or not in Active tab!"
+        else:
+            assert "There is no Position suitable for search!"
+
+    # TODO improve for checking by pos_number
+    """Checking status of position"""
+    def checking_status_of_position(self, status, pos_number=1):
+        print(f"Checking that Position's status = {status}")
+        if self.is_element_present(*PositionPageLocators.FIRST_POSITION):
+            assert self.browser.find_element(*PositionPageLocators.FIRST_STATUS).text == status, f"Status of position is not {status}"
+        else:
+            assert "There is no Position in list!"

@@ -22,7 +22,11 @@ class TestClientProjectPosition:
     
     def test_create_client_project_position(self, browser):
         position_create_modal = CreateClientPositionModal(browser, browser.current_url)
-        result = position_create_modal.add_new_client_project_position(loading_time=0.7)
+        result = position_create_modal.add_new_client_project_position(loading_time=1)
+        active_tab = PositionsPage(browser, browser.current_url)
+        active_tab.go_to_active_tab()
+        active_tab.search_for_position(result)
+        active_tab.checking_status_of_position("Open")
 
 
 @pytest.mark.skip

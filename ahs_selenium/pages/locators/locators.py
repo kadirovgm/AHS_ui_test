@@ -28,7 +28,9 @@ class BasePageLocators:
 class PositionPageLocators:
     """Add position buttons"""
     POSITIONS_TEXT = (By.CSS_SELECTOR, "#root > section > section > header > div > div > div > b")
+    SEARCH = (By.XPATH, "/html/body/div[1]/section/section/main/div[1]/div[1]/div/div[1]/span/input")
 
+    """Add position"""
     ADD_POSITION = (By.CSS_SELECTOR, "#root > section > section > header > div > div > div > button")
     ADD_CLIENT_PROJECT_POS = (By.XPATH, "/html/body/div[2]/div/div/ul/li[1]")
     ADD_INTERNAL_PROJECT_POS = (By.XPATH, "/html/body/div[6]/div/div/ul/li[2]")
@@ -50,6 +52,10 @@ class PositionPageLocators:
     DEAD_a = (By.XPATH, "/html/body/div[1]/section/section/main/div[2]/div/div/div/div/div/div/table/thead/tr/th[7]/div/div")
     STAT_a = (By.XPATH, "/html/body/div[1]/section/section/main/div[2]/div/div/div/div/div/div/table/thead/tr/th[8]/div/span[1]")
     HR_a = (By.XPATH, "/html/body/div[1]/section/section/main/div[2]/div/div/div/div/div/div/table/thead/tr/th[9]/div/span[1]")
+
+    FIRST_POSITION = (By.XPATH, "/html/body/div[1]/section/section/main/div[2]/div/div/div/div/div/div/table/tbody/tr[1]")
+    FIRST_POSITION_TITLE = (By.XPATH, "/html/body/div[1]/section/section/main/div[2]/div/div/div/div/div/div/table/tbody/tr[1]/td[2]/div/span[1]")
+    FIRST_STATUS = (By.XPATH, "/html/body/div[1]/section/section/main/div[2]/div/div/div/div/div/div/table/tbody/tr[1]/td[8]/span/span")
 
     """Active/Mine tab filters"""
     F_PRIORITY = (By.XPATH, "/html/body/div[1]/section/section/main/div[2]/div/div/div/div/div/div/table/thead/tr/th[1]/div/span[2]/span")
@@ -108,14 +114,14 @@ class CreatePositionModalLocators:
     RECRUITERS = (By.CSS_SELECTOR, "#recruiters")
 
     """Requests tab"""
-    ADD_CR = (By.XPATH, "")
-    NEW_BUSINESS_RADIO = (By.XPATH, "")
-    UPSELL_RADIO = (By.XPATH, "")
-    BILLABLE_STAT = (By.XPATH, "")
-    JOB_TYPE = (By.XPATH, "")
-    HOURS = (By.XPATH, "")
-    DEADLINE = (By.XPATH, "")
-    REQUIRED = (By.XPATH, "")
+    ADD_CR = (By.XPATH, "/html/body/div[3]/div/div[2]/div/div[2]/div[2]/div/div/form/div/div[2]/div/div[3]/section/div/div/div/div/div/div/button")
+    NEW_BUSINESS_RADIO = (By.CSS_SELECTOR, "#candidate_requests_0_engagement_type > label:nth-child(1) > span.ant-radio > input")
+    UPSELL_RADIO = (By.CSS_SELECTOR, "#candidate_requests_0_engagement_type > label:nth-child(2) > span.ant-radio > input")
+    BILLABLE_STAT = (By.CSS_SELECTOR, "#candidate_requests_0_billable_status")
+    JOB_TYPE = (By.CSS_SELECTOR, "#candidate_requests_0_job_type")
+    HOURS = (By.CSS_SELECTOR, "#candidate_requests_0_hours_per_day")
+    DEADLINE = (By.CSS_SELECTOR, "#candidate_requests_0_deadline")
+    REQUIRED = (By.CSS_SELECTOR, "#candidate_requests_0_required")
 
     """buttons"""
     CANCEL = (By.XPATH, "/html/body/div[3]/div/div[2]/div/div[2]/div[2]/div/div/form/div/div[2]/div/div[1]/div/div[1]/button")
