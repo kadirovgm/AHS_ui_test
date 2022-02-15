@@ -29,8 +29,8 @@ class PoolPage(BasePage):
              "VISA_i", "ACTIVE_PROJECTS_i", "HR_i"]
         internal_fields_locators = [eval("PoolPageLocators." + i) for i in internal_fields_locators]
         internal_fields_text = \
-            ["Name", "Type", "Roles", "Skills", "City | Country", "Office", "Eng. level",
-             "Visa status", "Active projects", "HR"]
+            ["Name", "Type", "Rols", "Skills", "City | Country", "Office", "Eng. level",
+             "Visa status", "Active projects", "R"]
         self.checking_fields_for_naming(internal_fields_locators, internal_fields_text)
 
     def should_be_filters_internal(self):

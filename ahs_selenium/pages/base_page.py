@@ -58,6 +58,15 @@ class BasePage:
             return True
         return False
 
+    """Are array of elements present"""
+    def are_elements_present(self, array_of_locators):
+        try:
+            for locator in array_of_locators:
+                assert self.is_element_present(*locator), f"{locator} filter doesn't present!"
+        except NoSuchElementException:
+            return False
+        return True
+
     # COMMON ACTIONS FROM ALL PAGES
     def go_to_login_page(self):
         ...
