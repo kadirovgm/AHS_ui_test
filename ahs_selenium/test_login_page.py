@@ -10,7 +10,6 @@ class TestLoginPage:
         link = Urls.LINK_LOGIN_PAGE
         page = LoginPage(browser, link)
         page.open()
-        time.sleep(0.5)
         page.should_be_login_page()
 
 

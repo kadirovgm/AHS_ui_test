@@ -42,7 +42,7 @@ class BasePage:
         return True
 
     """***Fields checking***"""
-    def checking_fields(self, locators, fields):
+    def checking_fields_for_naming(self, locators, fields):
         for locator, field in zip(locators, fields):
             if self.is_element_present(*locator):
                 assert self.browser.find_element(*locator).text == field, \

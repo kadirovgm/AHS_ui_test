@@ -59,7 +59,7 @@ class PositionsPage(BasePage):
         active_fields_text = \
             ["Position name", "Client | Project", "Position location", "Office", "Required | Candidates",
              "Deadline", "Status", "HR’s"]
-        self.checking_fields(active_fields_locator, active_fields_text)
+        self.checking_fields_for_naming(active_fields_locator, active_fields_text)
 
     def should_be_correct_filters_active(self):
         active_filters_locators = \
@@ -80,7 +80,7 @@ class PositionsPage(BasePage):
         mine_fields_text = \
             ["Position name", "Client | Project", "Position location", "Office", "Required | Candidates",
              "Deadline", "Status"]
-        self.checking_fields(mine_fields_locator, mine_fields_text)
+        self.checking_fields_for_naming(mine_fields_locator, mine_fields_text)
 
     def should_be_correct_filters_mine(self):
         mine_filters_locators = \
@@ -100,7 +100,7 @@ class PositionsPage(BasePage):
         history_fields_text = \
             ["Position name", "Client | Project", "Creation Date", "Finish Date", "Position location",
              "Reason", "Status", "HR’s"]
-        self.checking_fields(history_fields_locator, history_fields_text)
+        self.checking_fields_for_naming(history_fields_locator, history_fields_text)
 
     def should_be_correct_filters_history(self):
         active_filters_locators = \

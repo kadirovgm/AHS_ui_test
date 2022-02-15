@@ -36,7 +36,8 @@
 - test create project
 
 
-
+# implicit wait
+# try finally [IN PROGRESS]
 # Create documentation
 # Integrate with CI
 # Create reports 

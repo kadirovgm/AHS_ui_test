@@ -5,7 +5,8 @@ import time
 
 
 class LoginPage(BasePage):
-    """Login user"""
+
+    """Login user (Setup)"""
     def login_new_user(self, email, password):
         self.fill_login_form(email, password)
         time.sleep(0.5)
@@ -29,12 +30,19 @@ class LoginPage(BasePage):
         assert self.browser.current_url in self.url, "Incorrect Login page URL!"
 
     def should_be_login_form(self):
-        assert self.is_element_present(*LoginPageLocators.WELCOME_TEXT), "Welcome text isn't present!"
-        assert self.browser.find_element(*LoginPageLocators.WELCOME_TEXT).text == "Welcome back", \
-            "Incorrect welcome text!"
-        assert self.is_element_present(*LoginPageLocators.EMAIL), "Email field doesn't appear!"
-        assert self.is_element_present(*LoginPageLocators.PASSWORD), "Password field doesn't appear!"
-        assert self.is_element_present(*LoginPageLocators.LOGIN_BUTTON), "Login button doesn't appear!"
+        try:
+            elements = ["WELCOME_TEXT", "EMAIL", "PASSWORD", "LOGIN_BUTTON"]
+
+
+            assert self.is_element_present(*LoginPageLocators.WELCOME_TEXT), "Welcome text isn't present!"
+            assert self.browser.find_element(*LoginPageLocators.WELCOME_TEXT).text == "Welcome back", \
+                "Incorrect welcome text!"
+
+            assert self.is_element_present(*LoginPageLocators.EMAIL), "Email field doesn't appear!"
+            assert self.is_element_present(*LoginPageLocators.PASSWORD), "Password field doesn't appear!"
+            assert self.is_element_present(*LoginPageLocators.LOGIN_BUTTON), "Login button doesn't appear!"
+        finally:
+            print("done")
 
     def should_be_forgot_password_link(self):
         assert self.is_element_present(*LoginPageLocators.FORGOT_LINK), "Forgot link element doesn't appear!"

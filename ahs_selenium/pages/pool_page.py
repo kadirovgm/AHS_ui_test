@@ -24,16 +24,14 @@ class PoolPage(BasePage):
 
     """Internal tab"""
     def should_be_correct_fields_internal(self):
-        # internal_fields_locator = ["NAME", "TYPE", "ROLE", "SKILLS", "CITY_COUNTRY", "OFFICE", "ENG_LEVEL", "VISA", "ACTIVE_PROJECTS", "HR"]
-        # internal_fields_locator = [eval("PoolPageLocators."+i) for i in internal_fields_locator]
-        internal_fields_locator = \
-            [PoolPageLocators.NAME_i, PoolPageLocators.TYPE_i, PoolPageLocators.ROLE_i, PoolPageLocators.SKILLS_i,
-             PoolPageLocators.CITY_COUNTRY_i, PoolPageLocators.OFFICE_i, PoolPageLocators.ENG_LEVEL_i,
-             PoolPageLocators.VISA_i, PoolPageLocators.ACTIVE_PROJECTS_i, PoolPageLocators.HR_i]
+        internal_fields_locators = \
+            ["NAME_i", "TYPE_i", "ROLE_i", "SKILLS_i", "CITY_COUNTRY_i", "OFFICE_i", "ENG_LEVEL_i",
+             "VISA_i", "ACTIVE_PROJECTS_i", "HR_i"]
+        internal_fields_locators = [eval("PoolPageLocators." + i) for i in internal_fields_locators]
         internal_fields_text = \
             ["Name", "Type", "Roles", "Skills", "City | Country", "Office", "Eng. level",
              "Visa status", "Active projects", "HR"]
-        self.checking_fields(internal_fields_locator, internal_fields_text)
+        self.checking_fields_for_naming(internal_fields_locators, internal_fields_text)
 
     def should_be_filters_internal(self):
         internal_filters_locators = \
@@ -42,15 +40,14 @@ class PoolPage(BasePage):
         internal_filters_locators = [eval("PoolPageLocators." + i) for i in internal_filters_locators]
         for locator in internal_filters_locators:
             assert self.is_element_present(*locator), f"{locator} filter doesn't present!"
-            # assert self.is_element_clickable(*locator), f"{locator} filter doesn't clickable!"
 
     """External (Blacklist) tab"""
     def should_be_correct_fields_external_blacklist(self):
-        external_fields_locator = \
-            [PoolPageLocators.NAME_e, PoolPageLocators.ROLE_e, PoolPageLocators.SKILLS_e, PoolPageLocators.CITY_COUNTRY_e,
-             PoolPageLocators.OFFICE_e, PoolPageLocators.ENG_LEVEL_e, PoolPageLocators.VISA_e, PoolPageLocators.HR_e]
+        external_fields_locators = \
+            ["NAME_e", "ROLE_e", "SKILLS_e", "CITY_COUNTRY_e", "OFFICE_e", "ENG_LEVEL_e", "VISA_e", "HR_e"]
+        external_fields_locators = [eval("PoolPageLocators." + i) for i in external_fields_locators]
         external_fields_text = ["Name", "Roles", "Skills", "City | Country", "Office", "Eng. level", "Visa status", "HR"]
-        self.checking_fields(external_fields_locator, external_fields_text)
+        self.checking_fields_for_naming(external_fields_locators, external_fields_text)
 
     def should_be_filters_external_blacklist(self):
         external_filters_locators = \
@@ -58,7 +55,6 @@ class PoolPage(BasePage):
         external_filters_locators = [eval("PoolPageLocators." + i) for i in external_filters_locators]
         for locator in external_filters_locators:
             assert self.is_element_present(*locator), f"{locator} filter doesn't present!"
-            # assert self.is_element_clickable(*locator), f"{locator} filter doesn't clickable!"
 
     """Go to Internal, External, Blacklist tabs"""
     def go_to_internal_tab(self):
@@ -70,6 +66,7 @@ class PoolPage(BasePage):
     def go_to_blacklist_tab(self):
         _ = self.browser.find_element(*PoolPageLocators.BLACKLIST_TAB).click()
 
+    # TODO change to implicitly wait
     """*Searching in pool*"""
     def search_for_person(self, first_name, second_name):
         print(f"Searching for {first_name} {second_name} in Pool->External")
@@ -81,6 +78,7 @@ class PoolPage(BasePage):
         else:
             assert "There is no Person suitable for search!"
 
+    # TODO implicitly wait
     def clear_filters(self):
         _ = self.browser.find_element(*PoolPageLocators.CLEAR_FILTERS).click()
         time.sleep(3)
