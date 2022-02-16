@@ -79,13 +79,24 @@ class PoolPage(BasePage):
         else:
             assert "There is no Person suitable for search!"
 
+    """Clear filters"""
     def clear_filters(self):
         _ = self.browser.find_element(*PoolPageLocators.CLEAR_FILTERS).click()
-        time.sleep(2)
+        if self.waiting_for_element_present(*PoolPageLocators.FIRST_PERSON):
+            return True
+
+    """Click to filter by label (All tabs)"""
+    def click_to_filter_by_label(self):
+        if self.is_element_clickable(*PoolPageLocators.F_LABEL):
+            self.browser.find_element(*PoolPageLocators.F_LABEL).click()
+        else:
+            assert "Filter by label doesn't clickable"
 
     """Filtering"""
-    """Universal filter by label for all tabs"""
+    """Universal filter by label"""
     def filter_label(self, label, tab_key=0):
+        """For Internal/External/Blacklist tabs"""
+        print(f"Filtering by label {label}")
         locator_label = ...
         if label == "Bench":
             locator_label = PoolPageLocators.F_LABEL_i_bench
@@ -95,37 +106,77 @@ class PoolPage(BasePage):
             locator_label = PoolPageLocators.F_LABEL_e_Dismiss
         elif label == "Dismiss" and tab_key == "Blacklist":
             locator_label = PoolPageLocators.F_LABEL_b_Dismiss
+        else:
+            assert "Please specify as label - 'Bench', 'Pre-offer', 'Dismiss'"
 
-        if self.is_element_clickable(*PoolPageLocators.F_LABEL):
-            self.browser.find_element(*PoolPageLocators.F_LABEL).click()
-
+        # open filter
+        self.click_to_filter_by_label()
         # filtering
-        print("Filtering by label")
         if self.is_element_present(*locator_label):
             _ = self.browser.find_element(*locator_label).click()
-            _ = self.browser.find_element(*PoolPageLocators.F_LABEL_OK).click()
         else:
             assert f"There is no {label} label"
-
+        _ = self.browser.find_element(*PoolPageLocators.F_LABEL_OK).click()
         # check filtering
-        if self.is_element_present(*PoolPageLocators.FIRST_PERSON):
+        if self.waiting_for_element_present(*PoolPageLocators.FIRST_PERSON):
             assert self.browser.find_element(*PoolPageLocators.FIRST_PERSON_LABEL).text == label, \
                 f"Incorrect filtering by label {label}"
         else:
             assert f"Probably there is no person with label: {label}"
 
-        # reset
-        _ = self.browser.find_element(*PoolPageLocators.F_LABEL).click()
+    """Reset filter by label"""
+    def reset_filter_label(self):
+        # open filter
+        self.click_to_filter_by_label()
+        # resetting
         if self.is_element_clickable(*PoolPageLocators.F_LABEL_RESET):
             self.browser.find_element(*PoolPageLocators.F_LABEL_RESET).click()
         else:
             assert "Reset button is disabled after filtering"
         # checking that reset is disabled
-        _ = self.browser.find_element(*PoolPageLocators.F_LABEL).click()
+        self.click_to_filter_by_label()
         if not self.is_element_clickable(*PoolPageLocators.F_LABEL_RESET):
-            print("Filter has Reset")
+            return True
         else:
-            assert f"Filter by label {label} hasn't reset"
+            assert f"Filter by label hasn't reset"
+
+    """Click to filter by type (Internal)"""
+    def click_to_filter_by_type(self):
+        if self.is_element_clickable(*PoolPageLocators.F_TYPE_i):
+            self.browser.find_element(*PoolPageLocators.F_TYPE_i).click()
+        else:
+            assert "Filter by type doesn't clickable"
+
+    """Filter by type (internal persons)"""
+    def filter_type(self, person_type):
+        """ Only for internal tab"""
+        locator_type = ...
+        if person_type == "Long-term":
+            locator_type = PoolPageLocators.F_TYPE_i_LONG_TERM
+        elif person_type == "Contractor":
+            locator_type = PoolPageLocators.F_TYPE_i_CONTRACTOR
+        elif person_type == "Short-term":
+            locator_type = PoolPageLocators.F_TYPE_i_SHORT_TERM
+        else:
+            assert "Please specify as internal person types - 'Long-term', 'Contractor', 'Short-term'"
+        print(f"Filtering by type")
+        # Open filter by type
+        self.click_to_filter_by_type()
+        # Filtering
+        if self.is_element_present(*locator_type):
+            _ = self.browser.find_element(*locator_type).click()
+            time.sleep(3)
+        else:
+            assert f"There is no {person_type} label"
+        # _ = self.browser.find_element(*PoolPageLocators.F_TYPE_i_OK).click()
+        time.sleep(1)
+
+
+
+
+
+
+
 
 
 

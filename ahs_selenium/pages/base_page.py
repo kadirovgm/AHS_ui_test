@@ -34,9 +34,9 @@ class BasePage:
         return False
 
     """Abstract method for waiting for element present"""
-    def waiting_for_element_present(self, how, what, timeout=2):
+    def waiting_for_element_present(self, how, what, timeout=1):
         try:
-            WebDriverWait(self.browser, timeout, 0.3, TimeoutException). \
+            WebDriverWait(self.browser, timeout, 0.05, TimeoutException). \
                 until_not(EC.presence_of_element_located((how, what)))
         except TimeoutException:
             return True
@@ -61,12 +61,12 @@ class BasePage:
                 assert f"{field} field is NOT present!"
 
     """Is element clickable"""
-    def is_element_clickable(self, how, what, timeout=3):
+    def is_element_clickable(self, how, what, timeout=2):
         try:
             WebDriverWait(self.browser, timeout).until(EC.element_to_be_clickable((how, what)))
         except TimeoutException:
-            return True
-        return False
+            return False, "Element isn't clickable"
+        return True
 
     """Are array of elements present"""
     def are_elements_present(self, array_of_locators):
