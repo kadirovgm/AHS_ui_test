@@ -8,10 +8,42 @@ import random
 
 
 class CreateClientPositionModal(BasePage):
-    # TODO
-    def should_be_correct_client_position_modal(self):
-        ...
+    """Go to Create Position Modal Tabs"""
+    def go_to_pos_details_tab(self):
+        _ = self.browser.find_element(*CreatePositionModalLocators.POS_DETAIL_TAB).click()
 
+    def go_to_assigns_tab(self):
+        _ = self.browser.find_element(*CreatePositionModalLocators.ASSIGNS_TAB).click()
+
+    def go_to_requests_tab(self):
+        _ = self.browser.find_element(*CreatePositionModalLocators.REQUESTS_TAB).click()
+
+    """Checking for correct elements presenting in create clint project position modal"""
+    def should_be_correct_client_position_modal_elements_pos_details(self):
+        position_details_elements = \
+            ["POS_DETAIL_TAB", "UNCONFIRMED_RADIO", "CONFIRMED_RADIO", "PRIORITY", "CLIENT", "PROJECT", "ORIG_LOCATION",
+             "REMOTE_TYPE", "COMMENT", "POS_NAME", "ROLE", "ENG_LEVEL", "ADD_ONE_MORE_SKILL", "CANCEL", "NEXT_DETAILS"]
+        position_details_elements = [eval("CreatePositionModalLocators." + i) for i in position_details_elements]
+        for locator in position_details_elements:
+            assert self.is_element_present(*locator), f"{locator} field doesn't present!"
+
+    def should_be_correct_client_position_modal_elements_assigns(self):
+        assigns_elements = \
+            ["ASSIGNS_TAB", "PRIMARY_OFFICE", "OTHER_OFFICE", "ALL_OFFICES_CHECK", "RECRUITERS", "NEXT_ASSIGNS"]
+        assigns_elements = [eval("CreatePositionModalLocators." + i) for i in assigns_elements]
+        for locator in assigns_elements:
+            assert self.is_element_present(*locator), f"{locator} field doesn't present!"
+
+    def should_be_correct_client_position_modal_elements_requests(self):
+        _ = self.browser.find_element(*CreatePositionModalLocators.ADD_CR).click()
+        requests_elements = \
+            ["REQUESTS_TAB", "ADD_CR", "NEW_BUSINESS_RADIO", "UPSELL_RADIO", "BILLABLE_STAT", "JOB_TYPE", "HOURS",
+             "DEADLINE", "REQUIRED"]
+        requests_elements = [eval("CreatePositionModalLocators." + i) for i in requests_elements]
+        for locator in requests_elements:
+            assert self.is_element_present(*locator), f"{locator} field doesn't present!"
+
+    """Add new client project position"""
     def add_new_client_project_position(self, loading_time):
         print(f"Adding a new client project position")
         time.sleep(loading_time)

@@ -9,10 +9,11 @@
 3. e2e_3 - test can go to main pages (positions, pool, clients, reports, help center) [PASSED]
 
 ### test_person_create_modal.py
-4. e2e_4 - test person create modal [PASSED]
+4. e2e_4 - test person create modal (+ correct elements presenting) [PASSED]
 
 ### test_position_create.py
-5. e2e_11 - test create position (any types) [PASSED]
+5. e2e_11 - test checking that client project positions elements presenting [PASSED]
+5. e2e_12 - test create client project position [PASSED]
    
 ### test_pool_page.py
 6. e2e_5 - test correct pool page fields (internal, external, blacklist tabs) [PASSED]
@@ -36,8 +37,7 @@
 - test create project
 
 
-# implicit wait
-# try finally [IN PROGRESS]
+
 # Create documentation
 # Integrate with CI
 # Create reports 

@@ -18,27 +18,27 @@ class PositionsPage(BasePage):
     """Add new Client Project Position"""
     def add_client_project_position_button_click(self):
         self.add_position_button_click()
-        _ = self.browser.find_element(*PositionPageLocators.ADD_CLIENT_PROJECT_POS).click()
+        self.browser.find_element(*PositionPageLocators.ADD_CLIENT_PROJECT_POS).click()
 
     """Add new Internal Project Position"""
     def add_internal_project_position_button_click(self):
         self.add_position_button_click()
-        _ = self.browser.find_element(*PositionPageLocators.ADD_INTERNAL_PROJECT_POS).click()
+        self.browser.find_element(*PositionPageLocators.ADD_INTERNAL_PROJECT_POS).click()
 
     """Add new Bench Position"""
     def add_bench_position_button_click(self):
         self.add_position_button_click()
-        _ = self.browser.find_element(*PositionPageLocators.ADD_BENCH_POS).click()
+        self.browser.find_element(*PositionPageLocators.ADD_BENCH_POS).click()
 
     """Add new Pre-offer Position"""
     def add_pre_offer_position_button_click(self):
         self.add_position_button_click()
-        _ = self.browser.find_element(*PositionPageLocators.ADD_PRE_OFFER_POS).click()
+        self.browser.find_element(*PositionPageLocators.ADD_PRE_OFFER_POS).click()
     
     """Add new Trainee Position"""
     def add_trainee_position_button_click(self):
         self.add_position_button_click()
-        _ = self.browser.find_element(*PositionPageLocators.ADD_TRAINEE_POS).click()
+        self.browser.find_element(*PositionPageLocators.ADD_TRAINEE_POS).click()
 
     """Go to Internal, External, Blacklist tabs"""
     def go_to_active_tab(self):
@@ -115,10 +115,12 @@ class PositionsPage(BasePage):
         print(f"Searching for {position_name} in Positions page")
         if self.is_element_present(*PositionPageLocators.FIRST_POSITION):
             _ = self.browser.find_element(*PositionPageLocators.SEARCH).send_keys(position_name)
-            time.sleep(1.0)  # waiting for searching results
-            assert self.browser.find_element(
-                *PositionPageLocators.FIRST_POSITION_TITLE).text == position_name, \
-                "Position wasn't created or not in Active tab!"
+            if self.waiting_for_element_present(*PositionPageLocators.FIRST_POSITION):
+                assert self.browser.find_element(
+                    *PositionPageLocators.FIRST_POSITION_TITLE).text == position_name, \
+                    "The results don't match the search! Searching does not work!"
+            else:
+                assert "Page hasn't loaded or there is no such position"
         else:
             assert "There is no Position suitable for search!"
 

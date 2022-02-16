@@ -73,7 +73,7 @@ class PoolPage(BasePage):
             _ = self.browser.find_element(*PoolPageLocators.SEARCH_NAME).send_keys(first_name+" "+second_name)
             if self.waiting_for_element_present(*PoolPageLocators.FIRST_PERSON):
                 assert self.browser.find_element(*PoolPageLocators.FIRST_PERSON_NAME).text == first_name+" "+second_name, \
-                    "The results don't match the search!"
+                    "The results don't match the search! Searching does not work!"
             else:
                 assert "Page hasn't loaded or there is no such person"
         else:
