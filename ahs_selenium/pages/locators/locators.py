@@ -144,6 +144,7 @@ class PoolPageLocators:
     FIRST_PERSON_NAME = (By.XPATH, "/html/body/div/section/section/main/div/div[2]/div/div/div/div/div/div/table/tbody/tr[1]/td[1]/a/div/span")
     FIRST_PERSON = (By.XPATH, "/html/body/div/section/section/main/div/div[2]/div/div/div/div/div/div/table/tbody/tr[1]/td[1]")
     FIRST_PERSON_LABEL = (By.CSS_SELECTOR, "#root > section > section > main > div > div:nth-child(2) > div > div > div > div > div > div > table > tbody > tr:nth-child(1) > td:nth-child(1) > a > div > div > span")
+    FIRST_PERSON_TYPE = (By.CSS_SELECTOR, "#root > section > section > main > div > div:nth-child(2) > div > div > div > div > div > div > table > tbody > tr:nth-child(1) > td.ant-table-cell.ant-table-cell-ellipsis")
 
     """Internal fields"""
     NAME_i = (By.XPATH, "/html/body/div[1]/section/section/main/div/div[2]/div/div/div/div/div/div/table/thead/tr/th[1]/div/span[1]")
@@ -163,10 +164,11 @@ class PoolPageLocators:
     F_LABEL_OK = (By.CSS_SELECTOR, "body > div:nth-child(6) > div > div > div > div > button.ant-btn.ant-btn-primary.ant-btn-sm")
     F_LABEL_RESET = (By.XPATH, "/html/body/div[2]/div/div/div/div/button[1]")
     F_TYPE_i = (By.XPATH, "/html/body/div[1]/section/section/main/div/div[2]/div/div/div/div/div/div/table/thead/tr/th[2]/div/span[2]/span")
-    F_TYPE_i_LONG_TERM = (By.XPATH, "/html/body/div[4]/div/div/div/ul/li[1]")
-    F_TYPE_i_SHORT_TERM = (By.CSS_SELECTOR, "body > div:nth-child(8) > div > div > div > ul > li:nth-child(2)")
-    F_TYPE_i_CONTRACTOR = (By.CSS_SELECTOR, "body > div:nth-child(8) > div > div > div > ul > li:nth-child(3)")
-    F_TYPE_i_OK = (By.CSS_SELECTOR, "body > div:nth-child(8) > div > div > div > div > button.ant-btn.ant-btn-primary.ant-btn-sm")
+    F_TYPE_i_LONG_TERM = (By.CSS_SELECTOR, "body > div:nth-child(6) > div > div > div > ul > li:nth-child(1) > label > span > input")
+    F_TYPE_i_SHORT_TERM = (By.CSS_SELECTOR, "body > div:nth-child(6) > div > div > div > ul > li:nth-child(2) > label > span > input")
+    F_TYPE_i_CONTRACTOR = (By.CSS_SELECTOR, "body > div:nth-child(6) > div > div > div > ul > li:nth-child(3) > label > span > input")
+    F_TYPE_i_OK = (By.XPATH, "/html/body/div[2]/div/div/div/div/button[2]")
+    F_TYPE_RESET = (By.XPATH, "/html/body/div[2]/div/div/div/div/button[1]")
     F_ROLE_i = (By.XPATH, "/html/body/div[1]/section/section/main/div/div[2]/div/div/div/div/div/div/table/thead/tr/th[3]/div/span[2]/span")
     F_SKILLS_i = (By.XPATH, "/html/body/div[1]/section/section/main/div/div[2]/div/div/div/div/div/div/table/thead/tr/th[4]/div/span[2]/span")
     F_CITY_i = (By.XPATH, "/html/body/div[1]/section/section/main/div/div[2]/div/div/div/div/div/div/table/thead/tr/th[5]/div/span[2]/span")

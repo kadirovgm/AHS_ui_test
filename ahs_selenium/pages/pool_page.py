@@ -165,11 +165,31 @@ class PoolPage(BasePage):
         # Filtering
         if self.is_element_present(*locator_type):
             _ = self.browser.find_element(*locator_type).click()
-            time.sleep(3)
         else:
             assert f"There is no {person_type} label"
-        # _ = self.browser.find_element(*PoolPageLocators.F_TYPE_i_OK).click()
-        time.sleep(1)
+        _ = self.browser.find_element(*PoolPageLocators.F_TYPE_i_OK).click()
+        # check filtering
+        if self.waiting_for_element_present(*PoolPageLocators.FIRST_PERSON):
+            assert self.browser.find_element(*PoolPageLocators.FIRST_PERSON_TYPE).text == person_type, \
+                f"Incorrect filtering by person type: {person_type}"
+        else:
+            assert f"Probably there is no person with type: {person_type}"
+
+    """Reset filter by person type"""
+    def reset_filter_type(self):
+        # open filter
+        self.click_to_filter_by_type()
+        # resetting
+        if self.is_element_clickable(*PoolPageLocators.F_TYPE_RESET):
+            self.browser.find_element(*PoolPageLocators.F_TYPE_RESET).click()
+        else:
+            assert "Reset button is disabled after filtering"
+        # checking that reset is disabled
+        self.click_to_filter_by_type()
+        if not self.is_element_clickable(*PoolPageLocators.F_TYPE_RESET):
+            return True
+        else:
+            assert f"Filter by type hasn't reset"
 
 
 

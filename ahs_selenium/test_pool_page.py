@@ -61,33 +61,29 @@ class TestPoolPageInternalFiltering:
         internal.open()
 
     """Test searching"""
-    @pytest.mark.skip
     def test_internal_search(self, browser):
         internal = PoolPage(browser, browser.current_url)
         internal.search_for_person(FixturesInternalPerson.first_name, FixturesInternalPerson.last_name)
 
-    """Bench label filtering"""
-    @pytest.mark.skip
-    def test_filter_by_label(self, browser):
-        internal = PoolPage(browser, browser.current_url)
-        internal.clear_filters()
-        internal.filter_label("Bench")
-
-    """Reset Filtering by label"""
-    @pytest.mark.skip
-    def test_reset_filter_by_label(self, browser):
-        internal = PoolPage(browser, browser.current_url)
-        internal.reset_filter_label()
+    # """Bench label filtering"""
+    # def test_filter_by_label(self, browser):
+    #     internal = PoolPage(browser, browser.current_url)
+    #     internal.clear_filters()
+    #     internal.filter_label("Bench")
+    #
+    # """Reset Filtering by label"""
+    # def test_reset_filter_by_label(self, browser):
+    #     internal = PoolPage(browser, browser.current_url)
+    #     internal.reset_filter_label()
 
     """Filtering by type"""
-    # "Contractor", "Short-term"
-    # @pytest.mark.parametrize('person_type',
-    #                          ("Long-term", "Contractor", "Short-term"))
-    def test_filter_by_type(self, browser, person_type="Long-term"):
+    @pytest.mark.parametrize('person_type',
+                             ("Long-term", "Contractor", "Short-term"))
+    def test_filter_by_type(self, browser, person_type):
         internal = PoolPage(browser, browser.current_url)
         internal.clear_filters()
         internal.filter_type(person_type)
-
+        internal.reset_filter_type()
 
     @pytest.mark.skip
     def test_filter_in_search_by_role(self, browser):
