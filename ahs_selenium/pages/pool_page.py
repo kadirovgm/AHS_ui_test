@@ -29,8 +29,8 @@ class PoolPage(BasePage):
              "VISA_i", "ACTIVE_PROJECTS_i", "HR_i"]
         internal_fields_locators = [eval("PoolPageLocators." + i) for i in internal_fields_locators]
         internal_fields_text = \
-            ["Name", "Type", "Rols", "Skills", "City | Country", "Office", "Eng. level",
-             "Visa status", "Active projects", "R"]
+            ["Name", "Type", "Roles", "Skills", "City | Country", "Office", "Eng. level",
+             "Visa status", "Active projects", "HR"]
         self.checking_fields_for_naming(internal_fields_locators, internal_fields_text)
 
     def should_be_filters_internal(self):
@@ -66,22 +66,22 @@ class PoolPage(BasePage):
     def go_to_blacklist_tab(self):
         _ = self.browser.find_element(*PoolPageLocators.BLACKLIST_TAB).click()
 
-    # TODO change to implicitly wait
     """*Searching in pool*"""
     def search_for_person(self, first_name, second_name):
         print(f"Searching for {first_name} {second_name} in Pool->External")
         if self.is_element_present(*PoolPageLocators.FIRST_PERSON):
             _ = self.browser.find_element(*PoolPageLocators.SEARCH_NAME).send_keys(first_name+" "+second_name)
-            time.sleep(1.5)  # waiting for searching results
-            assert self.browser.find_element(*PoolPageLocators.FIRST_PERSON_NAME).text == first_name+" "+second_name, \
-                "Person wasn't created or not in External tab!"
+            if self.waiting_for_element_present(*PoolPageLocators.FIRST_PERSON):
+                assert self.browser.find_element(*PoolPageLocators.FIRST_PERSON_NAME).text == first_name+" "+second_name, \
+                    "The results don't match the search!"
+            else:
+                assert "Page hasn't loaded or there is no such person"
         else:
             assert "There is no Person suitable for search!"
 
-    # TODO implicitly wait
     def clear_filters(self):
         _ = self.browser.find_element(*PoolPageLocators.CLEAR_FILTERS).click()
-        time.sleep(3)
+        time.sleep(2)
 
     """Filtering"""
     """Universal filter by label for all tabs"""

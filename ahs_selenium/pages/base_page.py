@@ -2,6 +2,7 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium import webdriver
 from .locators.locators import BasePageLocators
 
 
@@ -28,6 +29,15 @@ class BasePage:
     def is_not_element_present(self, how, what, timeout=1):
         try:
             WebDriverWait(self.browser, timeout).until(EC.presence_of_element_located((how, what)))
+        except TimeoutException:
+            return True
+        return False
+
+    """Abstract method for waiting for element present"""
+    def waiting_for_element_present(self, how, what, timeout=2):
+        try:
+            WebDriverWait(self.browser, timeout, 0.3, TimeoutException). \
+                until_not(EC.presence_of_element_located((how, what)))
         except TimeoutException:
             return True
         return False
@@ -66,6 +76,7 @@ class BasePage:
         except NoSuchElementException:
             return False
         return True
+
 
     # COMMON ACTIONS FROM ALL PAGES
     def go_to_login_page(self):

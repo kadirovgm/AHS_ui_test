@@ -4,6 +4,7 @@ from pages.login_page import LoginPage
 from selenium.webdriver.chrome.service import Service
 
 
+"""Project's path and selecting chromdriver version"""
 class Execute:
     # TODO include to dockerfile
     PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
@@ -12,18 +13,22 @@ class Execute:
     ser = Service(DRIVER_BIN)
 
 
+"""Setup method, that required for logging"""
 class Setup:
     def setup_help(self, browser):
         page = LoginPage(browser, Urls.LINK_LOGIN_PAGE)
         page.open()
-        time.sleep(0.5)
         page.login_new_user(email="admin@admin.com", password="P@ssw0rd1")
 
 
+"""Project's URLs"""
 class Urls:
 
-    # TODO: include in dockerfile
-    host = "http://192.168.52.122/"
+    host = f"http://192.168.52.122/"  # Stage
+    # host = f"http://192.168.52.137/"  # QA-137
+    # host = f"http://192.168.52.139/"  # QA-139
+    # host = f"http://192.168.52.152/"  # Demo
+    # host = f"http://192.168.52.115/"  # Production
 
     """LOGIN"""
     LINK_LOGIN_PAGE = f"{host}login"

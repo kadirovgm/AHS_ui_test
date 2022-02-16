@@ -1,6 +1,5 @@
 import pytest
 import time
-from pages.login_page import LoginPage
 from pages.pool_page import PoolPage
 from pages.create_person_modal_page import CreatePersonModal
 from settings import Urls, Setup
@@ -27,6 +26,5 @@ class TestAddPerson:
         external_tab = PoolPage(browser, browser.current_url)
         external_tab.go_to_external_tab()
         external_tab.search_for_person(created_first_name, created_second_name)
-        time.sleep(1)   # just visual identifying
 
 

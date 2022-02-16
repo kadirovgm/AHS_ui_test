@@ -1,6 +1,5 @@
 import pytest
 import time
-from pages.login_page import LoginPage
 from pages.create_position_modal_page import CreateClientPositionModal
 from pages.positions_page import PositionsPage
 from settings import Setup, Urls
@@ -16,8 +15,7 @@ class TestClientProjectPosition:
         position = PositionsPage(browser, Urls.POSITIONS_ACTIVE)
         position.add_client_project_position_button_click()
 
-    # TODO
-    def test_should_be_create_position_modal(self, browser):
+    def test_should_be_create_position_modal_elements(self, browser):
         ...
     
     def test_create_client_project_position(self, browser):

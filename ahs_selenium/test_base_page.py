@@ -1,7 +1,4 @@
 import pytest
-import time
-
-from pages.login_page import LoginPage
 from pages.pool_page import PoolPage
 from pages.clients_projects_page import ClientsProjectsPage
 from pages.positions_page import PositionsPage
