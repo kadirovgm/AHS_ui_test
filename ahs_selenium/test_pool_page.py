@@ -65,16 +65,16 @@ class TestPoolPageInternalFiltering:
         internal = PoolPage(browser, browser.current_url)
         internal.search_for_person(FixturesInternalPerson.first_name, FixturesInternalPerson.last_name)
 
-    # """Bench label filtering"""
-    # def test_filter_by_label(self, browser):
-    #     internal = PoolPage(browser, browser.current_url)
-    #     internal.clear_filters()
-    #     internal.filter_label("Bench")
-    #
-    # """Reset Filtering by label"""
-    # def test_reset_filter_by_label(self, browser):
-    #     internal = PoolPage(browser, browser.current_url)
-    #     internal.reset_filter_label()
+    """Bench label filtering"""
+    def test_filter_by_label(self, browser):
+        internal = PoolPage(browser, browser.current_url)
+        internal.clear_filters()
+        internal.filter_label("Bench")
+
+    """Reset Filtering by label"""
+    def test_reset_filter_by_label(self, browser):
+        internal = PoolPage(browser, browser.current_url)
+        internal.reset_filter_label()
 
     """Filtering by type"""
     @pytest.mark.parametrize('person_type',
