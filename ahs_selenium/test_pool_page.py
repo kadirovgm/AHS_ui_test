@@ -77,6 +77,7 @@ class TestPoolPageInternalFiltering:
         internal.reset_filter_label()
 
     """Filtering by type"""
+    @pytest.mark.xfail
     @pytest.mark.parametrize('person_type',
                              ("Long-term", "Contractor", "Short-term"))
     def test_filter_by_type(self, browser, person_type):
