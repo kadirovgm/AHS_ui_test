@@ -1,9 +1,9 @@
 import pytest
 import time
-from pages.login_page import LoginPage
-from pages.pool_page import PoolPage
-from pages.create_person_modal_page import CreatePersonModal
-from pages.randomData.random_data import FixturesInternalPerson
+from page_objects.login_page import LoginPage
+from page_objects.pool_page import PoolPage
+from page_objects.create_person_modal_page import CreatePersonModal
+from page_objects.randomData.random_data import FixturesInternalPerson
 from settings import Urls, Setup
 
 
@@ -64,11 +64,11 @@ class TestPoolPageInternalFiltering:
     def test_internal_search(self, browser):
         internal = PoolPage(browser, browser.current_url)
         internal.search_for_person(FixturesInternalPerson.first_name, FixturesInternalPerson.last_name)
+        internal.clear_filters()
 
     """Bench label filtering"""
     def test_filter_by_label(self, browser):
         internal = PoolPage(browser, browser.current_url)
-        internal.clear_filters()
         internal.filter_label("Bench")
 
     """Reset Filtering by label"""
@@ -81,6 +81,7 @@ class TestPoolPageInternalFiltering:
                              ("Long-term", "Contractor", "Short-term"))
     def test_filter_by_type(self, browser, person_type):
         internal = PoolPage(browser, browser.current_url)
+        internal.open()
         internal.clear_filters()
         internal.filter_type(person_type)
         internal.reset_filter_type()

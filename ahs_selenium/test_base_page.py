@@ -1,9 +1,9 @@
 import pytest
-from pages.pool_page import PoolPage
-from pages.clients_projects_page import ClientsProjectsPage
-from pages.positions_page import PositionsPage
-from pages.reports_page import ReportsPage
-from pages.help_center_page import HelpCenterPage
+from page_objects.pool_page import PoolPage
+from page_objects.clients_projects_page import ClientsProjectsPage
+from page_objects.positions_page import PositionsPage
+from page_objects.reports_page import ReportsPage
+from page_objects.help_center_page import HelpCenterPage
 from settings import Setup
 
 
