@@ -39,5 +39,5 @@
 
 
 # Create documentation
-# Integrate with CI
+# Integrate with CI (docker+gitlab ci?)
 # Create reports 
