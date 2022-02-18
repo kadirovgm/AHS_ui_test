@@ -1,20 +1,18 @@
 import pytest
-import time
 from page_objects.login_page import LoginPage
 from settings import Urls
 
 
+"""Check for correct login page"""
 @pytest.mark.e2e_1
 class TestLoginPage:
     def test_correct_login_page(self, browser):
         page = LoginPage(browser, Urls.LINK_LOGIN_PAGE)
         page.open()
-        """Check for correct login page"""
-        page.should_be_login_url()
-        page.should_be_login_form()
-        page.should_be_forgot_password_link()
+        page.should_be_login_page()
 
 
+"""Check for correct Reset password page"""
 @pytest.mark.e2e_2
 class TestResetPage:
     def test_correct_reset_password_page(self, browser):

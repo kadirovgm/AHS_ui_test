@@ -3,13 +3,9 @@
 
 All tests are marked in `pytest.ini` file
 
-> ### 1. Login page
-File - [test_login_page.py](ahs_selenium/test_login_page.py) 
+> #### Login page [test_login_page.py](ahs_selenium/test_login_page.py) 
 
-
-
------------------------------------------------------
-`e2e_1` **TEST FOR CORRECT LOGIN PAGE ** `[PASSED]`
+`e2e_1` **TEST FOR CORRECT LOGIN PAGE** `[PASSED]`
 
     1. Open Login page
     2. Check for correct Login page:
@@ -17,11 +13,13 @@ File - [test_login_page.py](ahs_selenium/test_login_page.py)
         - Should be login form
         - Should be "Forgot password" link
 
+`e2e_2` **TEST RESET PASSWORD PAGE** `[PASSED]`
 
-    
+    1. Open Login page
+    2. Click on "Forgot password" link
+    3. Check for all elements exist and present correct
 
-1. e2e_1 - test for correct login page [PASSED]
-2. e2e_2 - test reset password page [PASSED]
+
    
 ### test_base_page.py
 3. e2e_3 - test can go to main pages (positions, pool, clients, reports, help center) [PASSED]
