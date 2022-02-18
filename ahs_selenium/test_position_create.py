@@ -5,7 +5,8 @@ from page_objects.positions_page import PositionsPage
 from settings import Setup, Urls
 
 
-@pytest.mark.e2e_11
+"""Test Create Client Project Position modal correctness"""
+@pytest.mark.e2e_12
 class TestClientProjectPositionCorrectness:
     @pytest.fixture(scope="class", autouse=True)
     def setup(self, browser):
@@ -32,7 +33,8 @@ class TestClientProjectPositionCorrectness:
         modal.should_be_correct_client_position_modal_elements_requests()
 
 
-@pytest.mark.e2e_12
+"""Test Create Client Project Position create"""
+@pytest.mark.e2e_13
 class TestClientProjectPositionCreate:
     @pytest.fixture(scope="class", autouse=True)
     def setup(self, browser):
