@@ -19,6 +19,8 @@ class PoolPage(BasePage):
     def add_person_button_click(self):
         add_person = self.browser.find_element(*PoolPageLocators.ADD_PERSON)
         add_person.click()
+
+    def add_person_modal_should_be_opened(self):
         assert self.is_element_present(*CreatePersonModalLocators.CREATE_NEW_PERSON_TEXT), \
             "Create person modal incorrect appeared"
 
@@ -75,9 +77,9 @@ class PoolPage(BasePage):
                 assert self.browser.find_element(*PoolPageLocators.FIRST_PERSON_NAME).text == first_name+" "+second_name, \
                     "The results don't match the search! Searching does not work!"
             else:
-                assert "Page hasn't loaded or there is no such person"
+                raise AssertionError("Page hasn't loaded or there is no such person")
         else:
-            assert "There is no Person suitable for search!"
+            raise AssertionError("There is no Person suitable for search!")
 
     """Clear filters"""
     def clear_filters(self):

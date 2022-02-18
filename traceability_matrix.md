@@ -28,7 +28,7 @@ All tests are marked in [pytest.ini](ahs_selenium/pytest.ini) file
 
 > #### Base page [test_base_page.py](ahs_selenium/test_base_page.py)
 
-`e2e_3` **TEST USER CAN GO TO MAIN PAGES** `[PASSED]`
+`e2e_4` **TEST USER CAN GO TO MAIN PAGES** `[PASSED]`
 
     1. Go to "Positions page" and check that it's correct 
     2. Go to "Pool page" and check that it's correct
@@ -36,15 +36,16 @@ All tests are marked in [pytest.ini](ahs_selenium/pytest.ini) file
     4. Go to "Reports page" and check that it's correct
     5. Go to "Help center page" and check that it's correct
 
+> #### Person Create Modal Page [test_person_create_modal.py](ahs_selenium/test_person_create_modal.py)
 
+`e2e_5` **Test Person Create Modal** `[PASSED]`
+    1. Open Pool page
+    2. Open "Create person modal" and check that it has opened
+    3. Check that "Create Person modal" fileds are correct
+    4. Fill with data and click on "Create" button
+    5. Go to Pool->External tab
+    6. Search for currently created person and check that he was created
 
-
-   
-### test_base_page.py
-3. e2e_3 - test can go to main pages (positions, pool, clients, reports, help center) [PASSED]
-
-### test_person_create_modal.py
-4. e2e_4 - test person create modal (+ correct elements presenting) [PASSED]
 
 ### test_position_create.py
 5. e2e_11 - test checking that client project positions elements presenting [PASSED]
