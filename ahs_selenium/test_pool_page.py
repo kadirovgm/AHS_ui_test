@@ -7,29 +7,34 @@ from page_objects.FixtureData.fixture_data import FixturesInternalPerson
 from settings import Urls, Setup
 
 
-@pytest.mark.e2e_5
+"""Test Pool page fields correctness"""
+@pytest.mark.e2e_6
 class TestPoolPageFieldsCorrectness:
     @pytest.fixture(scope="class", autouse=True)
     def setup(self, browser):
         Setup.setup_help(browser, browser)
 
+    """Internal tab fields"""
     def test_internal_fields(self, browser):
         internal = PoolPage(browser, Urls.POOL_INTERNAL)
         internal.open()
         internal.should_be_correct_fields_internal()
-    
+
+    """External tab fields"""
     def test_external_fields(self, browser):
         external = PoolPage(browser, Urls.POOL_EXTERNAL)
         external.open()
         external.should_be_correct_fields_external_blacklist()
-    
+
+    """Blacklist tab fields"""
     def test_blacklist_fields(self, browser):
         blacklist = PoolPage(browser, Urls.POOL_BLACKLIST)
         blacklist.open()
         blacklist.should_be_correct_fields_external_blacklist()
 
 
-@pytest.mark.e2e_6
+"""Test Pool page filters appeared"""
+@pytest.mark.e2e_7
 class TestPoolPageFiltersCorrectness:
     @pytest.fixture(scope="class", autouse=True)
     def setup(self, browser):
@@ -51,8 +56,8 @@ class TestPoolPageFiltersCorrectness:
         blacklist.should_be_filters_external_blacklist()
 
 
-# TODO pool filtering
-@pytest.mark.e2e_9
+"""Test Pool->Internal page correct filtering"""
+@pytest.mark.e2e_8
 class TestPoolPageInternalFiltering:
     @pytest.fixture(scope="class", autouse=True)
     def setup(self, browser):

@@ -19,7 +19,7 @@ All tests are marked in [pytest.ini](ahs_selenium/pytest.ini) file
     2. Click on "Forgot password" link
     3. Check for all elements exist and present correct
 
-`e2e_3` **TEST USER CAN LOG IN** `[TODO]`
+`e2e_3` **TEST USER CAN LOG IN** `[PASSED]`
     
     1. Open Login page
     2. Enter login/password
@@ -46,24 +46,76 @@ All tests are marked in [pytest.ini](ahs_selenium/pytest.ini) file
     5. Go to Pool->External tab
     6. Search for currently created person and check that he was created
 
+> #### Pool page [test_pool_page.py](ahs_selenium/test_pool_page.py)
+
+`e2e_6` **Test correct Pool Page fields (Internal/External/Blacklist)** `[PASSED]`
+
+    1. Open Pool page -> Internal
+    2. Check that all fields appeared and correct
+    3. Open Pool page -> External
+    4. Check that all fields appeared and correct
+    5. Open Pool page -> Blacklist
+    6. Check that all fields appeared and correct
+
+`e2e_7` **Test correct Pool Page filters (Internal/External/Blacklist)** `[PASSED]`
+
+    1. Open Pool page -> Internal
+    2. Check that all filters appeared and clickable
+    3. Open Pool page -> External
+    4. Check that all filters appeared and clickable
+    5. Open Pool page -> Blacklist
+    6. Check that all filters appeared and clickable
+   
+`e2e_8` **Test Pool page correct filtering [Internal tab]** `[IN PROGRESS]`
+    
+    1. Open Pool page->Internal tab
+    [Searching]
+    2. Test searching and check that works correct
+    [label filter]
+    3. Filter by "bench" label and check that works correct and the reset filter
+    [person type filter]
+    4. Filter by types ["Long-term", "Contractor", "Short-term"]
+    5. Check that filter works correct and the reset filter
+    [filter by roles]
+    [filter by skills]
+    [filter by city]
+    [filter by office]
+    [filter by english level]
+    [filter by vise type]
+    [filter by active projects]
+    [filter by hr]
+
+> #### Positions page [test_positions_page.py](ahs_selenium/test_positions_page.py)
+
+`e2e_9` **Test correct Position Page fields (Active/Mine/History)** `[PASSED]`
+    
+    1. Open Positions -> Active tab
+    2. Check that all fields are appeared and correct
+    3. Open Positions -> Mine tab
+    4. Check that all fields are appeared and correct
+    5. Open Positions -> History tab
+    6. Check that all fields are appeared and correct
+
+`e2e_10` **Test correct Position Page filters (Active/Mine/History)** `[PASSED]`
+    
+    1. Open Positions -> Active tab
+    2. Check that all filters appeared and clickable
+    3. Open Positions -> Mine tab
+    4. Check that all filters appeared and clickable
+    5. Open Positions -> History tab
+    6. Check that all filters appeared and clickable
+
+`e2e_11` **Test Positions page correct filtering [Active tab]** `[IN PROGRESS]`
+
+> #### Create position page [test_position_create.py](ahs_selenium/test_position_create.py)
+
+`e2e_12`
+
+`e2e_13` 
 
 ### test_position_create.py
 5. e2e_11 - test checking that client project positions elements presenting [PASSED]
 5. e2e_12 - test create client project position [PASSED]
-   
-### test_pool_page.py
-6. e2e_5 - test correct pool page fields (internal, external, blacklist tabs) [PASSED]
-7. e2e_6 - test correct pool page filters (internal, external, blacklist tabs) [PASSED]
-8. e2e_9 - test correct filtering [IN PROGRESS]
-
-### test_positions_page.py
-9. e2e_7 - test correct position page fields (Active, Mine, History) [PASSED]
-10. e2e_8 - test correct position page filters (Active, Mine, History) [PASSED]
-11. e2e_10 - test correct filtering [IN PROGRESS]
-
-
-
-
 
 
 ### test_clients_projects_page.py

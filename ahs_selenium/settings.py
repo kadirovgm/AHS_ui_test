@@ -5,6 +5,12 @@ from selenium.webdriver.chrome.service import Service
 from page_objects.FixtureData.fixture_users import *
 
 
+class Experimental:
+    OS = "mac"          # variants: mac, win
+    user = "head"       # variants: head, lead, recruiter
+    stand = "122"       # variants: 122, 137, 139, 152, 115
+
+
 """Project's path and selecting chromdriver version"""
 class Execute:
     # TODO include to dockerfile
