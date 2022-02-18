@@ -1,6 +1,24 @@
-`pytest -s -v --tb=line -m e2e_1`
+# Automated test cases
+### Execute using pytest: `pytest -s -v --tb=line -m e2e_1`
 
-### test_login_page.py:
+All tests are marked in `pytest.ini` file
+
+### 1. Login page
+PATH [test_login_page.py](ahs_selenium/test_login_page.py) 
+
+>[Note]
+
+-----------------------------------------------------
+`e2e_1` **TEST FOR CORRECT LOGIN PAGE ** `[PASSED]`
+
+    1. Open Login page
+    2. Check for correct Login page:
+        - Should be login url
+        - Should be login form
+        - Should be "Forgot password" link
+
+
+    
 
 1. e2e_1 - test for correct login page [PASSED]
 2. e2e_2 - test reset password page [PASSED]

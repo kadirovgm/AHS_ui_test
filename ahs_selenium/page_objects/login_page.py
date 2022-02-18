@@ -21,11 +21,6 @@ class LoginPage(BasePage):
         button_login.click()
 
     """Checking for correct login page"""
-    def should_be_login_page(self):
-        self.should_be_login_url()
-        self.should_be_login_form()
-        self.should_be_forgot_password_link()
-
     def should_be_login_url(self):
         assert self.browser.current_url in self.url, "Incorrect Login page URL!"
 

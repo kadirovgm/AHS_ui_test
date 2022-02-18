@@ -30,9 +30,9 @@ def browser(request):
         options.add_experimental_option('prefs', {'intl.accept_languages': user_language})
 
         print("\nStart chrome browser for test..")
-        browser = webdriver.Chrome(options=options, service=Execute.ser)  # executable_path=DRIVER_BIN - deprecated
-        browser.maximize_window()                                 # maximize window
-        browser.implicitly_wait(3)                                # implicitly wait
+        browser = webdriver.Chrome(options=options, service=Execute.ser)    # executable_path=DRIVER_BIN - deprecated
+        browser.maximize_window()                                           # maximize window
+        browser.implicitly_wait(3)                                          # implicitly wait
 
     elif browser_name == "firefox":
         fp = webdriver.FirefoxProfile()

@@ -9,7 +9,10 @@ class TestLoginPage:
     def test_correct_login_page(self, browser):
         page = LoginPage(browser, Urls.LINK_LOGIN_PAGE)
         page.open()
-        page.should_be_login_page()
+        """Check for correct login page"""
+        page.should_be_login_url()
+        page.should_be_login_form()
+        page.should_be_forgot_password_link()
 
 
 @pytest.mark.e2e_2
