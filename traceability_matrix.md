@@ -3,10 +3,10 @@
 
 All tests are marked in `pytest.ini` file
 
-### 1. Login page
-PATH [test_login_page.py](ahs_selenium/test_login_page.py) 
+> ### 1. Login page
+File - [test_login_page.py](ahs_selenium/test_login_page.py) 
 
->[Note]
+
 
 -----------------------------------------------------
 `e2e_1` **TEST FOR CORRECT LOGIN PAGE ** `[PASSED]`
