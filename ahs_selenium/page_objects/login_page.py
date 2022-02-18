@@ -2,18 +2,19 @@ from .base_page import BasePage
 from .locators.locators import LoginPageLocators
 from .locators.locators import ResetPageLocators
 from .locators.locators import PersonPageLocators
+# from .FixtureData.fixture_users import UserHead, UserLead, UserRecruiter
 import time
 
 
 class LoginPage(BasePage):
 
     """Login user (Setup)"""
-    def login_new_user(self, email, password):
-        self.fill_login_form(email, password)
+    def login_new_user(self, user):
+        self.filling_credits(user.email, user.password)
         time.sleep(0.5)
 
     """Filling with correct data"""
-    def fill_login_form(self, email, password):
+    def filling_credits(self, email, password):
         input_email = self.browser.find_element(*LoginPageLocators.EMAIL)
         input_email.send_keys(email)
         input_password = self.browser.find_element(*LoginPageLocators.PASSWORD)
@@ -52,7 +53,7 @@ class LoginPage(BasePage):
         assert self.is_element_present(*ResetPageLocators.GO_BACK_TO_LOGIN), "'Back to login button doesn't appear'"
 
     def should_be_correct_profile_after_logging(self, expected_name):
-        assert self.browser.find_element(*PersonPageLocators.NAME).text == expected_name, \
+        assert self.browser.find_element(*PersonPageLocators.NAME).text == expected_name.name, \
             "User has logged in to incorrect account or person's name was changed!"
 
 

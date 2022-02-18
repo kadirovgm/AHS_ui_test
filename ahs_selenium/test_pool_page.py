@@ -3,7 +3,7 @@ import time
 from page_objects.login_page import LoginPage
 from page_objects.pool_page import PoolPage
 from page_objects.create_person_modal_page import CreatePersonModal
-from page_objects.FixtureData.random_data import FixturesInternalPerson
+from page_objects.FixtureData.fixture_data import FixturesInternalPerson
 from settings import Urls, Setup
 
 

@@ -2,6 +2,7 @@ import time
 import os
 from page_objects.login_page import LoginPage
 from selenium.webdriver.chrome.service import Service
+from page_objects.FixtureData.fixture_users import *
 
 
 """Project's path and selecting chromdriver version"""
@@ -18,7 +19,7 @@ class Setup:
     def setup_help(self, browser):
         page = LoginPage(browser, Urls.LINK_LOGIN_PAGE)
         page.open()
-        page.login_new_user(email="admin@admin.com", password="P@ssw0rd1")
+        page.login_new_user(UserHead)  # "UserHead", "UserLead", UserRecruiter
 
 
 """Project's URLs"""

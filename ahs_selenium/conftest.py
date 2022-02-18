@@ -46,11 +46,12 @@ def browser(request):
     print("\nquit browser..")
     browser.quit()
 
-# Basic browser
-# @pytest.fixture(scope="function")
-# def browser():
-#     print("\nstart browser for test..")
-#     browser = webdriver.Chrome()
-#     yield browser
-#     print("\nquit browser..")
-#     browser.quit()
+
+# Conftest for testing, when need to close browser in every function
+@pytest.fixture(scope="function")
+def browser_login():
+    print("\nstart browser for test..")
+    browser = webdriver.Chrome(service=Execute.ser)
+    yield browser
+    print("\nquit browser..")
+    browser.quit()

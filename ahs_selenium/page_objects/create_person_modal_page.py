@@ -1,7 +1,7 @@
 from .base_page import BasePage
 from selenium.common.exceptions import NoSuchElementException
 from .locators.locators import CreatePersonModalLocators
-from .FixtureData.random_data import RandomPersonData
+from .FixtureData.fixture_data import RandomPersonData
 from selenium.webdriver.common.keys import Keys
 import time
 

@@ -5,7 +5,6 @@ from page_objects.create_person_modal_page import CreatePersonModal
 from settings import Urls, Setup
 
 
-@pytest.mark.e2e_0
 class TestAddPerson:
     @pytest.fixture(scope="class", autouse=True)
     def setup(self, browser):

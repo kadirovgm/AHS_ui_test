@@ -1,6 +1,8 @@
 import pytest
 from page_objects.login_page import LoginPage
 from settings import Urls
+import time
+from page_objects.FixtureData.fixture_users import *
 
 
 """Check for correct login page"""
@@ -25,15 +27,14 @@ class TestResetPage:
 """Test user can Log In"""
 @pytest.mark.e2e_3
 class TestUserLogin:
-    def test_user_can_login(self, browser):
-        page = LoginPage(browser, Urls.LINK_LOGIN_PAGE)
+    @pytest.mark.parametrize('user', (UserHead, UserLead, UserRecruiter))
+    def test_user_can_login(self, browser_login, user):
+        page = LoginPage(browser_login, Urls.LINK_LOGIN_PAGE)
         page.open()
-        page.login_new_user(email="admin@admin.com", password="P@ssw0rd1")
+        page.login_new_user(user)
 
-    def test_user_logged_in_to_correct_account(self, browser):
-        page = LoginPage(browser, Urls.MY_PROFILE)
+        page = LoginPage(browser_login, Urls.MY_PROFILE)
         page.open()
-        page.should_be_correct_profile_after_logging(expected_name="Olga Shakirova")
-
+        page.should_be_correct_profile_after_logging(user)
 
 # TODO inheritance q.: https://stackoverflow.com/questions/21430900/py-test-skips-test-class-if-constructor-is-defined
