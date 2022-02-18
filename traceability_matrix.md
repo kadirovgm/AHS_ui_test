@@ -1,7 +1,7 @@
 # Automated test cases
 ### Execute using pytest: `pytest -s -v --tb=line -m e2e_1`
 
-All tests are marked in `pytest.ini` file
+All tests are marked in [pytest.ini](ahs_selenium/pytest.ini) file
 
 > #### Login page [test_login_page.py](ahs_selenium/test_login_page.py) 
 
@@ -18,6 +18,25 @@ All tests are marked in `pytest.ini` file
     1. Open Login page
     2. Click on "Forgot password" link
     3. Check for all elements exist and present correct
+
+`e2e_3` **TEST USER CAN LOG IN** `[TODO]`
+    
+    1. Open Login page
+    2. Enter login/password
+    3. Click on "My Profile" 
+    4. Check that my profile has opened and correct
+
+> #### Base page [test_base_page.py](ahs_selenium/test_base_page.py)
+
+`e2e_3` **TEST USER CAN GO TO MAIN PAGES** `[PASSED]`
+
+    1. Go to "Positions page" and check that it's correct 
+    2. Go to "Pool page" and check that it's correct
+    3. Go to "Clients & Projects" page and check that is correct
+    4. Go to "Reports page" and check that it's correct
+    5. Go to "Help center page" and check that it's correct
+
+
 
 
    

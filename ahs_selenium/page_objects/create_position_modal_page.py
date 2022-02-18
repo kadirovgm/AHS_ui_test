@@ -1,6 +1,6 @@
 from .base_page import BasePage
 from .locators.locators import CreatePositionModalLocators
-from .randomData.random_data import RandomPositionData
+from .FixtureData.random_data import RandomPositionData
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 import time

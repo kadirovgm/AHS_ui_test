@@ -1,6 +1,7 @@
 from .base_page import BasePage
 from .locators.locators import LoginPageLocators
 from .locators.locators import ResetPageLocators
+from .locators.locators import PersonPageLocators
 import time
 
 
@@ -49,4 +50,9 @@ class LoginPage(BasePage):
         assert self.is_element_present(*ResetPageLocators.EMAIL), "Email field doesn't appear!"
         assert self.is_element_present(*ResetPageLocators.SEND_BUTTON), "'Send link' button doesn't appear!"
         assert self.is_element_present(*ResetPageLocators.GO_BACK_TO_LOGIN), "'Back to login button doesn't appear'"
+
+    def should_be_correct_profile_after_logging(self, expected_name):
+        assert self.browser.find_element(*PersonPageLocators.NAME).text == expected_name, \
+            "User has logged in to incorrect account or person's name was changed!"
+
 

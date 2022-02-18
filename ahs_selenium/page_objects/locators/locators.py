@@ -23,6 +23,8 @@ class BasePageLocators:
     REPORTS_ICON = (By.XPATH, "/html/body/div/section/aside/div/div/div[2]/a[4]")
     HELP_CENTER_ICON = (By.CSS_SELECTOR, "#root>section>aside>div>div>a>svg")
 
+class MenuLocators:
+    ...
 
 # Position page
 class PositionPageLocators:

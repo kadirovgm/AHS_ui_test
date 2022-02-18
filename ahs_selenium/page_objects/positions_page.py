@@ -3,6 +3,7 @@ from .locators.locators import PositionPageLocators
 import time
 
 
+
 class PositionsPage(BasePage):
     """Correct Positions page"""
     def should_be_positions_page_text(self):

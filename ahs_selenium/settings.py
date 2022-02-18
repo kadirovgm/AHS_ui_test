@@ -46,3 +46,12 @@ class Urls:
     """CLIENTS&PROJECTS"""
     PROJECTS_ACTIVE = f"{host}projects/active" 
     PROJECTS_HISTORY = f"{host}projects/history"
+
+    """REPORTS"""
+    REPORTS = f"{host}reports"
+
+    """HELP CENTER"""
+    HELP_CENTER = f"{host}help/extension"
+
+    """MY PROFILE"""
+    MY_PROFILE = f"{host}me"

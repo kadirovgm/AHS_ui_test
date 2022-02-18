@@ -77,10 +77,12 @@ class BasePage:
             return False
         return True
 
+    """Check that URL is correct"""
+    def is_correct_url(self, expected_url):
+        assert expected_url in self.browser.current_url, \
+            f"Incorrect URL: Expected - {expected_url} Actual - {self.browser.current_url}!"
 
     # COMMON ACTIONS FROM ALL PAGES
-    def go_to_login_page(self):
-        ...
 
     def go_to_positions_page(self):
         positions = self.browser.find_element(*BasePageLocators.POSITIONS_ICON)
