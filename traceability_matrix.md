@@ -39,6 +39,7 @@ All tests are marked in [pytest.ini](ahs_selenium/pytest.ini) file
 > #### Person Create Modal Page [test_person_create_modal.py](ahs_selenium/test_person_create_modal.py)
 
 `e2e_5` **Test Person Create Modal** `[PASSED]`
+
     1. Open Pool page
     2. Open "Create person modal" and check that it has opened
     3. Check that "Create Person modal" fileds are correct
@@ -109,23 +110,31 @@ All tests are marked in [pytest.ini](ahs_selenium/pytest.ini) file
 
 > #### Create position page [test_position_create.py](ahs_selenium/test_position_create.py)
 
-`e2e_12`
+`e2e_12` **Test "Create Client Project Position modal" fields correctness** `[PASSED]`
 
-`e2e_13` 
+    1. Open Create Client Project position modal
+    2. Go to "Position detail" tab and check for elements appearing and correctness
+    3. Go to "Assigns" tab and check for elements appearing and correctness
+    4. Go to "Requests" tab and check for elements appearing and correctness
 
-### test_position_create.py
-5. e2e_11 - test checking that client project positions elements presenting [PASSED]
-5. e2e_12 - test create client project position [PASSED]
+`e2e_13` **Test Create "Client Project Position"** `[PASSED]`
+
+    1. Open create position modal
+    2. Fill all required fileds with relevant data and create new Position
+    3. Go to Positions->Active tab
+    4. Search for currently creted Postition
+    5. Check searching results and status of found Position
 
 
-### test_clients_projects_page.py
-- test correct clients&projects page fields (Active, History)
-- test correct filtering
-- test create client
-- test create project
+> #### Clients&Projects page [test_clients_projects_page.py](ahs_selenium/test_clients_projects_page.py) 
+
+- [DRAFT] test correct clients&projects page fields (Active, History)
+- [DRAFT] test correct filtering
+- [DRAFT] test create client
+- [DRAFT] test create project
 
 
-
-# Create documentation
-# Integrate with CI (docker+gitlab ci?)
-# Create reports 
+# TODO
+## Create documentation
+## Integrate with CI (docker+gitlab ci?)
+## Create reports 
