@@ -1,5 +1,5 @@
 from .base_page import BasePage
-from .locators.locators import ReportsPageLocators
+from .locators.reports_page_locators import ReportsPageLocators
 
 
 class ReportsPage(BasePage):

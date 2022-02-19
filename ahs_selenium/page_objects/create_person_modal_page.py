@@ -1,6 +1,6 @@
 from .base_page import BasePage
 from selenium.common.exceptions import NoSuchElementException
-from .locators.locators import CreatePersonModalLocators
+from .locators.create_person_modal_locators import CreatePersonModalLocators
 from .FixtureData.fixture_data import CreatePersonData
 from selenium.webdriver.common.keys import Keys
 import time

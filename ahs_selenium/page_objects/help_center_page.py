@@ -1,5 +1,5 @@
 from .base_page import BasePage
-from .locators.locators import HelpCenterLocators
+from .locators.help_center_page_locators import HelpCenterLocators
 
 
 class HelpCenterPage(BasePage):

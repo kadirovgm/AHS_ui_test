@@ -1,8 +1,7 @@
 from .base_page import BasePage
-from .locators.locators import LoginPageLocators
-from .locators.locators import ResetPageLocators
-from .locators.locators import PersonPageLocators
-# from .FixtureData.fixture_users import UserHead, UserLead, UserRecruiter
+from .locators.login_page_locators import LoginPageLocators
+from .locators.login_page_locators import ResetPageLocators
+from .locators.person_page_locators import PersonPageLocators
 import time
 
 

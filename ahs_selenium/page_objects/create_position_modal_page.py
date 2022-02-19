@@ -1,5 +1,5 @@
 from .base_page import BasePage
-from .locators.locators import CreatePositionModalLocators
+from .locators.create_position_modal_locators import CreatePositionModalLocators
 from .FixtureData.fixture_data import CreatePositionData
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains

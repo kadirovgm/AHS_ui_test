@@ -1,6 +1,6 @@
 from .base_page import BasePage
-from .locators.locators import PoolPageLocators
-from .locators.locators import CreatePersonModalLocators
+from .locators.pool_page_locators import PoolPageLocators
+from .locators.create_person_modal_locators import CreatePersonModalLocators
 import time
 
 # TODO For future:
