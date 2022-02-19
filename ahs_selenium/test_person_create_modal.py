@@ -1,5 +1,4 @@
 import pytest
-import time
 from page_objects.pool_page import PoolPage
 from page_objects.create_person_modal_page import CreatePersonModal
 from settings import Urls, Setup

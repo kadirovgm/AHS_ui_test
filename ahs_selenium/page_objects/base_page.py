@@ -2,7 +2,6 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium import webdriver
 from .locators.locators import BasePageLocators
 
 
@@ -82,8 +81,7 @@ class BasePage:
         assert expected_url in self.browser.current_url, \
             f"Incorrect URL: Expected - {expected_url} Actual - {self.browser.current_url}!"
 
-    # COMMON ACTIONS FROM ALL PAGES
-
+    """COMMON ACTIONS FROM ALL PAGES"""
     def go_to_positions_page(self):
         positions = self.browser.find_element(*BasePageLocators.POSITIONS_ICON)
         positions.click()
