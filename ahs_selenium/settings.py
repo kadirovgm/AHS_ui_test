@@ -1,4 +1,3 @@
-import time
 import os
 from page_objects.login_page import LoginPage
 from selenium.webdriver.chrome.service import Service
