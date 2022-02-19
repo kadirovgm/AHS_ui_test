@@ -3,7 +3,6 @@ from .locators.locators import PositionPageLocators
 import time
 
 
-
 class PositionsPage(BasePage):
     """Correct Positions page"""
     def should_be_positions_page_text(self):
@@ -121,15 +120,16 @@ class PositionsPage(BasePage):
                     *PositionPageLocators.FIRST_POSITION_TITLE).text == position_name, \
                     "The results don't match the search! Searching does not work!"
             else:
-                assert "Page hasn't loaded or there is no such position"
+                raise AssertionError("Page hasn't loaded or there is no such position")
         else:
-            assert "There is no Position suitable for search!"
+            raise AssertionError("There is no Position suitable for search!")
 
     # TODO improve for checking by pos_number
     """Checking status of position"""
     def checking_status_of_position(self, status, pos_number=1):
         print(f"Checking that Position's status = {status}")
         if self.is_element_present(*PositionPageLocators.FIRST_POSITION):
-            assert self.browser.find_element(*PositionPageLocators.FIRST_STATUS).text == status, f"Status of position is not {status}"
+            assert self.browser.find_element(*PositionPageLocators.FIRST_STATUS).text == status, \
+                f"Status of position is not {status}"
         else:
-            assert "There is no Position in list!"
+            raise AssertionError("There is no Position in list!")

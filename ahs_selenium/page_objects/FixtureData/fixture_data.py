@@ -3,7 +3,8 @@ import random
 import string
 
 
-class RandomPersonData:
+"""Fixture data for Creating external Person"""
+class CreatePersonData:
     first_name = names.get_first_name()
     last_name = names.get_last_name()
     recruiter = "Olga Shakirova"
@@ -25,6 +26,7 @@ class RandomPersonData:
     email = "".join(random.choices(string.ascii_lowercase, k=4)) + "@akvelon.com"
 
 
+"""Fixture internal persons"""
 class FixturesInternalPerson:
     # TODO use dict for randoming
     # first_names = ["Olga"]
@@ -35,7 +37,8 @@ class FixturesInternalPerson:
     last_name = "Shakirova"
 
 
-class RandomPositionData:
+"""Fixture data for creting Position"""
+class CreatePositionData:
     name = "Position UI tesing n=" + str(random.randint(0, 10000))
     orig_loc = "United States"
     comment = "This position was made by Rushat for testing"

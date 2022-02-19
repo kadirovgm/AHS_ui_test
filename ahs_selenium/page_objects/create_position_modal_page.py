@@ -1,6 +1,6 @@
 from .base_page import BasePage
 from .locators.locators import CreatePositionModalLocators
-from .FixtureData.fixture_data import RandomPositionData
+from .FixtureData.fixture_data import CreatePositionData
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 import time
@@ -64,7 +64,7 @@ class CreateClientPositionModal(BasePage):
         ActionChains(self.browser).move_to_element(project).click(project).send_keys(Keys.DOWN + Keys.ENTER).perform()
 
         orig_loc = self.browser.find_element(*CreatePositionModalLocators.ORIG_LOCATION)
-        orig_loc.send_keys(RandomPositionData.orig_loc)
+        orig_loc.send_keys(CreatePositionData.orig_loc)
         time.sleep(loading_time)
         orig_loc.send_keys(Keys.ENTER)
 
@@ -72,9 +72,9 @@ class CreateClientPositionModal(BasePage):
         remote = self.browser.find_element(*CreatePositionModalLocators.REMOTE_TYPE)
         ActionChains(self.browser).move_to_element(remote).click(remote).send_keys(n*Keys.DOWN + Keys.ENTER).perform()
 
-        _ = self.browser.find_element(*CreatePositionModalLocators.COMMENT).send_keys(RandomPositionData.comment)
+        _ = self.browser.find_element(*CreatePositionModalLocators.COMMENT).send_keys(CreatePositionData.comment)
 
-        _ = self.browser.find_element(*CreatePositionModalLocators.POS_NAME).send_keys(RandomPositionData.name)
+        _ = self.browser.find_element(*CreatePositionModalLocators.POS_NAME).send_keys(CreatePositionData.name)
 
         n = random.randint(1, 20)
         role = self.browser.find_element(*CreatePositionModalLocators.ROLE)
@@ -86,7 +86,7 @@ class CreateClientPositionModal(BasePage):
         _ = self.browser.find_element(*CreatePositionModalLocators.ADD_ONE_MORE_SKILL).click()
 
         skill = self.browser.find_element(*CreatePositionModalLocators.SKILL)
-        skill.send_keys(RandomPositionData.skill)
+        skill.send_keys(CreatePositionData.skill)
         time.sleep(loading_time)
         skill.send_keys(Keys.ENTER)
 
@@ -120,13 +120,13 @@ class CreateClientPositionModal(BasePage):
 
         _ = self.browser.find_element(*CreatePositionModalLocators.HOURS).send_keys("8")
 
-        _ = self.browser.find_element(*CreatePositionModalLocators.DEADLINE).send_keys(RandomPositionData.deadline + Keys.ENTER)
+        _ = self.browser.find_element(*CreatePositionModalLocators.DEADLINE).send_keys(CreatePositionData.deadline + Keys.ENTER)
 
         _ = self.browser.find_element(*CreatePositionModalLocators.REQUIRED).send_keys("1")
 
         _ = self.browser.find_element(*CreatePositionModalLocators.SUBMIT).click()
 
-        print(f"Created Position's title is: {RandomPositionData.name}")
-        return RandomPositionData.name  # for checking that position is created and in active tab
+        print(f"Created Position's title is: {CreatePositionData.name}")
+        return CreatePositionData.name  # for checking that position is created and in active tab
 
 
