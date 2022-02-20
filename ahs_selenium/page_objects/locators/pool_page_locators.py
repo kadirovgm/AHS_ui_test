@@ -16,6 +16,7 @@ class PoolPageLocators:
     FIRST_PERSON_LABEL = (By.CSS_SELECTOR, "#root > section > section > main > div > div:nth-child(2) > div > div > div > div > div > div > table > tbody > tr:nth-child(1) > td:nth-child(1) > a > div > div > span")
     FIRST_PERSON_TYPE = (By.CSS_SELECTOR, "#root > section > section > main > div > div:nth-child(2) > div > div > div > div > div > div > table > tbody > tr:nth-child(1) > td.ant-table-cell.ant-table-cell-ellipsis")
     FIRST_PERSON_ROLE = (By.CSS_SELECTOR, "#root > section > section > main > div > div:nth-child(2) > div > div > div > div > div > div > table > tbody > tr:nth-child(1) > td:nth-child(3) > div > div > span.ant-typography.sc-AxgMl.sc-qWfCM.hHzgZA")
+    FIRST_PERSON_SKILL = (By.CSS_SELECTOR, "#root > section > section > main > div > div:nth-child(2) > div > div > div > div > div > div > table > tbody > tr:nth-child(1) > td:nth-child(4) > div > div:nth-child(1) > span.ant-typography.sc-AxgMl.sc-qWfCM.bIuCUl")
 
     """Internal fields"""
     NAME_i = (By.XPATH, "/html/body/div[1]/section/section/main/div/div[2]/div/div/div/div/div/div/table/thead/tr/th[1]/div/span[1]")
@@ -45,6 +46,8 @@ class PoolPageLocators:
     F_ROLE_i_OK = (By.XPATH, "/html/body/div[2]/div/div/div/div[2]/button[2]")
     F_ROLE_i_RESET = (By.XPATH, "/html/body/div[2]/div/div/div/div[2]/button[1]")
     F_SKILLS_i = (By.XPATH, "/html/body/div[1]/section/section/main/div/div[2]/div/div/div/div/div/div/table/thead/tr/th[4]/div/span[2]/span")
+    F_SKILLS_i_SELECT = (By.CSS_SELECTOR, "#rc_select_0")
+    F_GRADE_i_SELECT = (By.CSS_SELECTOR, "#rc_select_1")
     F_CITY_i = (By.XPATH, "/html/body/div[1]/section/section/main/div/div[2]/div/div/div/div/div/div/table/thead/tr/th[5]/div/span[2]/span")
     F_OFFICE_i = (By.XPATH, "/html/body/div[1]/section/section/main/div/div[2]/div/div/div/div/div/div/table/thead/tr/th[6]/div/span[2]/span")
     F_ENG_i = (By.XPATH, "/html/body/div[1]/section/section/main/div/div[2]/div/div/div/div/div/div/table/thead/tr/th[7]/div/span[2]/span")

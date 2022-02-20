@@ -2,6 +2,7 @@ from .base_page import BasePage
 from .locators.pool_page_locators import PoolPageLocators
 from .locators.create_person_modal_locators import CreatePersonModalLocators
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.action_chains import ActionChains
 import time
 
 # TODO For future:
@@ -97,7 +98,7 @@ class PoolPage(BasePage):
         else:
             raise AssertionError(f"Filter by {filter_locator} doesn't clickable")
 
-    """Reset any filters [All tabs]"""
+    """*Reset any filters [All tabs]*"""
     def is_filter_reset(self, filter_locator, reset_locator):
         # open filter
         self.click_to_filter_by(filter_locator)
@@ -210,6 +211,31 @@ class PoolPage(BasePage):
         role_filter_locator = PoolPageLocators.F_ROLE_i
         reset_locator = PoolPageLocators.F_ROLE_i_RESET
         self.is_filter_reset(role_filter_locator, reset_locator)
+
+    """Filter by Skills"""
+    def filter_skills_internal(self, skill, loading_time=0.7):
+        # Open filter by skills
+        self.click_to_filter_by(PoolPageLocators.F_SKILLS_i)
+        # Filtering
+        if self.are_elements_present({PoolPageLocators.F_SKILLS_i_SELECT, PoolPageLocators.F_GRADE_i_SELECT}):
+            skill_input = self.browser.find_element(*PoolPageLocators.F_SKILLS_i_SELECT)
+            skill_input.send_keys(skill)
+            time.sleep(loading_time)
+            skill_input.send_keys(Keys.ENTER)
+
+            grade = self.browser.find_element(*PoolPageLocators.F_GRADE_i_SELECT)
+            ActionChains(self.browser).move_to_element(grade).click(grade).send_keys(Keys.DOWN + Keys.ENTER).perform()
+        else:
+            raise AssertionError(f"There is no input for filtering by Skill and Grade")
+        _ = self.browser.find_element(*PoolPageLocators.F_ROLE_i_OK).click()
+
+        # Check filtering
+        if self.waiting_for_element_present(*PoolPageLocators.FIRST_PERSON):
+            assert self.browser.find_element(*PoolPageLocators.FIRST_PERSON_SKILL).text == skill, \
+                f"Incorrect filtering by person skill: {skill}"
+        else:
+            raise AssertionError(f"Probably there is no person with skill: {skill}")
+
 
 
 

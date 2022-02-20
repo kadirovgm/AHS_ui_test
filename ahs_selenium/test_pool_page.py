@@ -64,27 +64,27 @@ class TestPoolPageInternalFiltering:
         Setup.setup_help(browser, browser)
 
     """Test searching"""
-    #@pytest.mark.skip
+    @pytest.mark.skip
     def test_internal_search(self, browser):
         internal = PoolPage(browser, Urls.POOL_INTERNAL)
         internal.open()
         internal.search_for_person(FixturesInternalPerson.first_name, FixturesInternalPerson.last_name)
 
     """Bench label filtering"""
-    #@pytest.mark.skip
+    @pytest.mark.skip
     def test_filter_by_label(self, browser):
         internal = PoolPage(browser, Urls.POOL_INTERNAL)
         internal.open()
         internal.filter_label("Bench")
 
     """Reset Filtering by label (depends on filtering)"""
-    #@pytest.mark.skip
+    @pytest.mark.skip
     def test_reset_filter_by_label(self, browser):
         internal = PoolPage(browser, browser.current_url)
         internal.reset_filter_label()
 
     """Filtering by type"""
-    # @pytest.mark.skip
+    @pytest.mark.skip
     @pytest.mark.parametrize('person_type',
                              ("Long-term", "Contractor", "Short-term"))
     def test_filter_by_type(self, browser, person_type):
@@ -95,6 +95,7 @@ class TestPoolPageInternalFiltering:
         internal.reset_filter_type_internal()
 
     """Filter by Role"""
+    @pytest.mark.skip
     @pytest.mark.parametrize('role',
                              ("SDET", "HR Manager"))
     def test_filter_in_search_by_role(self, browser, role):
@@ -103,9 +104,13 @@ class TestPoolPageInternalFiltering:
         internal.filter_role_internal(role)
         internal.reset_filter_role()
 
-    @pytest.mark.skip
+    """Filter by Skills"""
     def test_filter_in_search_by_skills(self, browser):
-        ...
+        internal = PoolPage(browser, Urls.POOL_INTERNAL)
+        internal.open()
+        internal.filter_skills_internal("python")
+        time.sleep(1)
+
 
     @pytest.mark.skip
     def test_filter_in_search_by_city(self, browser):
