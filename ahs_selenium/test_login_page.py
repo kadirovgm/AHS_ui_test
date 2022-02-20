@@ -5,6 +5,7 @@ from page_objects.FixtureData.fixture_users import *
 
 
 """Check for correct login page"""
+@pytest.mark.regression
 @pytest.mark.e2e_1
 class TestLoginPage:
     def test_correct_login_page(self, browser):
@@ -14,6 +15,7 @@ class TestLoginPage:
 
 
 """Check for correct Reset password page"""
+@pytest.mark.regression
 @pytest.mark.e2e_2
 class TestResetPage:
     def test_correct_reset_password_page(self, browser):
@@ -24,6 +26,7 @@ class TestResetPage:
 
 
 """Test user can Log In"""
+@pytest.mark.regression
 @pytest.mark.e2e_3
 class TestUserLogin:
     @pytest.mark.parametrize('user', (UserHead, UserLead, UserRecruiter))

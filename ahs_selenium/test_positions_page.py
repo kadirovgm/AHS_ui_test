@@ -4,6 +4,7 @@ from settings import Urls, Setup
 
 
 """Test Positions page fields correct"""
+@pytest.mark.regression
 @pytest.mark.e2e_9
 class TestPositionPageFieldsCorrectness:
     @pytest.fixture(scope="class", autouse=True)
@@ -30,6 +31,7 @@ class TestPositionPageFieldsCorrectness:
 
 
 """Test Positions page filters correct"""
+@pytest.mark.regression
 @pytest.mark.e2e_10
 class TestPositionPageFiltersCorrectness:
     @pytest.fixture(scope="class", autouse=True)
@@ -53,3 +55,15 @@ class TestPositionPageFiltersCorrectness:
         history = PositionsPage(browser, Urls.POSITIONS_HISTORY)
         history.open()
         history.should_be_correct_filters_history()
+
+
+@pytest.mark.regression
+@pytest.mark.e2e_11
+class TestPositionsActiveFiltering:
+    @pytest.fixture(scope="class", autouse=True)
+    def setup(self, browser):
+        Setup.setup_help(browser, browser)
+
+
+
+

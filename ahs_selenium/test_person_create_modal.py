@@ -5,6 +5,7 @@ from settings import Urls, Setup
 
 
 """Test Add Person"""
+@pytest.mark.regression
 @pytest.mark.e2e_5
 class TestAddPerson:
     @pytest.fixture(scope="class", autouse=True)

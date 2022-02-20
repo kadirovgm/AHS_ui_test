@@ -8,6 +8,7 @@ from settings import Urls, Setup
 
 
 """Test Pool page fields correctness"""
+@pytest.mark.regression
 @pytest.mark.e2e_6
 class TestPoolPageFieldsCorrectness:
     @pytest.fixture(scope="class", autouse=True)
@@ -34,6 +35,7 @@ class TestPoolPageFieldsCorrectness:
 
 
 """Test Pool page filters appeared"""
+@pytest.mark.regression
 @pytest.mark.e2e_7
 class TestPoolPageFiltersCorrectness:
     @pytest.fixture(scope="class", autouse=True)
@@ -57,6 +59,7 @@ class TestPoolPageFiltersCorrectness:
 
 
 """Test Pool->Internal page correct filtering"""
+@pytest.mark.regression
 @pytest.mark.e2e_8
 class TestPoolPageInternalFiltering:
     @pytest.fixture(scope="class", autouse=True)
@@ -131,6 +134,7 @@ class TestPoolPageInternalFiltering:
         ...
 
 
+@pytest.mark.regression
 @pytest.mark.skip
 class TestPoolPageExternalFiltering:
     @pytest.fixture(scope="class", autouse=True)
@@ -162,6 +166,7 @@ class TestPoolPageExternalFiltering:
         ...
 
 
+@pytest.mark.regression
 @pytest.mark.skip
 class TestPoolPageBlacklistFiltering:
     @pytest.fixture(scope="class", autouse=True)

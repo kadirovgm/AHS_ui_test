@@ -9,6 +9,7 @@ from settings import Urls
 
 
 """Test User can go to main pages"""
+@pytest.mark.regression
 @pytest.mark.e2e_4
 class TestBasePageActions:
     @pytest.fixture(scope="class", autouse=True)

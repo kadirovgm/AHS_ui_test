@@ -5,6 +5,7 @@ from settings import Setup, Urls
 
 
 """Test Create Client Project Position modal correctness"""
+@pytest.mark.regression
 @pytest.mark.e2e_12
 class TestClientProjectPositionCorrectness:
     @pytest.fixture(scope="class", autouse=True)
@@ -33,6 +34,7 @@ class TestClientProjectPositionCorrectness:
 
 
 """Test Create Client Project Position create"""
+@pytest.mark.regression
 @pytest.mark.e2e_13
 class TestClientProjectPositionCreate:
     @pytest.fixture(scope="class", autouse=True)

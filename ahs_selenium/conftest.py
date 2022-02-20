@@ -20,21 +20,21 @@ def pytest_addoption(parser):
                      help="Choose language: ru, en")
 
 
-@pytest.fixture(scope="class")  # "function" if want to initialize on every function
+@pytest.fixture(scope="class")                                              # initializing browser on every class
 def browser(request):
     browser_name = request.config.getoption("browser_name")
-    # user_language = request.config.getoption("language")        # if want to launch eng version of site
+    # user_language = request.config.getoption("language")                  # if want to launch eng version of site
     user_language = None
     if browser_name == "chrome":
         options = Options()
         options.add_experimental_option('prefs', {'intl.accept_languages': user_language})
 
         print("\nStart chrome browser for test..")
-        browser = webdriver.Chrome(options=options, service=Execute.ser)    # executable_path=DRIVER_BIN - deprecated
+        browser = webdriver.Chrome(options=options, service=Execute.chromedriver)
         browser.maximize_window()                                           # maximize window
         browser.implicitly_wait(3)                                          # implicitly wait
 
-    elif browser_name == "firefox":
+    elif browser_name == "firefox":                                         # make sure that you have firefox driver
         fp = webdriver.FirefoxProfile()
         fp.set_preference("intl.accept_languages", user_language)
         print("\nStart firefox browser for test..")
@@ -51,7 +51,7 @@ def browser(request):
 @pytest.fixture(scope="function")
 def browser_login():
     print("\nstart browser for test..")
-    browser = webdriver.Chrome(service=Execute.ser)
+    browser = webdriver.Chrome(service=Execute.chromedriver)
     browser.maximize_window()
     browser.implicitly_wait(3)
     yield browser
