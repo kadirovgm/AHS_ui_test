@@ -137,7 +137,7 @@ class PoolPage(BasePage):
         self.is_filter_reset(type_filter_locator, reset_locator)
 
     """[FILTERING] Check Filter by role [All tabs]"""
-    def filter_role_internal(self, role, tab):
+    def filter_role(self, role, tab):
         if tab == "Internal":
             role_filter = PoolPageLocators.F_ROLE_i
             role_select = PoolPageLocators.F_ROLE_i_SELECT
@@ -176,7 +176,7 @@ class PoolPage(BasePage):
         self.is_filter_reset(role_filter_locator, reset_locator)
 
     """[FILTERING] Filter by Skills [All tabs]"""
-    def filter_skills_internal(self, skill, tab, loading_time=0.7):
+    def filter_skills(self, skill, tab, loading_time=0.7):
         if tab == "Internal":
             skill_filter = PoolPageLocators.F_SKILLS_i
             expected_skill = PoolPageLocators.FIRST_PERSON_SKILL_i
@@ -219,6 +219,51 @@ class PoolPage(BasePage):
         reset_locator = PoolPageLocators.F_SKILLS_RESET
         self.is_filter_reset(skill_filter_locator, reset_locator)
 
+    """[FILTERING] Filter by City [All tabs]"""
+    def filter_city(self, country, city, tab, loading_time=0.7):
+        if tab == "Internal":
+            city_filter_locator = PoolPageLocators.F_CITY_i
+            locator_expected_city = PoolPageLocators.FIRST_PERSON_CITY_i
+        elif tab == "External" or tab == "Blacklist":
+            city_filter_locator = PoolPageLocators.F_CITY_e
+            locator_expected_city = PoolPageLocators.FIRST_PERSON_CITY_e
+        else:
+            raise AssertionError("Incorrect tab-name, please specify as: 'Internal', 'External' or 'Blacklist'")
+        locator_country_select = PoolPageLocators.F_CITY_COUNTRY_SELECT
+        locator_city_select = PoolPageLocators.F_CITY_CITY_SELECT
+        locator_city_ok = PoolPageLocators.F_CITY_OK
+
+        # Open filter by skills
+        self.click_to_filter_by(city_filter_locator)
+        # Filtering
+        if self.are_elements_present({locator_country_select, locator_city_select}):
+            country_input = self.browser.find_element(*locator_country_select)
+            country_input.send_keys(country)
+            time.sleep(loading_time)
+            country_input.send_keys(Keys.ENTER)
+
+            city_input = self.browser.find_element(*locator_city_select)
+            city_input.send_keys(city)
+            time.sleep(loading_time)
+            city_input.send_keys(Keys.ENTER)
+        else:
+            raise AssertionError("There is no input for filtering by City and Country")
+        _ = self.browser.find_element(*locator_city_ok).click()
+
+        # Check filtering
+        self.is_filter_works(city, locator_expected_city)
+
+    """[FILTERING] Reset filter by cities [All tabs]"""
+    def reset_filter_cities(self, tab):
+        if tab == "Internal":
+            city_filter_locator = PoolPageLocators.F_CITY_i
+        elif tab == "External" or tab == "Blacklist":
+            city_filter_locator = PoolPageLocators.F_CITY_e
+        else:
+            raise AssertionError("Incorrect tab-name, please specify as: 'Internal', 'External' or 'Blacklist'")
+        reset_locator = PoolPageLocators.F_CITY_RESET
+        self.is_filter_reset(city_filter_locator, reset_locator)
+
     #### Additional methods for filtering ####
 
     """*Searching in pool*"""
@@ -253,7 +298,7 @@ class PoolPage(BasePage):
     """*Check that filter works [All tabs]*"""
     def is_filter_works(self, filter_object, expected_locator):
         if self.waiting_for_element_present(*PoolPageLocators.FIRST_PERSON):
-            assert self.browser.find_element(*expected_locator).text == filter_object, \
+            assert filter_object in self.browser.find_element(*expected_locator).text, \
                 f"Incorrect filtering by {str(filter_object)}: {filter_object}"
         else:
             raise AssertionError(f"Probably there is no person with {str(filter_object)}: {filter_object}")

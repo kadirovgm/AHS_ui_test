@@ -5,7 +5,7 @@ from page_objects.FixtureData.fixture_users import *
 
 
 class Experimental:
-    OS = "mac"          # variants: mac, win
+    OS = "win"          # variants: mac, win
     user = "head"       # variants: head, lead, recruiter
     stand = "122"       # variants: 122, 137, 139, 152, 115
 
