@@ -53,14 +53,16 @@ class LoginPage(BasePage):
         assert self.is_element_present(*ResetPageLocators.GO_BACK_TO_LOGIN), "'Back to login button doesn't appear'"
 
     """After logging in"""
-    def is_user_successfully_logged_in(self):
+    def is_user_successfully_logged_in(self, expected_user):
         if "/positions/active" in self.browser.current_url:
             return True
         else:
-            raise AssertionError(f"User hasn't be logged!")
+            raise AssertionError(f"User {expected_user.name} hasn't be logged!")
 
-    def should_be_correct_profile_after_logging(self, expected_name):
-        assert self.browser.find_element(*PersonPageLocators.NAME).text == expected_name.name, \
-            "User has logged in to incorrect account or person's name was changed!"
+    def should_be_correct_profile_after_logging(self, expected_user):
+        assert self.browser.find_element(*PersonPageLocators.NAME).text == expected_user.name, \
+            f"User has logged in to incorrect account or person's name {expected_user.name} was changed!"
+        assert self.browser.find_element(*PersonPageLocators.PERSON_ROLE).text == expected_user.role, \
+            f"User has logged in to incorrect account or person's role {expected_user.role} was changed"
 
 

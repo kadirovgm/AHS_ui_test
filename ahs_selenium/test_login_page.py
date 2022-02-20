@@ -34,7 +34,7 @@ class TestUserLogin:
         page = LoginPage(browser_login, Urls.LINK_LOGIN_PAGE)
         page.open()
         page.login_new_user(user)
-        page.is_user_successfully_logged_in()
+        page.is_user_successfully_logged_in(user)
 
         page = LoginPage(browser_login, Urls.MY_PROFILE)
         page.open()
