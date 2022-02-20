@@ -102,10 +102,13 @@ class PoolPage(BasePage):
         # open filter
         self.click_to_filter_by(filter_locator)
         # resetting
-        if self.browser.find_element(*reset_locator).is_enabled():
-            self.browser.find_element(*reset_locator).click()
+        if self.waiting_for_element_present(*reset_locator):
+            if self.browser.find_element(*reset_locator).is_enabled():
+                self.browser.find_element(*reset_locator).click()
+            else:
+                raise AssertionError("Reset button is not enabled after filtering")
         else:
-            raise AssertionError("Reset button is not enabled after filtering")
+            raise AssertionError("There is no Reset button after filtering")
         # checking that reset is disabled
         self.click_to_filter_by(filter_locator)
         if not self.browser.find_element(*reset_locator).is_enabled():

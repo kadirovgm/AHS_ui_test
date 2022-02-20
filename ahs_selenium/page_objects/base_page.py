@@ -35,7 +35,7 @@ class BasePage:
     """Abstract method for waiting for element present"""
     def waiting_for_element_present(self, how, what, timeout=1):
         try:
-            WebDriverWait(self.browser, timeout, 0.01, TimeoutException). \
+            WebDriverWait(self.browser, timeout, 0.05, TimeoutException). \
                 until_not(EC.presence_of_element_located((how, what)))
         except TimeoutException:
             return True
