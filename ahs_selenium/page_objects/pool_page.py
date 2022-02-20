@@ -87,12 +87,19 @@ class PoolPage(BasePage):
         if self.waiting_for_element_present(*PoolPageLocators.FIRST_PERSON):
             return True
 
-    """Click to filter by label [All tabs]"""
-    def click_to_filter_by_label(self):
-        if self.is_element_clickable(*PoolPageLocators.F_LABEL):
-            self.browser.find_element(*PoolPageLocators.F_LABEL).click()
+    """Clicking to filters in Pool [All tabs]"""
+    def click_to_filter_by(self, filter_locator):
+        if self.is_element_clickable(*filter_locator):
+            self.browser.find_element(*filter_locator).click()
         else:
-            raise AssertionError("Filter by label doesn't clickable")
+            raise AssertionError(f"Filter by {filter_locator} doesn't clickable")
+
+    # """Click to filter by label [All tabs]"""
+    # def click_to_filter_by_label(self):
+    #     if self.is_element_clickable(*PoolPageLocators.F_LABEL):
+    #         self.browser.find_element(*PoolPageLocators.F_LABEL).click()
+    #     else:
+    #         raise AssertionError("Filter by label doesn't clickable")
 
     """Filtering"""
     """Universal filter by label [Internal/External/Blacklist]"""
@@ -111,7 +118,7 @@ class PoolPage(BasePage):
             raise AssertionError("Please specify as label - 'Bench', 'Pre-offer', 'Dismiss'")
 
         # open filter
-        self.click_to_filter_by_label()
+        self.click_to_filter_by(PoolPageLocators.F_LABEL)
         # filtering
         if self.is_element_present(*locator_label):
             _ = self.browser.find_element(*locator_label).click()
@@ -128,25 +135,25 @@ class PoolPage(BasePage):
     """Reset filter by label [Internal/External/Blacklist]"""
     def reset_filter_label(self):
         # open filter
-        self.click_to_filter_by_label()
+        self.click_to_filter_by(PoolPageLocators.F_LABEL)
         # resetting
-        if self.is_element_clickable(*PoolPageLocators.F_LABEL_RESET):
+        if self.browser.find_element(*PoolPageLocators.F_LABEL_RESET).is_enabled():
             self.browser.find_element(*PoolPageLocators.F_LABEL_RESET).click()
         else:
             raise AssertionError("Reset button is disabled after filtering")
         # checking that reset is disabled
-        self.click_to_filter_by_label()
-        if not self.is_element_clickable(*PoolPageLocators.F_LABEL_RESET):
+        self.click_to_filter_by(PoolPageLocators.F_LABEL)
+        if not self.browser.find_element(*PoolPageLocators.F_LABEL_RESET).is_enabled():
             return True
         else:
             raise AssertionError(f"Filter by label hasn't reset")
 
-    """Click to filter by type [Internal]"""
-    def click_to_filter_by_type(self):
-        if self.is_element_clickable(*PoolPageLocators.F_TYPE_i):
-            self.browser.find_element(*PoolPageLocators.F_TYPE_i).click()
-        else:
-            raise AssertionError("Filter by type doesn't clickable")
+    # """Click to filter by type [Internal]"""
+    # def click_to_filter_by_type(self):
+    #     if self.is_element_clickable(*PoolPageLocators.F_TYPE_i):
+    #         self.browser.find_element(*PoolPageLocators.F_TYPE_i).click()
+    #     else:
+    #         raise AssertionError("Filter by type doesn't clickable")
 
     """Filter by type [Internal]"""
     def filter_type(self, person_type):
@@ -162,7 +169,7 @@ class PoolPage(BasePage):
             raise AssertionError("Please specify as internal person types - 'Long-term', 'Contractor', 'Short-term'")
         print(f"Filtering by type")
         # Open filter by type
-        self.click_to_filter_by_type()
+        self.click_to_filter_by(PoolPageLocators.F_TYPE_i)
         # Filtering
         if self.is_element_present(*locator_type):
             _ = self.browser.find_element(*locator_type).click()
@@ -179,15 +186,15 @@ class PoolPage(BasePage):
     """Reset filter by person type [Internal]"""
     def reset_filter_type(self):
         # open filter
-        self.click_to_filter_by_type()
+        self.click_to_filter_by(PoolPageLocators.F_TYPE_i)
         # resetting
-        if self.is_element_clickable(*PoolPageLocators.F_TYPE_RESET):
+        if self.browser.find_element(*PoolPageLocators.F_TYPE_RESET).is_enabled():
             self.browser.find_element(*PoolPageLocators.F_TYPE_RESET).click()
         else:
             raise AssertionError("Reset button is disabled after filtering")
         # checking that reset is disabled
-        self.click_to_filter_by_type()
-        if not self.is_element_clickable(*PoolPageLocators.F_TYPE_RESET):
+        self.click_to_filter_by(PoolPageLocators.F_TYPE_i)
+        if not self.browser.find_element(*PoolPageLocators.F_TYPE_RESET).is_enabled():
             return True
         else:
             raise AssertionError(f"Filter by type hasn't reset")

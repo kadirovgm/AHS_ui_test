@@ -60,7 +60,7 @@ class BasePage:
                 assert f"{field} field is NOT present!"
 
     """Is element clickable"""
-    def is_element_clickable(self, how, what, timeout=2):
+    def is_element_clickable(self, how, what, timeout=1):
         try:
             WebDriverWait(self.browser, timeout).until(EC.element_to_be_clickable((how, what)))
         except TimeoutException:
