@@ -5,10 +5,6 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 import time
 
-# TODO For future:
-# class PoolPageCommonActions
-# class PoolPageInternal, PoolPageExternal, PoolPageBlacklist
-
 
 class PoolPage(BasePage):
     """Correct Pool page"""
@@ -70,13 +66,169 @@ class PoolPage(BasePage):
     def go_to_blacklist_tab(self):
         _ = self.browser.find_element(*PoolPageLocators.BLACKLIST_TAB).click()
 
+    """[FILTERING] Check Filter by label [All tabs]"""
+    def filter_label(self, label, tab):
+        locator_label_select = ...
+        if label == "Bench" and tab == "Internal":
+            locator_label_select = PoolPageLocators.F_LABEL_i_bench
+        elif label == "Pre-offer" and tab == "External":
+            locator_label_select = PoolPageLocators.F_LABEL_e_PRE_OFFER
+        elif label == "Dismiss" and tab == "External":
+            locator_label_select = PoolPageLocators.F_LABEL_e_Dismiss
+        elif label == "Dismiss" and tab == "Blacklist":
+            locator_label_select = PoolPageLocators.F_LABEL_b_Dismiss
+        else:
+            raise AssertionError("Please specify as label - 'Bench', 'Pre-offer', 'Dismiss'")
+
+        # Common for all tabs locators
+        locator_label_filter = PoolPageLocators.F_LABEL
+        locator_label_ok = PoolPageLocators.F_LABEL_OK
+        locator_label_expected = PoolPageLocators.FIRST_PERSON_LABEL
+
+        # open filter
+        self.click_to_filter_by(locator_label_filter)
+
+        # filtering
+        if self.is_element_present(*locator_label_select):
+            _ = self.browser.find_element(*locator_label_select).click()
+        else:
+            raise AssertionError(f"There is no {label} label")
+        _ = self.browser.find_element(*locator_label_ok).click()
+
+        # check filtering (label, expected label)
+        self.is_filter_works(label, locator_label_expected)
+
+    """[FILTERING]  Reset filter by label [All tabs]"""
+    def reset_filter_label(self):
+        label_filter_locator = PoolPageLocators.F_LABEL
+        reset_locator = PoolPageLocators.F_LABEL_RESET
+        self.is_filter_reset(label_filter_locator, reset_locator)
+
+    """[FILTERING] Check Filter by type [Internal]"""
+    def filter_type_internal(self, person_type):
+        """ Only for internal tab"""
+        locator_type = ...
+        if person_type == "Long-term":
+            locator_type = PoolPageLocators.F_TYPE_i_LONG_TERM
+        elif person_type == "Contractor":
+            locator_type = PoolPageLocators.F_TYPE_i_CONTRACTOR
+        elif person_type == "Short-term":
+            locator_type = PoolPageLocators.F_TYPE_i_SHORT_TERM
+        else:
+            raise AssertionError("Please specify as internal person types - 'Long-term', 'Contractor', 'Short-term'")
+
+        # Open filter by type
+        self.click_to_filter_by(PoolPageLocators.F_TYPE_i)
+
+        # Filtering
+        if self.is_element_present(*locator_type):
+            _ = self.browser.find_element(*locator_type).click()
+        else:
+            raise AssertionError(f"There is no {person_type} label")
+        _ = self.browser.find_element(*PoolPageLocators.F_TYPE_i_OK).click()
+
+        # check filtering
+        self.is_filter_works(person_type, PoolPageLocators.FIRST_PERSON_TYPE_i)
+
+    """[FILTERING] Reset filter by person type [Internal]"""
+    def reset_filter_type_internal(self):
+        type_filter_locator = PoolPageLocators.F_TYPE_i
+        reset_locator = PoolPageLocators.F_TYPE_i_RESET
+        self.is_filter_reset(type_filter_locator, reset_locator)
+
+    """[FILTERING] Check Filter by role [All tabs]"""
+    def filter_role_internal(self, role, tab):
+        if tab == "Internal":
+            role_filter = PoolPageLocators.F_ROLE_i
+            role_select = PoolPageLocators.F_ROLE_i_SELECT
+            role_ok = PoolPageLocators.F_ROLE_i_OK
+            expected_role = PoolPageLocators.FIRST_PERSON_ROLE_i
+        elif tab == "External" or tab == "Blacklist":
+            role_filter = PoolPageLocators.F_ROLE_e
+            role_select = PoolPageLocators.F_ROLE_e_SELECT
+            role_ok = PoolPageLocators.F_ROLE_e_OK
+            expected_role = PoolPageLocators.FIRST_PERSON_ROLE_e
+        else:
+            raise AssertionError("Incorrect tab-name, please specify as: 'Internal', 'External' or 'Blacklist'")
+        # Open filter by role
+        self.click_to_filter_by(role_filter)
+        # Filtering
+        if self.is_element_present(*role_select):
+            role_input = self.browser.find_element(*role_select)
+            role_input.send_keys(role, Keys.ENTER)
+        else:
+            raise AssertionError(f"There is no input for filtering by role")
+        _ = self.browser.find_element(*role_ok).click()
+        # Check filtering
+        self.is_filter_works(role, expected_role)
+
+    """[FILTERING] Reset Filter by role [All tabs]"""
+    def reset_filter_role(self, tab):
+        if tab == "Internal":
+            role_filter_locator = PoolPageLocators.F_ROLE_i
+            reset_locator = PoolPageLocators.F_ROLE_i_RESET
+        elif tab == "External" or tab == "Blacklist":
+            role_filter_locator = PoolPageLocators.F_ROLE_e
+            reset_locator = PoolPageLocators.F_ROLE_e_RESET
+        else:
+            raise AssertionError("Incorrect tab-name, please specify as: 'Internal', 'External' or 'Blacklist'")
+
+        self.is_filter_reset(role_filter_locator, reset_locator)
+
+    """[FILTERING] Filter by Skills [All tabs]"""
+    def filter_skills_internal(self, skill, tab, loading_time=0.7):
+        if tab == "Internal":
+            skill_filter = PoolPageLocators.F_SKILLS_i
+            expected_skill = PoolPageLocators.FIRST_PERSON_SKILL_i
+        elif tab == "External" or tab == "Blacklist":
+            skill_filter = PoolPageLocators.F_SKILLS_e
+            expected_skill = PoolPageLocators.FIRST_PERSON_SKILL_e
+        else:
+            raise AssertionError("Incorrect tab-name, please specify as: 'Internal', 'External' or 'Blacklist'")
+        # Common for all tabs locators
+        skill_select = PoolPageLocators.F_SKILLS_SELECT
+        grade_select = PoolPageLocators.F_GRADE_SELECT
+        skill_ok = PoolPageLocators.F_SKILLS_OK
+
+        # Open filter by skills
+        self.click_to_filter_by(skill_filter)
+        # Filtering
+        if self.are_elements_present({skill_select, grade_select}):
+            skill_input = self.browser.find_element(*skill_select)
+            skill_input.send_keys(skill)
+            time.sleep(loading_time)
+            skill_input.send_keys(Keys.ENTER)
+
+            grade = self.browser.find_element(*grade_select)
+            ActionChains(self.browser).move_to_element(grade).click(grade).send_keys(Keys.DOWN + Keys.ENTER).perform()
+        else:
+            raise AssertionError(f"There is no input for filtering by Skill and Grade")
+        _ = self.browser.find_element(*skill_ok).click()
+
+        # Check filtering
+        self.is_filter_works(skill, expected_skill)
+
+    """[FILTERING] Reset filter by skills [All tabs]"""
+    def reset_filter_skills(self, tab):
+        if tab == "Internal":
+            skill_filter_locator = PoolPageLocators.F_SKILLS_i
+        elif tab == "External" or tab == "Blacklist":
+            skill_filter_locator = PoolPageLocators.F_SKILLS_e
+        else:
+            raise AssertionError("Incorrect tab-name, please specify as: 'Internal', 'External' or 'Blacklist'")
+        reset_locator = PoolPageLocators.F_SKILLS_RESET
+        self.is_filter_reset(skill_filter_locator, reset_locator)
+
+    #### Additional methods for filtering ####
+
     """*Searching in pool*"""
     def search_for_person(self, first_name, second_name):
         print(f"Searching for {first_name} {second_name} in Pool->External")
         if self.is_element_present(*PoolPageLocators.FIRST_PERSON):
-            _ = self.browser.find_element(*PoolPageLocators.SEARCH_NAME).send_keys(first_name+" "+second_name)
+            _ = self.browser.find_element(*PoolPageLocators.SEARCH_NAME).send_keys(first_name + " " + second_name)
             if self.waiting_for_element_present(*PoolPageLocators.FIRST_PERSON):
-                assert self.browser.find_element(*PoolPageLocators.FIRST_PERSON_NAME).text == first_name+" "+second_name, \
+                assert self.browser.find_element(
+                    *PoolPageLocators.FIRST_PERSON_NAME).text == first_name + " " + second_name, \
                     "The results don't match the search! Searching does not work!"
             else:
                 raise AssertionError("Page hasn't loaded or there is no such person")
@@ -98,7 +250,7 @@ class PoolPage(BasePage):
         else:
             raise AssertionError(f"Filter by {filter_locator} doesn't clickable")
 
-    """*Check that filter works*"""
+    """*Check that filter works [All tabs]*"""
     def is_filter_works(self, filter_object, expected_locator):
         if self.waiting_for_element_present(*PoolPageLocators.FIRST_PERSON):
             assert self.browser.find_element(*expected_locator).text == filter_object, \
@@ -124,115 +276,6 @@ class PoolPage(BasePage):
             return True
         else:
             raise AssertionError(f"Error - Filter hasn't reset")
-
-    """Filtering"""
-    """Universal filter by label [Internal/External/Blacklist]"""
-    def filter_label(self, label, tab=0):
-        print(f"Filtering by label {label}")
-        locator_label = ...
-        if label == "Bench":
-            locator_label = PoolPageLocators.F_LABEL_i_bench
-        elif label == "Pre-offer":
-            locator_label = PoolPageLocators.F_LABEL_e_PRE_OFFER
-        elif label == "Dismiss":
-            locator_label = PoolPageLocators.F_LABEL_e_Dismiss
-        elif label == "Dismiss" and tab == "Blacklist":
-            locator_label = PoolPageLocators.F_LABEL_b_Dismiss
-        else:
-            raise AssertionError("Please specify as label - 'Bench', 'Pre-offer', 'Dismiss'")
-        # open filter
-        self.click_to_filter_by(PoolPageLocators.F_LABEL)
-        # filtering
-        if self.is_element_present(*locator_label):
-            _ = self.browser.find_element(*locator_label).click()
-        else:
-            raise AssertionError(f"There is no {label} label")
-        _ = self.browser.find_element(*PoolPageLocators.F_LABEL_OK).click()
-
-        # check filtering (label, expected label)
-        self.is_filter_works(label, PoolPageLocators.FIRST_PERSON_LABEL)
-
-    """Reset filter by label [Internal/External/Blacklist]"""
-    def reset_filter_label(self):
-        label_filter_locator = PoolPageLocators.F_LABEL
-        reset_locator = PoolPageLocators.F_LABEL_RESET
-        self.is_filter_reset(label_filter_locator, reset_locator)
-
-    """Filter by type [Internal]"""
-    def filter_type_internal(self, person_type):
-        """ Only for internal tab"""
-        locator_type = ...
-        if person_type == "Long-term":
-            locator_type = PoolPageLocators.F_TYPE_i_LONG_TERM
-        elif person_type == "Contractor":
-            locator_type = PoolPageLocators.F_TYPE_i_CONTRACTOR
-        elif person_type == "Short-term":
-            locator_type = PoolPageLocators.F_TYPE_i_SHORT_TERM
-        else:
-            raise AssertionError("Please specify as internal person types - 'Long-term', 'Contractor', 'Short-term'")
-        print(f"Filtering by type")
-        # Open filter by type
-        self.click_to_filter_by(PoolPageLocators.F_TYPE_i)
-        # Filtering
-        if self.is_element_present(*locator_type):
-            _ = self.browser.find_element(*locator_type).click()
-        else:
-            raise AssertionError(f"There is no {person_type} label")
-        _ = self.browser.find_element(*PoolPageLocators.F_TYPE_i_OK).click()
-        # check filtering
-        self.is_filter_works(person_type, PoolPageLocators.FIRST_PERSON_TYPE)
-
-    """Reset filter by person type [Internal]"""
-    def reset_filter_type_internal(self):
-        type_filter_locator = PoolPageLocators.F_TYPE_i
-        reset_locator = PoolPageLocators.F_TYPE_RESET
-        self.is_filter_reset(type_filter_locator, reset_locator)
-
-    """Filter by role [Internal]"""
-    def filter_role_internal(self, role):
-        # Open filter by role
-        self.click_to_filter_by(PoolPageLocators.F_ROLE_i)
-        # Filtering
-        if self.is_element_present(*PoolPageLocators.F_ROLE_i_SELECT):
-            role_input = self.browser.find_element(*PoolPageLocators.F_ROLE_i_SELECT)
-            role_input.send_keys(role, Keys.ENTER)
-        else:
-            raise AssertionError(f"There is no input for filtering by role")
-        _ = self.browser.find_element(*PoolPageLocators.F_ROLE_i_OK).click()
-        # Check filtering
-        self.is_filter_works(role, PoolPageLocators.FIRST_PERSON_ROLE)
-
-    """Reset Filter by role"""
-    def reset_filter_role(self):
-        role_filter_locator = PoolPageLocators.F_ROLE_i
-        reset_locator = PoolPageLocators.F_ROLE_i_RESET
-        self.is_filter_reset(role_filter_locator, reset_locator)
-
-    """Filter by Skills"""
-    def filter_skills_internal(self, skill, loading_time=0.7):
-        # Open filter by skills
-        self.click_to_filter_by(PoolPageLocators.F_SKILLS_i)
-        # Filtering
-        if self.are_elements_present({PoolPageLocators.F_SKILLS_i_SELECT, PoolPageLocators.F_GRADE_i_SELECT}):
-            skill_input = self.browser.find_element(*PoolPageLocators.F_SKILLS_i_SELECT)
-            skill_input.send_keys(skill)
-            time.sleep(loading_time)
-            skill_input.send_keys(Keys.ENTER)
-
-            grade = self.browser.find_element(*PoolPageLocators.F_GRADE_i_SELECT)
-            ActionChains(self.browser).move_to_element(grade).click(grade).send_keys(Keys.DOWN + Keys.ENTER).perform()
-        else:
-            raise AssertionError(f"There is no input for filtering by Skill and Grade")
-        _ = self.browser.find_element(*PoolPageLocators.F_SKILLS_i_OK).click()
-
-        # Check filtering
-        self.is_filter_works(skill, PoolPageLocators.FIRST_PERSON_SKILL)
-
-    """Reset filter by skills"""
-    def reset_filter_skills(self):
-        skill_filter_locator = PoolPageLocators.F_SKILLS_i
-        reset_locator = PoolPageLocators.F_SKILLS_i_RESET
-        self.is_filter_reset(skill_filter_locator, reset_locator)
 
 
 
