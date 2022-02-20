@@ -227,7 +227,7 @@ class PoolPage(BasePage):
             ActionChains(self.browser).move_to_element(grade).click(grade).send_keys(Keys.DOWN + Keys.ENTER).perform()
         else:
             raise AssertionError(f"There is no input for filtering by Skill and Grade")
-        _ = self.browser.find_element(*PoolPageLocators.F_ROLE_i_OK).click()
+        _ = self.browser.find_element(*PoolPageLocators.F_SKILLS_i_OK).click()
 
         # Check filtering
         if self.waiting_for_element_present(*PoolPageLocators.FIRST_PERSON):
@@ -235,6 +235,12 @@ class PoolPage(BasePage):
                 f"Incorrect filtering by person skill: {skill}"
         else:
             raise AssertionError(f"Probably there is no person with skill: {skill}")
+
+    """Reset filter by skills"""
+    def reset_filter_skills(self):
+        skill_filter_locator = PoolPageLocators.F_SKILLS_i
+        reset_locator = PoolPageLocators.F_SKILLS_i_RESET
+        self.is_filter_reset(skill_filter_locator, reset_locator)
 
 
 

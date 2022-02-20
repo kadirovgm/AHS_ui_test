@@ -48,6 +48,8 @@ class PoolPageLocators:
     F_SKILLS_i = (By.XPATH, "/html/body/div[1]/section/section/main/div/div[2]/div/div/div/div/div/div/table/thead/tr/th[4]/div/span[2]/span")
     F_SKILLS_i_SELECT = (By.CSS_SELECTOR, "#rc_select_0")
     F_GRADE_i_SELECT = (By.CSS_SELECTOR, "#rc_select_1")
+    F_SKILLS_i_RESET = (By.XPATH, "/html/body/div[2]/div/div/div/div[2]/button[1]")
+    F_SKILLS_i_OK = (By.XPATH, "/html/body/div[2]/div/div/div/div[2]/button[2]")
     F_CITY_i = (By.XPATH, "/html/body/div[1]/section/section/main/div/div[2]/div/div/div/div/div/div/table/thead/tr/th[5]/div/span[2]/span")
     F_OFFICE_i = (By.XPATH, "/html/body/div[1]/section/section/main/div/div[2]/div/div/div/div/div/div/table/thead/tr/th[6]/div/span[2]/span")
     F_ENG_i = (By.XPATH, "/html/body/div[1]/section/section/main/div/div[2]/div/div/div/div/div/div/table/thead/tr/th[7]/div/span[2]/span")

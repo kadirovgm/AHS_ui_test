@@ -109,8 +109,7 @@ class TestPoolPageInternalFiltering:
         internal = PoolPage(browser, Urls.POOL_INTERNAL)
         internal.open()
         internal.filter_skills_internal("python")
-        time.sleep(1)
-
+        internal.reset_filter_skills()
 
     @pytest.mark.skip
     def test_filter_in_search_by_city(self, browser):
