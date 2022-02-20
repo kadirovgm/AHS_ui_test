@@ -81,23 +81,22 @@ class PoolPage(BasePage):
         else:
             raise AssertionError("There is no Person suitable for search!")
 
-    """Clear filters"""
+    """Clear filters [All tabs]"""
     def clear_filters(self):
         _ = self.browser.find_element(*PoolPageLocators.CLEAR_FILTERS).click()
         if self.waiting_for_element_present(*PoolPageLocators.FIRST_PERSON):
             return True
 
-    """Click to filter by label (All tabs)"""
+    """Click to filter by label [All tabs]"""
     def click_to_filter_by_label(self):
         if self.is_element_clickable(*PoolPageLocators.F_LABEL):
             self.browser.find_element(*PoolPageLocators.F_LABEL).click()
         else:
-            assert "Filter by label doesn't clickable"
+            raise AssertionError("Filter by label doesn't clickable")
 
     """Filtering"""
-    """Universal filter by label"""
+    """Universal filter by label [Internal/External/Blacklist]"""
     def filter_label(self, label, tab_key=0):
-        """For Internal/External/Blacklist tabs"""
         print(f"Filtering by label {label}")
         locator_label = ...
         if label == "Bench":
@@ -109,7 +108,7 @@ class PoolPage(BasePage):
         elif label == "Dismiss" and tab_key == "Blacklist":
             locator_label = PoolPageLocators.F_LABEL_b_Dismiss
         else:
-            assert "Please specify as label - 'Bench', 'Pre-offer', 'Dismiss'"
+            raise AssertionError("Please specify as label - 'Bench', 'Pre-offer', 'Dismiss'")
 
         # open filter
         self.click_to_filter_by_label()
@@ -117,16 +116,16 @@ class PoolPage(BasePage):
         if self.is_element_present(*locator_label):
             _ = self.browser.find_element(*locator_label).click()
         else:
-            assert f"There is no {label} label"
+            raise AssertionError(f"There is no {label} label")
         _ = self.browser.find_element(*PoolPageLocators.F_LABEL_OK).click()
         # check filtering
         if self.waiting_for_element_present(*PoolPageLocators.FIRST_PERSON):
             assert self.browser.find_element(*PoolPageLocators.FIRST_PERSON_LABEL).text == label, \
                 f"Incorrect filtering by label {label}"
         else:
-            assert f"Probably there is no person with label: {label}"
+            raise AssertionError(f"Probably there is no person with label: {label}")
 
-    """Reset filter by label"""
+    """Reset filter by label [Internal/External/Blacklist]"""
     def reset_filter_label(self):
         # open filter
         self.click_to_filter_by_label()
@@ -134,22 +133,22 @@ class PoolPage(BasePage):
         if self.is_element_clickable(*PoolPageLocators.F_LABEL_RESET):
             self.browser.find_element(*PoolPageLocators.F_LABEL_RESET).click()
         else:
-            assert "Reset button is disabled after filtering"
+            raise AssertionError("Reset button is disabled after filtering")
         # checking that reset is disabled
         self.click_to_filter_by_label()
         if not self.is_element_clickable(*PoolPageLocators.F_LABEL_RESET):
             return True
         else:
-            assert f"Filter by label hasn't reset"
+            raise AssertionError(f"Filter by label hasn't reset")
 
-    """Click to filter by type (Internal)"""
+    """Click to filter by type [Internal]"""
     def click_to_filter_by_type(self):
         if self.is_element_clickable(*PoolPageLocators.F_TYPE_i):
             self.browser.find_element(*PoolPageLocators.F_TYPE_i).click()
         else:
-            assert "Filter by type doesn't clickable"
+            raise AssertionError("Filter by type doesn't clickable")
 
-    """Filter by type (internal persons)"""
+    """Filter by type [Internal]"""
     def filter_type(self, person_type):
         """ Only for internal tab"""
         locator_type = ...
@@ -160,7 +159,7 @@ class PoolPage(BasePage):
         elif person_type == "Short-term":
             locator_type = PoolPageLocators.F_TYPE_i_SHORT_TERM
         else:
-            assert "Please specify as internal person types - 'Long-term', 'Contractor', 'Short-term'"
+            raise AssertionError("Please specify as internal person types - 'Long-term', 'Contractor', 'Short-term'")
         print(f"Filtering by type")
         # Open filter by type
         self.click_to_filter_by_type()
@@ -168,16 +167,16 @@ class PoolPage(BasePage):
         if self.is_element_present(*locator_type):
             _ = self.browser.find_element(*locator_type).click()
         else:
-            assert f"There is no {person_type} label"
+            raise AssertionError(f"There is no {person_type} label")
         _ = self.browser.find_element(*PoolPageLocators.F_TYPE_i_OK).click()
         # check filtering
         if self.waiting_for_element_present(*PoolPageLocators.FIRST_PERSON):
             assert self.browser.find_element(*PoolPageLocators.FIRST_PERSON_TYPE).text == person_type, \
                 f"Incorrect filtering by person type: {person_type}"
         else:
-            assert f"Probably there is no person with type: {person_type}"
+            raise AssertionError(f"Probably there is no person with type: {person_type}")
 
-    """Reset filter by person type"""
+    """Reset filter by person type [Internal]"""
     def reset_filter_type(self):
         # open filter
         self.click_to_filter_by_type()
@@ -185,13 +184,18 @@ class PoolPage(BasePage):
         if self.is_element_clickable(*PoolPageLocators.F_TYPE_RESET):
             self.browser.find_element(*PoolPageLocators.F_TYPE_RESET).click()
         else:
-            assert "Reset button is disabled after filtering"
+            raise AssertionError("Reset button is disabled after filtering")
         # checking that reset is disabled
         self.click_to_filter_by_type()
         if not self.is_element_clickable(*PoolPageLocators.F_TYPE_RESET):
             return True
         else:
-            assert f"Filter by type hasn't reset"
+            raise AssertionError(f"Filter by type hasn't reset")
+
+    """Filter by role [Internal, External, Blacklist]"""
+    def filter_role(self, role):
+        ...
+
 
 
 

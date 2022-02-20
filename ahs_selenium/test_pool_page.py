@@ -91,9 +91,14 @@ class TestPoolPageInternalFiltering:
         internal.filter_type(person_type)
         internal.reset_filter_type()
 
-    @pytest.mark.skip
-    def test_filter_in_search_by_role(self, browser):
-        ...
+
+    """Filter by Role"""
+    @pytest.mark.parametrize('role',
+                             ("SDET", "HR Director"))
+    def test_filter_in_search_by_role(self, browser, role):
+        internal = PoolPage(browser, browser.current_url)
+        internal.open()
+        internal.filter_role(role)
 
     @pytest.mark.skip
     def test_filter_in_search_by_skills(self, browser):
