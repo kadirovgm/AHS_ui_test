@@ -98,6 +98,14 @@ class PoolPage(BasePage):
         else:
             raise AssertionError(f"Filter by {filter_locator} doesn't clickable")
 
+    """*Check that filter works*"""
+    def is_filter_works(self, filter_object, expected_locator):
+        if self.waiting_for_element_present(*PoolPageLocators.FIRST_PERSON):
+            assert self.browser.find_element(*expected_locator).text == filter_object, \
+                f"Incorrect filtering by {str(filter_object)}: {filter_object}"
+        else:
+            raise AssertionError(f"Probably there is no person with {str(filter_object)}: {filter_object}")
+
     """*Reset any filters [All tabs]*"""
     def is_filter_reset(self, filter_locator, reset_locator):
         # open filter
@@ -119,7 +127,7 @@ class PoolPage(BasePage):
 
     """Filtering"""
     """Universal filter by label [Internal/External/Blacklist]"""
-    def filter_label(self, label, tab_key=0):
+    def filter_label(self, label, tab=0):
         print(f"Filtering by label {label}")
         locator_label = ...
         if label == "Bench":
@@ -128,11 +136,10 @@ class PoolPage(BasePage):
             locator_label = PoolPageLocators.F_LABEL_e_PRE_OFFER
         elif label == "Dismiss":
             locator_label = PoolPageLocators.F_LABEL_e_Dismiss
-        elif label == "Dismiss" and tab_key == "Blacklist":
+        elif label == "Dismiss" and tab == "Blacklist":
             locator_label = PoolPageLocators.F_LABEL_b_Dismiss
         else:
             raise AssertionError("Please specify as label - 'Bench', 'Pre-offer', 'Dismiss'")
-
         # open filter
         self.click_to_filter_by(PoolPageLocators.F_LABEL)
         # filtering
@@ -141,12 +148,9 @@ class PoolPage(BasePage):
         else:
             raise AssertionError(f"There is no {label} label")
         _ = self.browser.find_element(*PoolPageLocators.F_LABEL_OK).click()
-        # check filtering
-        if self.waiting_for_element_present(*PoolPageLocators.FIRST_PERSON):
-            assert self.browser.find_element(*PoolPageLocators.FIRST_PERSON_LABEL).text == label, \
-                f"Incorrect filtering by label {label}"
-        else:
-            raise AssertionError(f"Probably there is no person with label: {label}")
+
+        # check filtering (label, expected label)
+        self.is_filter_works(label, PoolPageLocators.FIRST_PERSON_LABEL)
 
     """Reset filter by label [Internal/External/Blacklist]"""
     def reset_filter_label(self):
@@ -176,11 +180,7 @@ class PoolPage(BasePage):
             raise AssertionError(f"There is no {person_type} label")
         _ = self.browser.find_element(*PoolPageLocators.F_TYPE_i_OK).click()
         # check filtering
-        if self.waiting_for_element_present(*PoolPageLocators.FIRST_PERSON):
-            assert self.browser.find_element(*PoolPageLocators.FIRST_PERSON_TYPE).text == person_type, \
-                f"Incorrect filtering by person type: {person_type}"
-        else:
-            raise AssertionError(f"Probably there is no person with type: {person_type}")
+        self.is_filter_works(person_type, PoolPageLocators.FIRST_PERSON_TYPE)
 
     """Reset filter by person type [Internal]"""
     def reset_filter_type_internal(self):
@@ -200,11 +200,7 @@ class PoolPage(BasePage):
             raise AssertionError(f"There is no input for filtering by role")
         _ = self.browser.find_element(*PoolPageLocators.F_ROLE_i_OK).click()
         # Check filtering
-        if self.waiting_for_element_present(*PoolPageLocators.FIRST_PERSON):
-            assert self.browser.find_element(*PoolPageLocators.FIRST_PERSON_ROLE).text == role, \
-                f"Incorrect filtering by person role: {role}"
-        else:
-            raise AssertionError(f"Probably there is no person with role: {role}")
+        self.is_filter_works(role, PoolPageLocators.FIRST_PERSON_ROLE)
 
     """Reset Filter by role"""
     def reset_filter_role(self):
@@ -230,11 +226,7 @@ class PoolPage(BasePage):
         _ = self.browser.find_element(*PoolPageLocators.F_SKILLS_i_OK).click()
 
         # Check filtering
-        if self.waiting_for_element_present(*PoolPageLocators.FIRST_PERSON):
-            assert self.browser.find_element(*PoolPageLocators.FIRST_PERSON_SKILL).text == skill, \
-                f"Incorrect filtering by person skill: {skill}"
-        else:
-            raise AssertionError(f"Probably there is no person with skill: {skill}")
+        self.is_filter_works(skill, PoolPageLocators.FIRST_PERSON_SKILL)
 
     """Reset filter by skills"""
     def reset_filter_skills(self):
