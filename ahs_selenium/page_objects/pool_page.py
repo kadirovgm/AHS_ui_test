@@ -264,6 +264,41 @@ class PoolPage(BasePage):
         reset_locator = PoolPageLocators.F_CITY_RESET
         self.is_filter_reset(city_filter_locator, reset_locator)
 
+    """[Filtering] Filter by office [All tabs]"""
+    def filter_office(self, office, tab):
+        if tab == "Internal":
+            office_filter = PoolPageLocators.F_OFFICE_i
+            expected_office = PoolPageLocators.FIRST_PERSON_OFFICE_i
+        elif tab == "External" or tab == "Blacklist":
+            office_filter = PoolPageLocators.F_OFFICE_e
+            expected_office = PoolPageLocators.FIRST_PERSON_OFFICE_e
+        else:
+            raise AssertionError("Incorrect tab-name, please specify as: 'Internal', 'External' or 'Blacklist'")
+        office_select = PoolPageLocators.F_OFFICE_SELECT
+        office_ok = PoolPageLocators.F_OFFICE_OK
+        # Open filter by role
+        self.click_to_filter_by(office_filter)
+        # Filtering
+        if self.is_element_present(*office_select):
+            role_input = self.browser.find_element(*office_select)
+            role_input.send_keys(office, Keys.ENTER)
+        else:
+            raise AssertionError(f"There is no input for filtering by office")
+        _ = self.browser.find_element(*office_ok).click()
+        # Check filtering
+        self.is_filter_works(office, expected_office)
+
+    """[FILTERING] Reset filter by office [All tabs]"""
+    def reset_filter_office(self, tab):
+        if tab == "Internal":
+            office_filter_locator = PoolPageLocators.F_OFFICE_i
+        elif tab == "External" or tab == "Blacklist":
+            office_filter_locator = PoolPageLocators.F_OFFICE_e
+        else:
+            raise AssertionError("Incorrect tab-name, please specify as: 'Internal', 'External' or 'Blacklist'")
+        reset_locator = PoolPageLocators.F_OFFICE_RESET
+        self.is_filter_reset(office_filter_locator, reset_locator)
+
     #### Additional methods for filtering ####
 
     """*Searching in pool*"""

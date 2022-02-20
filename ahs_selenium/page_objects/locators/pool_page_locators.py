@@ -21,6 +21,8 @@ class PoolPageLocators:
     FIRST_PERSON_SKILL_e = (By.CSS_SELECTOR, "#root > section > section > main > div > div:nth-child(2) > div > div > div > div > div > div > table > tbody > tr:nth-child(1) > td:nth-child(3) > div > div > span.ant-typography.sc-AxgMl.sc-qWfCM.bIuCUl")
     FIRST_PERSON_CITY_i = (By.CSS_SELECTOR, "#root > section > section > main > div > div:nth-child(2) > div > div > div > div > div > div > table > tbody > tr:nth-child(1) > td:nth-child(5)")
     FIRST_PERSON_CITY_e = (By.CSS_SELECTOR, "#root > section > section > main > div > div:nth-child(2) > div > div > div > div > div > div > table > tbody > tr:nth-child(1) > td:nth-child(4)")
+    FIRST_PERSON_OFFICE_i = (By.CSS_SELECTOR, "#root > section > section > main > div > div:nth-child(2) > div > div > div > div > div > div > table > tbody > tr:nth-child(1) > td:nth-child(6)")
+    FIRST_PERSON_OFFICE_e = (By.CSS_SELECTOR, "#root > section > section > main > div > div:nth-child(2) > div > div > div > div > div > div > table > tbody > tr:nth-child(1) > td:nth-child(5)")
 
     """Internal fields"""
     NAME_i = (By.XPATH, "/html/body/div[1]/section/section/main/div/div[2]/div/div/div/div/div/div/table/thead/tr/th[1]/div/span[1]")
@@ -60,6 +62,9 @@ class PoolPageLocators:
     F_CITY_OK = (By.XPATH, "/html/body/div[2]/div/div/div/div[2]/button[2]")
     F_CITY_RESET = (By.XPATH, "/html/body/div[2]/div/div/div/div[2]/button[1]")
     F_OFFICE_i = (By.XPATH, "/html/body/div[1]/section/section/main/div/div[2]/div/div/div/div/div/div/table/thead/tr/th[6]/div/span[2]/span")
+    F_OFFICE_SELECT = (By.CSS_SELECTOR, "#rc_select_0")
+    F_OFFICE_OK = (By.XPATH, "/html/body/div[2]/div/div/div/div[2]/button[2]")
+    F_OFFICE_RESET = (By.XPATH, "/html/body/div[2]/div/div/div/div[2]/button[1]")
     F_ENG_i = (By.XPATH, "/html/body/div[1]/section/section/main/div/div[2]/div/div/div/div/div/div/table/thead/tr/th[7]/div/span[2]/span")
     F_VISA_i = (By.XPATH, "/html/body/div[1]/section/section/main/div/div[2]/div/div/div/div/div/div/table/thead/tr/th[8]/div/span[2]/span")
     F_ACTIVE_I = (By.XPATH, "/html/body/div[1]/section/section/main/div/div[2]/div/div/div/div/div/div/table/thead/tr/th[9]/div/span[2]/span")
