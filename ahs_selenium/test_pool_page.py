@@ -62,43 +62,46 @@ class TestPoolPageInternalFiltering:
     @pytest.fixture(scope="class", autouse=True)
     def setup(self, browser):
         Setup.setup_help(browser, browser)
-        internal = PoolPage(browser, Urls.POOL_INTERNAL)
-        internal.open()
 
     """Test searching"""
+    @pytest.mark.skip
     def test_internal_search(self, browser):
-        internal = PoolPage(browser, browser.current_url)
+        internal = PoolPage(browser, Urls.POOL_INTERNAL)
+        internal.open()
         internal.search_for_person(FixturesInternalPerson.first_name, FixturesInternalPerson.last_name)
-        internal.clear_filters()
 
     """Bench label filtering"""
+    @pytest.mark.skip
     def test_filter_by_label(self, browser):
-        internal = PoolPage(browser, browser.current_url)
+        internal = PoolPage(browser, Urls.POOL_INTERNAL)
+        internal.open()
         internal.filter_label("Bench")
 
-    """Reset Filtering by label"""
+    """Reset Filtering by label (depends on filtering)"""
+    @pytest.mark.skip
     def test_reset_filter_by_label(self, browser):
         internal = PoolPage(browser, browser.current_url)
         internal.reset_filter_label()
 
     """Filtering by type"""
+    @pytest.mark.skip
     @pytest.mark.parametrize('person_type',
                              ("Long-term", "Contractor", "Short-term"))
     def test_filter_by_type(self, browser, person_type):
-        internal = PoolPage(browser, browser.current_url)
+        internal = PoolPage(browser, Urls.POOL_INTERNAL)
         internal.open()
         internal.clear_filters()
-        internal.filter_type(person_type)
-        internal.reset_filter_type()
+        internal.filter_type_internal(person_type)
+        internal.reset_filter_type_internal()
 
     """Filter by Role"""
-    @pytest.mark.skip
     @pytest.mark.parametrize('role',
-                             ("SDET", "HR Director"))
+                             ("SDET", "HR Manager"))
     def test_filter_in_search_by_role(self, browser, role):
-        internal = PoolPage(browser, browser.current_url)
+        internal = PoolPage(browser, Urls.POOL_INTERNAL)
         internal.open()
-        internal.filter_role(role)
+        internal.filter_role_internal(role)
+        internal.reset_filter_role()
 
     @pytest.mark.skip
     def test_filter_in_search_by_skills(self, browser):

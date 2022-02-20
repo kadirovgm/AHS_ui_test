@@ -15,6 +15,7 @@ class PoolPageLocators:
     FIRST_PERSON = (By.XPATH, "/html/body/div/section/section/main/div/div[2]/div/div/div/div/div/div/table/tbody/tr[1]/td[1]")
     FIRST_PERSON_LABEL = (By.CSS_SELECTOR, "#root > section > section > main > div > div:nth-child(2) > div > div > div > div > div > div > table > tbody > tr:nth-child(1) > td:nth-child(1) > a > div > div > span")
     FIRST_PERSON_TYPE = (By.CSS_SELECTOR, "#root > section > section > main > div > div:nth-child(2) > div > div > div > div > div > div > table > tbody > tr:nth-child(1) > td.ant-table-cell.ant-table-cell-ellipsis")
+    FIRST_PERSON_ROLE = (By.CSS_SELECTOR, "#root > section > section > main > div > div:nth-child(2) > div > div > div > div > div > div > table > tbody > tr:nth-child(1) > td:nth-child(3) > div > div > span.ant-typography.sc-AxgMl.sc-qWfCM.hHzgZA")
 
     """Internal fields"""
     NAME_i = (By.XPATH, "/html/body/div[1]/section/section/main/div/div[2]/div/div/div/div/div/div/table/thead/tr/th[1]/div/span[1]")
@@ -40,6 +41,9 @@ class PoolPageLocators:
     F_TYPE_i_OK = (By.XPATH, "/html/body/div[2]/div/div/div/div/button[2]")
     F_TYPE_RESET = (By.XPATH, "/html/body/div[2]/div/div/div/div/button[1]")
     F_ROLE_i = (By.XPATH, "/html/body/div[1]/section/section/main/div/div[2]/div/div/div/div/div/div/table/thead/tr/th[3]/div/span[2]/span")
+    F_ROLE_i_SELECT = (By.CSS_SELECTOR, "#rc_select_0")
+    F_ROLE_i_OK = (By.XPATH, "/html/body/div[2]/div/div/div/div[2]/button[2]")
+    F_ROLE_i_RESET = (By.XPATH, "/html/body/div[2]/div/div/div/div[2]/button[1]")
     F_SKILLS_i = (By.XPATH, "/html/body/div[1]/section/section/main/div/div[2]/div/div/div/div/div/div/table/thead/tr/th[4]/div/span[2]/span")
     F_CITY_i = (By.XPATH, "/html/body/div[1]/section/section/main/div/div[2]/div/div/div/div/div/div/table/thead/tr/th[5]/div/span[2]/span")
     F_OFFICE_i = (By.XPATH, "/html/body/div[1]/section/section/main/div/div[2]/div/div/div/div/div/div/table/thead/tr/th[6]/div/span[2]/span")

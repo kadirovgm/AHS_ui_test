@@ -1,6 +1,7 @@
 from .base_page import BasePage
 from .locators.pool_page_locators import PoolPageLocators
 from .locators.create_person_modal_locators import CreatePersonModalLocators
+from selenium.webdriver.common.keys import Keys
 import time
 
 # TODO For future:
@@ -81,25 +82,36 @@ class PoolPage(BasePage):
         else:
             raise AssertionError("There is no Person suitable for search!")
 
-    """Clear filters [All tabs]"""
+    """*Clear filters [All tabs]*"""
     def clear_filters(self):
         _ = self.browser.find_element(*PoolPageLocators.CLEAR_FILTERS).click()
+        # check that filters was reset
         if self.waiting_for_element_present(*PoolPageLocators.FIRST_PERSON):
             return True
 
-    """Clicking to filters in Pool [All tabs]"""
+    """*Clicking to filters in Pool [All tabs]*"""
     def click_to_filter_by(self, filter_locator):
+        # if filter is enable - click
         if self.is_element_clickable(*filter_locator):
             self.browser.find_element(*filter_locator).click()
         else:
             raise AssertionError(f"Filter by {filter_locator} doesn't clickable")
 
-    # """Click to filter by label [All tabs]"""
-    # def click_to_filter_by_label(self):
-    #     if self.is_element_clickable(*PoolPageLocators.F_LABEL):
-    #         self.browser.find_element(*PoolPageLocators.F_LABEL).click()
-    #     else:
-    #         raise AssertionError("Filter by label doesn't clickable")
+    """Reset any filters [All tabs]"""
+    def is_filter_reset(self, filter_locator, reset_locator):
+        # open filter
+        self.click_to_filter_by(filter_locator)
+        # resetting
+        if self.browser.find_element(*reset_locator).is_enabled():
+            self.browser.find_element(*reset_locator).click()
+        else:
+            raise AssertionError("Reset button is not enabled after filtering")
+        # checking that reset is disabled
+        self.click_to_filter_by(filter_locator)
+        if not self.browser.find_element(*reset_locator).is_enabled():
+            return True
+        else:
+            raise AssertionError(f"Error - Filter hasn't reset")
 
     """Filtering"""
     """Universal filter by label [Internal/External/Blacklist]"""
@@ -134,29 +146,12 @@ class PoolPage(BasePage):
 
     """Reset filter by label [Internal/External/Blacklist]"""
     def reset_filter_label(self):
-        # open filter
-        self.click_to_filter_by(PoolPageLocators.F_LABEL)
-        # resetting
-        if self.browser.find_element(*PoolPageLocators.F_LABEL_RESET).is_enabled():
-            self.browser.find_element(*PoolPageLocators.F_LABEL_RESET).click()
-        else:
-            raise AssertionError("Reset button is disabled after filtering")
-        # checking that reset is disabled
-        self.click_to_filter_by(PoolPageLocators.F_LABEL)
-        if not self.browser.find_element(*PoolPageLocators.F_LABEL_RESET).is_enabled():
-            return True
-        else:
-            raise AssertionError(f"Filter by label hasn't reset")
-
-    # """Click to filter by type [Internal]"""
-    # def click_to_filter_by_type(self):
-    #     if self.is_element_clickable(*PoolPageLocators.F_TYPE_i):
-    #         self.browser.find_element(*PoolPageLocators.F_TYPE_i).click()
-    #     else:
-    #         raise AssertionError("Filter by type doesn't clickable")
+        label_filter_locator = PoolPageLocators.F_LABEL
+        reset_locator = PoolPageLocators.F_LABEL_RESET
+        self.is_filter_reset(label_filter_locator, reset_locator)
 
     """Filter by type [Internal]"""
-    def filter_type(self, person_type):
+    def filter_type_internal(self, person_type):
         """ Only for internal tab"""
         locator_type = ...
         if person_type == "Long-term":
@@ -184,24 +179,34 @@ class PoolPage(BasePage):
             raise AssertionError(f"Probably there is no person with type: {person_type}")
 
     """Reset filter by person type [Internal]"""
-    def reset_filter_type(self):
-        # open filter
-        self.click_to_filter_by(PoolPageLocators.F_TYPE_i)
-        # resetting
-        if self.browser.find_element(*PoolPageLocators.F_TYPE_RESET).is_enabled():
-            self.browser.find_element(*PoolPageLocators.F_TYPE_RESET).click()
-        else:
-            raise AssertionError("Reset button is disabled after filtering")
-        # checking that reset is disabled
-        self.click_to_filter_by(PoolPageLocators.F_TYPE_i)
-        if not self.browser.find_element(*PoolPageLocators.F_TYPE_RESET).is_enabled():
-            return True
-        else:
-            raise AssertionError(f"Filter by type hasn't reset")
+    def reset_filter_type_internal(self):
+        type_filter_locator = PoolPageLocators.F_TYPE_i
+        reset_locator = PoolPageLocators.F_TYPE_RESET
+        self.is_filter_reset(type_filter_locator, reset_locator)
 
-    """Filter by role [Internal, External, Blacklist]"""
-    def filter_role(self, role):
-        ...
+    """Filter by role [Internal]"""
+    def filter_role_internal(self, role):
+        # Open filter by role
+        self.click_to_filter_by(PoolPageLocators.F_ROLE_i)
+        # Filtering
+        if self.is_element_present(*PoolPageLocators.F_ROLE_i_SELECT):
+            role_input = self.browser.find_element(*PoolPageLocators.F_ROLE_i_SELECT)
+            role_input.send_keys(role, Keys.ENTER)
+        else:
+            raise AssertionError(f"There is no input for filtering by role")
+        _ = self.browser.find_element(*PoolPageLocators.F_ROLE_i_OK).click()
+        # Check filtering
+        if self.waiting_for_element_present(*PoolPageLocators.FIRST_PERSON):
+            assert self.browser.find_element(*PoolPageLocators.FIRST_PERSON_ROLE).text == role, \
+                f"Incorrect filtering by person role: {role}"
+        else:
+            raise AssertionError(f"Probably there is no person with role: {role}")
+
+    """Reset Filter by role"""
+    def reset_filter_role(self):
+        role_filter_locator = PoolPageLocators.F_ROLE_i
+        reset_locator = PoolPageLocators.F_ROLE_i_RESET
+        self.is_filter_reset(role_filter_locator, reset_locator)
 
 
 
