@@ -118,7 +118,7 @@ class CreateClientPositionModal(BasePage):
         jt = self.browser.find_element(*CreatePositionModalLocators.JOB_TYPE)
         ActionChains(self.browser).move_to_element(jt).click(jt).send_keys(Keys.ENTER).perform()
 
-        _ = self.browser.find_element(*CreatePositionModalLocators.HOURS).send_keys("8")
+        # _ = self.browser.find_element(*CreatePositionModalLocators.HOURS).send_keys("8")
 
         _ = self.browser.find_element(*CreatePositionModalLocators.DEADLINE).send_keys(CreatePositionData.deadline + Keys.ENTER)
 

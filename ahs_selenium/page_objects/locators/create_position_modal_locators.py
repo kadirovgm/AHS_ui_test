@@ -20,9 +20,9 @@ class CreatePositionModalLocators:
     POS_NAME = (By.CSS_SELECTOR, "#title")
     ROLE = (By.CSS_SELECTOR, "#role")
     ENG_LEVEL = (By.CSS_SELECTOR, "#english_level")
-    ADD_ONE_MORE_SKILL = (By.CSS_SELECTOR, "#rc-tabs-0-panel-details > section:nth-child(2) > section > div > div.ant-col.ant-form-item-control > div > div > div > div > div > div > button")
-    SKILL = (By.CSS_SELECTOR, "#rc_select_7")
-    GRADE = (By.CSS_SELECTOR, "#rc_select_8")
+    ADD_ONE_MORE_SKILL = (By.CSS_SELECTOR, "#rc-tabs-0-panel-details > section:nth-child(3) > section > div > div.ant-col.ant-form-item-control > div > div > div > div > div > div > button")
+    SKILL = (By.CSS_SELECTOR, "#skills_0_skill")
+    GRADE = (By.XPATH, "/html/body/div[3]/div/div[2]/div/div[2]/div[2]/div/div/form/div/div[2]/div/div[1]/section[3]/section/div/div[2]/div/div/div[1]/div[2]/div/div/div/div/div/div/span[1]/input")
 
     """Assigns tab"""
     PRIMARY_OFFICE = (By.CSS_SELECTOR, "#primary_offices")
