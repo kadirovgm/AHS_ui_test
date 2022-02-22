@@ -22,14 +22,14 @@ class CreateClientPositionModal(BasePage):
     def should_be_correct_client_position_modal_elements_pos_details(self):
         position_details_elements = \
             ["POS_DETAIL_TAB", "UNCONFIRMED_RADIO", "CONFIRMED_RADIO", "PRIORITY", "CLIENT", "PROJECT", "ORIG_LOCATION",
-             "REMOTE_TYPE", "COMMENT", "POS_NAME", "ROLE", "ENG_LEVEL", "ADD_ONE_MORE_SKILL", "CANCEL", "NEXT_DETAILS"]
+             "REMOTE_TYPE", "COMMENT", "POS_NAME", "ROLE", "ENG_LEVEL", "ADD_ONE_MORE_SKILL", "CANCEL_DETAILS", "NEXT_DETAILS"]
         position_details_elements = [eval("CreatePositionModalLocators." + i) for i in position_details_elements]
         for locator in position_details_elements:
             assert self.is_element_present(*locator), f"{locator} field doesn't present!"
 
     def should_be_correct_client_position_modal_elements_assigns(self):
         assigns_elements = \
-            ["ASSIGNS_TAB", "PRIMARY_OFFICE", "OTHER_OFFICE", "ALL_OFFICES_CHECK", "RECRUITERS", "NEXT_ASSIGNS"]
+            ["ASSIGNS_TAB", "PRIMARY_OFFICE", "OTHER_OFFICE", "ALL_OFFICES_CHECK", "RECRUITERS","CANCEL_ASSIGNS",  "NEXT_ASSIGNS"]
         assigns_elements = [eval("CreatePositionModalLocators." + i) for i in assigns_elements]
         for locator in assigns_elements:
             assert self.is_element_present(*locator), f"{locator} field doesn't present!"
@@ -38,7 +38,7 @@ class CreateClientPositionModal(BasePage):
         _ = self.browser.find_element(*CreatePositionModalLocators.ADD_CR).click()
         requests_elements = \
             ["REQUESTS_TAB", "ADD_CR", "NEW_BUSINESS_RADIO", "UPSELL_RADIO", "BILLABLE_STAT", "JOB_TYPE", "HOURS",
-             "DEADLINE", "REQUIRED"]
+             "DEADLINE", "REQUIRED", "CANCEL_REQUESTS", "CREATE_POSITION"]
         requests_elements = [eval("CreatePositionModalLocators." + i) for i in requests_elements]
         for locator in requests_elements:
             assert self.is_element_present(*locator), f"{locator} field doesn't present!"
@@ -124,7 +124,7 @@ class CreateClientPositionModal(BasePage):
 
         _ = self.browser.find_element(*CreatePositionModalLocators.REQUIRED).send_keys("1")
 
-        _ = self.browser.find_element(*CreatePositionModalLocators.SUBMIT).click()
+        _ = self.browser.find_element(*CreatePositionModalLocators.CREATE_POSITION).click()
 
         print(f"Created Position's title is: {CreatePositionData.name}")
         return CreatePositionData.name  # for checking that position is created and in active tab
