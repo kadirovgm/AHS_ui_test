@@ -1,4 +1,5 @@
 import pytest
+import time
 from page_objects.pool_page import PoolPage
 from page_objects.create_person_modal_page import CreatePersonModal
 from settings import Urls, Setup
@@ -27,7 +28,8 @@ class TestAddPerson:
     """Fill Create Person Modal and check that person was created"""
     def test_add_person(self, browser):
         person_create_page = CreatePersonModal(browser, browser.current_url)
-        created_first_name, created_second_name = person_create_page.add_new_person(loading_time=0.7)
+        created_first_name, created_second_name = person_create_page.add_new_person(loading_time=1.2)
+        time.sleep(10)
         external_tab = PoolPage(browser, browser.current_url)
         external_tab.go_to_external_tab()
         external_tab.search_for_person(created_first_name, created_second_name)
