@@ -2,9 +2,10 @@ from selenium.webdriver.common.by import By
 
 
 class PoolPageLocators:
-    POOL_TEXT = (By.CSS_SELECTOR, "#root > section > section > header > div > div > div > b")
-    ADD_PERSON = (By.CSS_SELECTOR, "#root > section > section > header > div > div > div > button")
+    POOL_TEXT = (By.XPATH, "//b[@class='sc-pZOBi sc-oTNDV jzKNzB']")
+    ADD_PERSON = (By.XPATH, "//button[@class='ant-btn sc-pmigq kFqyms']")
 
+    """Tabs"""
     INTERNAL_TAB = (By.CSS_SELECTOR, "#root > section > section > header > div > div > ul > li:nth-child(2)")
     EXTERNAL_TAB = (By.CSS_SELECTOR, "#root > section > section > header > div > div > ul > li:nth-child(4)")
     BLACKLIST_TAB = (By.CSS_SELECTOR, "#root > section > section > header > div > div > ul > li:nth-child(6)")
