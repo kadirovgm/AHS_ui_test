@@ -167,7 +167,7 @@ class PoolPage(BasePage):
         self.is_filter_reset(role_filter_locator)
 
     """[FILTERING] Filter by Skills [All tabs]"""
-    def filter_skills(self, skill, tab, loading_time=0.7):
+    def filter_skills(self, skill, tab, loading_time):
         if tab == "Internal":
             skill_filter = PoolPageLocators.F_SKILLS_i
             expected_skill = PoolPageLocators.FIRST_PERSON_SKILL_i
@@ -209,7 +209,7 @@ class PoolPage(BasePage):
         self.is_filter_reset(skill_filter_locator)
 
     """[FILTERING] Filter by City [All tabs]"""
-    def filter_city(self, country, city, tab, loading_time=0.7):
+    def filter_city(self, country, city, tab, loading_time):
         if tab == "Internal":
             city_filter_locator = PoolPageLocators.F_CITY_i
             locator_expected_city = PoolPageLocators.FIRST_PERSON_CITY_i

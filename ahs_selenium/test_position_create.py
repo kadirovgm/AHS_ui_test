@@ -1,7 +1,7 @@
 import pytest
 from page_objects.create_position_modal_page import CreateClientPositionModal
 from page_objects.positions_page import PositionsPage
-from settings import Setup, Urls
+from settings import Setup, Urls, Constants
 
 
 """Test Create Client Project Position modal correctness"""
@@ -46,7 +46,7 @@ class TestClientProjectPositionCreate:
     """Creation"""
     def test_create_client_project_position(self, browser):
         position_create_modal = CreateClientPositionModal(browser, browser.current_url)
-        result = position_create_modal.add_new_client_project_position(loading_time=1)
+        result = position_create_modal.add_new_client_project_position(loading_time=Constants.loading_time)
         active_tab = PositionsPage(browser, browser.current_url)
         active_tab.go_to_active_tab()
         active_tab.search_for_position(result)

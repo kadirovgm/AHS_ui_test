@@ -4,7 +4,7 @@ from page_objects.login_page import LoginPage
 from page_objects.pool_page import PoolPage
 from page_objects.create_person_modal_page import CreatePersonModal
 from page_objects.FixtureData.fixture_data import FixturesInternalPerson
-from settings import Urls, Setup
+from settings import Urls, Setup, Constants
 
 
 """Test Pool page fields correctness"""
@@ -106,14 +106,14 @@ class TestPoolPageInternalFiltering:
     def test_filter_in_search_by_skills(self, browser):
         internal = PoolPage(browser, Urls.POOL_INTERNAL)
         internal.open()
-        internal.filter_skills("python", tab="Internal")
+        internal.filter_skills("python", tab="Internal", loading_time=Constants.loading_time)
         internal.reset_filter_skills(tab="Internal")
 
     """Filter by city"""
     def test_filter_in_search_by_city(self, browser):
         internal = PoolPage(browser, Urls.POOL_INTERNAL)
         internal.open()
-        internal.filter_city("United States", "Los Angeles", tab="Internal")
+        internal.filter_city("United States", "Los Angeles", tab="Internal", loading_time=Constants.loading_time)
         internal.reset_filter_cities(tab="Internal")
 
     """Filter by office"""
