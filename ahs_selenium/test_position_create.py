@@ -50,6 +50,7 @@ class TestClientProjectPositionCreate:
         result = position_create_modal.add_new_client_project_position(loading_time=Constants.loading_time)
         active_tab = PositionsPage(browser, browser.current_url)
         active_tab.go_to_active_tab()
+        time.sleep(1)
         active_tab.search_for_position(result)
         active_tab.checking_status_of_position("Open")
 
