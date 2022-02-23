@@ -142,14 +142,13 @@ class PoolPage(BasePage):
             role_filter = PoolPageLocators.F_ROLE_i
             role_select = PoolPageLocators.F_ROLE_i_SELECT
             role_ok = PoolPageLocators.F_ROLE_i_OK
-            expected_role = PoolPageLocators.FIRST_PERSON_ROLE_i
         elif tab == "External" or tab == "Blacklist":
             role_filter = PoolPageLocators.F_ROLE_e
             role_select = PoolPageLocators.F_ROLE_e_SELECT
             role_ok = PoolPageLocators.F_ROLE_e_OK
-            expected_role = PoolPageLocators.FIRST_PERSON_ROLE_e
         else:
             raise AssertionError("Incorrect tab-name, please specify as: 'Internal', 'External' or 'Blacklist'")
+        expected_role = PoolPageLocators.FIRST_PERSON_ROLE
         # Open filter by role
         self.click_to_filter_by(role_filter)
         # Filtering

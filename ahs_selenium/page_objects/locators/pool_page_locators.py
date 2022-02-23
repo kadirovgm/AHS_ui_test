@@ -2,28 +2,33 @@ from selenium.webdriver.common.by import By
 
 
 class PoolPageLocators:
+
+    # Make sure: 
+    # item_i - works only in "Internal" tab
+    # item_e - works only in "External" and "Blacklist" tabs
+    # item - works on All tabs!
+
     POOL_TEXT = (By.XPATH, "//b[@class='sc-pZOBi sc-oTNDV jzKNzB']")
     ADD_PERSON = (By.XPATH, "//button[@class='ant-btn sc-pmigq kFqyms']")
 
     """Tabs"""
-    INTERNAL_TAB = (By.CSS_SELECTOR, "#root > section > section > header > div > div > ul > li:nth-child(2)")
-    EXTERNAL_TAB = (By.CSS_SELECTOR, "#root > section > section > header > div > div > ul > li:nth-child(4)")
-    BLACKLIST_TAB = (By.CSS_SELECTOR, "#root > section > section > header > div > div > ul > li:nth-child(6)")
+    INTERNAL_TAB = (By.XPATH, "//header/div/div/ul/li[2]")
+    EXTERNAL_TAB = (By.XPATH, "//header/div/div/ul/li[4]")
+    BLACKLIST_TAB = (By.XPATH, "//header/div/div/ul/li[6]")
 
     """FIRST PERSON"""
-    SEARCH_NAME = (By.XPATH, "/html/body/div/section/section/main/div/div[1]/div/div[1]/div/div[1]/span/input")
-    FIRST_PERSON_NAME = (By.XPATH, "/html/body/div/section/section/main/div/div[2]/div/div/div/div/div/div/table/tbody/tr[1]/td[1]/a/div/span")
-    FIRST_PERSON = (By.XPATH, "/html/body/div/section/section/main/div/div[2]/div/div/div/div/div/div/table/tbody/tr[1]/td[1]")
-    FIRST_PERSON_LABEL = (By.CSS_SELECTOR, "#root > section > section > main > div > div:nth-child(2) > div > div > div > div > div > div > table > tbody > tr:nth-child(1) > td:nth-child(1) > a > div > div > span")
-    FIRST_PERSON_TYPE_i = (By.CSS_SELECTOR, "#root > section > section > main > div > div:nth-child(2) > div > div > div > div > div > div > table > tbody > tr:nth-child(1) > td.ant-table-cell.ant-table-cell-ellipsis")
-    FIRST_PERSON_ROLE_i = (By.CSS_SELECTOR, "#root > section > section > main > div > div:nth-child(2) > div > div > div > div > div > div > table > tbody > tr:nth-child(1) > td:nth-child(3) > div > div > span.ant-typography.sc-AxgMl.sc-qWfCM.hHzgZA")
-    FIRST_PERSON_ROLE_e = (By.CSS_SELECTOR, "#root > section > section > main > div > div:nth-child(2) > div > div > div > div > div > div > table > tbody > tr:nth-child(1) > td:nth-child(2) > div > div > span.ant-typography.sc-AxgMl.sc-qWfCM.hHzgZA")
-    FIRST_PERSON_SKILL_i = (By.CSS_SELECTOR, "#root > section > section > main > div > div:nth-child(2) > div > div > div > div > div > div > table > tbody > tr:nth-child(1) > td:nth-child(4) > div > div:nth-child(1) > span.ant-typography.sc-AxgMl.sc-qWfCM.bIuCUl")
-    FIRST_PERSON_SKILL_e = (By.CSS_SELECTOR, "#root > section > section > main > div > div:nth-child(2) > div > div > div > div > div > div > table > tbody > tr:nth-child(1) > td:nth-child(3) > div > div > span.ant-typography.sc-AxgMl.sc-qWfCM.bIuCUl")
-    FIRST_PERSON_CITY_i = (By.CSS_SELECTOR, "#root > section > section > main > div > div:nth-child(2) > div > div > div > div > div > div > table > tbody > tr:nth-child(1) > td:nth-child(5)")
-    FIRST_PERSON_CITY_e = (By.CSS_SELECTOR, "#root > section > section > main > div > div:nth-child(2) > div > div > div > div > div > div > table > tbody > tr:nth-child(1) > td:nth-child(4)")
-    FIRST_PERSON_OFFICE_i = (By.CSS_SELECTOR, "#root > section > section > main > div > div:nth-child(2) > div > div > div > div > div > div > table > tbody > tr:nth-child(1) > td:nth-child(6)")
-    FIRST_PERSON_OFFICE_e = (By.CSS_SELECTOR, "#root > section > section > main > div > div:nth-child(2) > div > div > div > div > div > div > table > tbody > tr:nth-child(1) > td:nth-child(5)")
+    SEARCH_NAME = (By.XPATH, "//input[@placeholder='Enter name']")
+    FIRST_PERSON_NAME = (By.XPATH, "//tr[1]/td[1]/a/div/span")
+    FIRST_PERSON = (By.XPATH, "(//td[@class='ant-table-cell'])[1]")
+    FIRST_PERSON_LABEL = (By.XPATH, "(//span[@status])[1]")
+    FIRST_PERSON_TYPE_i = (By.XPATH, "(//td[@title])[1]")
+    FIRST_PERSON_ROLE = (By.XPATH, "(//span[@class='ant-typography sc-AxheI sc-pTUxa clsLqG' and @color='blue'])[1]")
+    FIRST_PERSON_SKILL_i = (By.XPATH, "(//td[4]/div/div[1]/span[1])[1]")
+    FIRST_PERSON_SKILL_e = (By.XPAT, "(//td[3]/div/div/span[1])[1]")
+    FIRST_PERSON_CITY_i = (By.XPATH, "(//td[5])[1]")
+    FIRST_PERSON_CITY_e = (By.XPATH, "(//td[4])[1]")
+    FIRST_PERSON_OFFICE_i = (By.XPATH, "(//td[6])[1]")
+    FIRST_PERSON_OFFICE_e = (By.XPATH, "(//td[5])[1]")
 
     """Internal fields"""
     NAME_i = (By.XPATH, "/html/body/div[1]/section/section/main/div/div[2]/div/div/div/div/div/div/table/thead/tr/th[1]/div/span[1]")
