@@ -5,7 +5,7 @@ from page_objects.positions_page import PositionsPage
 from page_objects.reports_page import ReportsPage
 from page_objects.help_center_page import HelpCenterPage
 from settings import Setup
-from settings import Urls
+from urls import Urls
 
 
 """Test User can go to main pages"""

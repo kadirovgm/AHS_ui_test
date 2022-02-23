@@ -1,6 +1,7 @@
 import pytest
 from page_objects.positions_page import PositionsPage
-from settings import Urls, Setup
+from settings import Setup
+from urls import Urls
 
 
 """Test Positions page fields correct"""

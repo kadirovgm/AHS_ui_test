@@ -1,6 +1,6 @@
 import pytest
 from page_objects.login_page import LoginPage
-from settings import Urls
+from urls import Urls
 from page_objects.FixtureData.fixture_users import *
 
 
