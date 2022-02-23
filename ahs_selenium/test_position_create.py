@@ -1,4 +1,5 @@
 import pytest
+import time
 from page_objects.create_position_modal_page import CreateClientPositionModal
 from page_objects.positions_page import PositionsPage
 from settings import Setup, Urls, Constants

@@ -24,7 +24,7 @@ class PoolPageLocators:
     FIRST_PERSON_TYPE_i = (By.XPATH, "(//td[@title])[1]")
     FIRST_PERSON_ROLE = (By.XPATH, "(//span[@class='ant-typography sc-AxheI sc-pTUxa clsLqG' and @color='blue'])[1]")
     FIRST_PERSON_SKILL_i = (By.XPATH, "(//td[4]/div/div[1]/span[1])[1]")
-    FIRST_PERSON_SKILL_e = (By.XPAT, "(//td[3]/div/div/span[1])[1]")
+    FIRST_PERSON_SKILL_e = (By.XPATH, "(//td[3]/div/div/span[1])[1]")
     FIRST_PERSON_CITY_i = (By.XPATH, "(//td[5])[1]")
     FIRST_PERSON_CITY_e = (By.XPATH, "(//td[4])[1]")
     FIRST_PERSON_OFFICE_i = (By.XPATH, "(//td[6])[1]")
@@ -94,4 +94,4 @@ class PoolPageLocators:
     F_VISA_e = (By.XPATH, "(//span[@class='ant-table-filter-trigger-container'])[7]")
     F_HR_e = (By.XPATH, "(//span[@class='ant-table-filter-trigger-container'])[8]")
 
-    CLEAR_FILTERS = (By.CSS_SELECTOR, "#root > section > section > main > div > div:nth-child(1) > div > div:nth-child(2) > button")
+    CLEAR_FILTERS = (By.XPATH, "//div[2]/button")

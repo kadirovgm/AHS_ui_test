@@ -11,7 +11,7 @@ class CreatePositionModalLocators:
     """Position details tab"""
     UNCONFIRMED_RADIO = (By.CSS_SELECTOR, "#is_confirmed > label:nth-child(1) > span.ant-radio")
     CONFIRMED_RADIO = (By.CSS_SELECTOR, "#is_confirmed > label:nth-child(2) > span.ant-radio")
-    PRIORITY = (By.CSS_SELECTOR, "#priority")
+    PRIORITY = (By.XPATH, "//input[@id='priority']")
     CLIENT = (By.CSS_SELECTOR, "#client")
     PROJECT = (By.CSS_SELECTOR, "#project")
     ORIG_LOCATION = (By.CSS_SELECTOR, "#origin_location_country")

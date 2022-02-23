@@ -10,7 +10,7 @@ class PositionPageLocators:
     """First position"""
     FIRST_POSITION = (By.XPATH, "//tr[@class='ant-table-row ant-table-row-level-0'][1]")
     FIRST_POSITION_TITLE = (By.XPATH, "//tr[1]/td[2]/div/span[1]")
-    FIRST_STATUS = (By.XPATH, "//tr[1]/td[8]/span/span[2]")
+    FIRST_STATUS = (By.XPATH, "//tr[1]/td[8]/span/span[1]")
 
     """Add position"""
     ADD_POSITION = (By.XPATH, "//button[@class='ant-btn sc-pmigq kFqyms ant-dropdown-trigger']")
