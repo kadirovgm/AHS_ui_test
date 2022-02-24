@@ -8,6 +8,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from page_objects.FixtureData.fixture_users import *
 from settings import Driver, Execute
+from urls import Urls
 
 
 # default options
@@ -43,10 +44,13 @@ def get_operation_system(request):
     else:
         raise pytest.UsageError("--os should be mac or win")
 
+# TODO
+@pytest.fixture(scope="class")  
 def get_environment(request):
     _env = request.config.getoption("--env")
     return _env
 
+# TODO
 def get_user(request):
     _user = request.config.getoption("--user")
     if _user == "head":
@@ -59,7 +63,11 @@ def get_user(request):
         raise pytest.UsageError("--user should be head, lead or recruiter")
 
 @pytest.fixture(scope="class")                                              # initializing browser on every class
-def browser(request, get_operation_system):
+def browser(request, get_operation_system, get_environment):
+    # TODO 
+    environment = Urls()
+    environment.set_env(get_environment)
+
     browser_name = request.config.getoption("--browser_name")
     user_language = request.config.getoption("--language")                  # if want to launch eng version of site
     
@@ -79,6 +87,7 @@ def browser(request, get_operation_system):
         browser = webdriver.Firefox(firefox_profile=fp)
     else:
         raise pytest.UsageError("--browser_name should be chrome or firefox")
+
     yield browser
 
     print("\nquit browser..")
