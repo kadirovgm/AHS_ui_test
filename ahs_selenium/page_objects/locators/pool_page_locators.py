@@ -8,8 +8,8 @@ class PoolPageLocators:
     # item_e - works only in "External" and "Blacklist" tabs
     # item - works on All tabs!
 
-    POOL_TEXT = (By.XPATH, "//b[@class='sc-pZOBi sc-oTNDV jzKNzB']")
-    ADD_PERSON = (By.XPATH, "//button[@class='ant-btn sc-pmigq kFqyms']")
+    POOL_TEXT = (By.XPATH, "//b[text()='Pool']")
+    ADD_PERSON = (By.XPATH, "//span[text()='+ Add person']")
 
     """Tabs"""
     INTERNAL_TAB = (By.XPATH, "//header/div/div/ul/li[2]")

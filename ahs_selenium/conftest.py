@@ -94,7 +94,7 @@ def browser(request, get_operation_system):
 @pytest.fixture(scope="function")
 def browser_login():
     print("\nstart browser for test..")
-    browser = webdriver.Chrome(service=Driver.chromedriver_mac)
+    browser = webdriver.Chrome(service=Driver.chromedriver_win)
     browser.maximize_window()
     browser.implicitly_wait(3)
     yield browser

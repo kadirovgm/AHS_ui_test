@@ -7,7 +7,7 @@ from urls import Urls
 
 class Execute:
     default_browser = "chrome"          # variants: chrome, firefox
-    operation_system = "mac"            # variants: mac, win
+    operation_system = "win"            # variants: mac, win
     user = "head"                       # variants: head, lead, recruiter
     env = "122"                         # variants: 122 (Stage), 137 (QA-137), 139 (QA-139), 152 (Demo), 115 (Production)
     loading_time = 2                    # time for loading huge data (depends on internet connection, default=0.7)
