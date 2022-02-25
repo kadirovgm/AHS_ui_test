@@ -63,11 +63,7 @@ def get_user(request):
         raise pytest.UsageError("--user should be head, lead or recruiter")
 
 @pytest.fixture(scope="class")                                              # initializing browser on every class
-def browser(request, get_operation_system, get_environment):
-    # TODO 
-    environment = Urls()
-    environment.set_env(get_environment)
-
+def browser(request, get_operation_system):
     browser_name = request.config.getoption("--browser_name")
     user_language = request.config.getoption("--language")                  # if want to launch eng version of site
     
@@ -98,7 +94,7 @@ def browser(request, get_operation_system, get_environment):
 @pytest.fixture(scope="function")
 def browser_login():
     print("\nstart browser for test..")
-    browser = webdriver.Chrome(service=Execute.env)
+    browser = webdriver.Chrome(service=Driver.chromedriver_mac)
     browser.maximize_window()
     browser.implicitly_wait(3)
     yield browser

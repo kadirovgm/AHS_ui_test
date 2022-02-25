@@ -3,10 +3,8 @@ from conftest import *
 
 # from settings import Execute
 class Urls:
-    def set_env(self, environment):
-        self.env = environment
         
-    env = "139"
+    env = "122"
     host = f"http://192.168.52.{env}/"  # Stage
 
     """LOGIN"""
