@@ -22,7 +22,7 @@ class PoolPageLocators:
     FIRST_PERSON = (By.XPATH, "(//td[@class='ant-table-cell'])[1]")
     FIRST_PERSON_LABEL = (By.XPATH, "(//span[@status])[1]")
     FIRST_PERSON_TYPE_i = (By.XPATH, "(//td[@title])[1]")
-    FIRST_PERSON_ROLE = (By.XPATH, "(//span[@class='ant-typography sc-AxheI sc-pTUxa clsLqG' and @color='blue'])[1]")
+    FIRST_PERSON_ROLE = (By.XPATH, "(//span[@color='blue'])[1]")
     FIRST_PERSON_SKILL_i = (By.XPATH, "(//td[4]/div/div[1]/span[1])[1]")
     FIRST_PERSON_SKILL_e = (By.XPATH, "(//td[3]/div/div/span[1])[1]")
     FIRST_PERSON_CITY_i = (By.XPATH, "(//td[5])[1]")

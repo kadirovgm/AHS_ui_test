@@ -10,7 +10,7 @@ class Execute:
     operation_system = "win"            # variants: mac, win
     user = "head"                       # variants: head, lead, recruiter
     env = "122"                         # variants: 122 (Stage), 137 (QA-137), 139 (QA-139), 152 (Demo), 115 (Production)
-    loading_time = 2                    # time for loading huge data (depends on internet connection, default=0.7)
+    loading_time = 1                    # time for loading huge data (depends on internet connection, default=0.7)
     language = None                     # language - in feature
 
 
