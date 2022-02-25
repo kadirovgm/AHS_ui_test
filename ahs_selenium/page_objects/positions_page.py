@@ -112,7 +112,7 @@ class PositionsPage(BasePage):
     """*Searching in positions page*"""
     def search_for_position(self, position_name):
         print(f"Searching for {position_name} in Positions page")
-        if self.waiting_for_element_present(*PositionPageLocators.FIRST_POSITION):
+        if self.is_element_present(*PositionPageLocators.FIRST_POSITION):
             _ = self.browser.find_element(*PositionPageLocators.SEARCH).send_keys(position_name)
             if self.waiting_for_element_present(*PositionPageLocators.FIRST_POSITION):
                 assert self.browser.find_element(

@@ -13,7 +13,7 @@ class PositionPageLocators:
     FIRST_STATUS = (By.XPATH, "//tr[1]/td[8]/span/span[1]")
 
     """Add position"""
-    ADD_POSITION = (By.XPATH, "//button[@class='ant-btn sc-pmigq kFqyms ant-dropdown-trigger']")
+    ADD_POSITION = (By.XPATH, "//span[text()='+ Add position']")
     ADD_CLIENT_PROJECT_POS = (By.XPATH, "//li[@class='ant-dropdown-menu-item'][1]")
     ADD_INTERNAL_PROJECT_POS = (By.XPATH, "//li[@class='ant-dropdown-menu-item'][2]")
     ADD_BENCH_POS = (By.XPATH, "//li[@class='ant-dropdown-menu-item'][3]")
