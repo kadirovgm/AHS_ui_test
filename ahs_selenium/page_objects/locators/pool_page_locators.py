@@ -29,6 +29,8 @@ class PoolPageLocators:
     FIRST_PERSON_CITY_e = (By.XPATH, "(//td[4])[1]")
     FIRST_PERSON_OFFICE_i = (By.XPATH, "(//td[6])[1]")
     FIRST_PERSON_OFFICE_e = (By.XPATH, "(//td[5])[1]")
+    FIRST_PERSON_ENG_i = (By.XPATH, "(//td[7])[1]")
+    FIRST_PERSON_ENG_e = (By.XPATH, "(//td[6])[1]")
 
     """Internal fields"""
     NAME = (By.XPATH, "(//span[@class='ant-table-filter-column-title'])[1]")
@@ -80,6 +82,14 @@ class PoolPageLocators:
     F_OFFICE_SELECT = (By.CSS_SELECTOR, "#rc_select_0")
     
     F_ENG_i = (By.XPATH, "(//span[@class='ant-table-filter-trigger-container'])[7]")
+
+    F_ENG_SELECT_beginner = (By.XPATH, "//span[text()='Beginner']")
+    F_ENG_SELECT_pre_inter = (By.XPATH, "//span[text()='Pre-Intermediate']")
+    F_ENG_SELECT_inter = (By.XPATH, "//span[text()='Intermediate']")
+    F_ENG_SELECT_upper = (By.XPATH, "//span[text()='Upper-Intermediate']")
+    F_ENG_SELECT_advanced = (By.XPATH, "//span[text()='Advanced']")
+    F_ENF_SELECT_proficiency = (By.XPATH, "//span[text()='Proficiency']")
+
     F_VISA_i = (By.XPATH, "(//span[@class='ant-table-filter-trigger-container'])[8]")
     F_ACTIVE_I = (By.XPATH, "(//span[@class='ant-table-filter-trigger-container'])[9]")
     F_HR_I = (By.XPATH, "(//span[@class='ant-table-filter-trigger-container'])[10]")

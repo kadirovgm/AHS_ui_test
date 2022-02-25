@@ -121,10 +121,13 @@ class TestPoolPageInternalFiltering:
         internal.filter_office(office, tab="Internal")
         internal.reset_filter_office(tab="Internal")
 
-    @pytest.mark.skip
-    def test_filter_by_eng_level(self, browser):
+    """Filter by Eng level"""
+    @pytest.mark.parametrize('eng_level',
+                             ("Beginner", "Advanced"))
+    def test_filter_by_eng_level(self, browser, eng_level):
         internal = PoolPage(browser, Urls.POOL_INTERNAL)
-
+        internal.filter_eng_level(eng_level, tab="Internal")
+        internal.reset_filter_eng_level(tab="Internal")
 
     @pytest.mark.skip
     def test_filter_in_search_by_visa(self, browser):

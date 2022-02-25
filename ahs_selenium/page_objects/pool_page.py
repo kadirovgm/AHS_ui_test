@@ -284,6 +284,57 @@ class PoolPage(BasePage):
             raise AssertionError("Incorrect tab-name, please specify as: 'Internal', 'External' or 'Blacklist'")
         self.is_filter_reset(office_filter_locator)
 
+    """[FILTERING] Filter by Eng. Level [All tabs]"""
+    def filter_eng_level(self, eng_level, tab):
+        if tab == "Internal":
+            eng_level_filter = PoolPageLocators.F_ENG_i
+            expected_eng_level = PoolPageLocators.FIRST_PERSON_ENG_i
+        elif tab == "External" or tab == "Blacklist":
+            eng_level_filter = PoolPageLocators.F_ENG_e
+            expected_eng_level = PoolPageLocators.FIRST_PERSON_ENG_e
+        else:
+            raise AssertionError("Incorrect tab-name, please specify as: 'Internal', 'External' or 'Blacklist'")
+
+        if eng_level == "Beginner":
+            select_eng_level = PoolPageLocators.F_ENG_SELECT_beginner
+        elif eng_level == "Pre-Intermediate":
+            select_eng_level = PoolPageLocators.F_ENG_SELECT_pre_inter
+        elif eng_level == "Intermediate":
+            select_eng_level = PoolPageLocators.F_ENG_SELECT_inter
+        elif eng_level == "Upper-Intermediate":
+            select_eng_level = PoolPageLocators.F_ENG_SELECT_upper
+        elif eng_level == "Advanced":
+            select_eng_level = PoolPageLocators.F_ENG_SELECT_advanced
+        elif eng_level == "Proficiency":
+            select_eng_level = PoolPageLocators.F_ENF_SELECT_proficiency
+        else:
+            raise AssertionError("Incorrect eng-level, please select: 'Beginner', 'Pre-Intermediate', 'Intermediate', "
+                                 "'Upper-Intermediate', 'Advanced' or 'Proficiency'")
+
+        # open filter
+        self.click_to_filter_by(eng_level_filter)
+
+        # filtering
+        if self.is_element_present(*select_eng_level):
+            _ = self.browser.find_element(*select_eng_level).click()
+        else:
+            raise AssertionError(f"There is no {eng_level} level")
+        _ = self.browser.find_element(*PoolPageLocators.F_OK).click()
+
+        # check filtering (label, expected label)
+        self.is_filter_works(eng_level, expected_eng_level)
+
+    """[FILTERING]  Reset filter by label [All tabs]"""
+
+    def reset_filter_eng_level(self, tab):
+        if tab == "Internal":
+            eng_level_filter = PoolPageLocators.F_ENG_i
+        elif tab == "External" or tab == "Blacklist":
+            eng_level_filter = PoolPageLocators.F_ENG_e
+        else:
+            raise AssertionError("Incorrect tab-name, please specify as: 'Internal', 'External' or 'Blacklist'")
+        self.is_filter_reset(eng_level_filter)
+
     #### Additional methods for filtering ####
 
     """*Searching in pool*"""
@@ -309,8 +360,7 @@ class PoolPage(BasePage):
 
     """*Clicking to filters in Pool [All tabs]*"""
     def click_to_filter_by(self, filter_locator):
-        # if filter is enable - click
-        if self.is_element_clickable(*filter_locator):
+        if self.is_element_present(*filter_locator):
             self.browser.find_element(*filter_locator).click()
         else:
             raise AssertionError(f"Filter by {filter_locator} doesn't clickable")
