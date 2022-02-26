@@ -12,6 +12,8 @@
 ## 2. Page objects
 ## 3. Running tests
 
+![](https://i.imgur.com/yPCALBQ.gif)
+
 # Project's catalog
 ```
 📦AHS_ui_test
