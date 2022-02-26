@@ -1,4 +1,5 @@
 import os
+import pytest
 from page_objects.login_page import LoginPage
 from selenium.webdriver.chrome.service import Service
 from page_objects.FixtureData.fixture_users import *
@@ -30,7 +31,15 @@ class Setup:
     def setup_help(self, browser):
         page = LoginPage(browser, f"http://192.168.52.{Execute().env}/login")
         page.open()
-        page.login_new_user(UserHead)  # "UserHead", "UserLead", UserRecruiter
+        if Execute().user == "head":
+            _user = UserHead
+        elif Execute().user == "lead":
+            _user = UserLead
+        elif Execute().user == "recruiter":
+            _user = UserRecruiter
+        else:
+            raise pytest.UsageError("--user should be head, lead or recruiter")
+        page.login_new_user(_user)
 
 
 # TODO Users and environment

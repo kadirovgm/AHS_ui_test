@@ -64,16 +64,10 @@ def get_environment(request):
     return _env
 
 # TODO
+@pytest.fixture(scope="class")
 def get_user(request):
     _user = request.config.getoption("--user")
-    if _user == "head":
-        return UserHead
-    elif _user == "lead":
-        return UserLead
-    elif _user == "recruiter":
-        return UserRecruiter
-    else:
-        raise pytest.UsageError("--user should be head, lead or recruiter")
+    return _user
 
 
 # Initialise browser driver
