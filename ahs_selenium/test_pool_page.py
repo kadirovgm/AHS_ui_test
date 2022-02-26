@@ -104,13 +104,13 @@ class TestPoolPageInternalFiltering:
                              ("python", "sql"))
     def test_filter_in_search_by_skills(self, browser, skill):
         internal = PoolPage(browser, Urls.POOL_INTERNAL)
-        internal.filter_skills(skill, tab="Internal", loading_time=Execute.loading_time)
+        internal.filter_skills(skill, tab="Internal", loading_time=Execute().loading_time)
         internal.reset_filter_skills(tab="Internal")
 
     """Filter by city"""
     def test_filter_in_search_by_city(self, browser):
         internal = PoolPage(browser, Urls.POOL_INTERNAL)
-        internal.filter_city("United States", "Los Angeles", tab="Internal", loading_time=Execute.loading_time)
+        internal.filter_city("United States", "Los Angeles", tab="Internal", loading_time=Execute().loading_time)
         internal.reset_filter_cities(tab="Internal")
 
     """Filter by office"""

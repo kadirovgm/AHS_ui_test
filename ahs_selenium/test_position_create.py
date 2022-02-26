@@ -48,7 +48,7 @@ class TestClientProjectPositionCreate:
     """Creation"""
     def test_create_client_project_position(self, browser):
         position_create_modal = CreateClientPositionModal(browser, browser.current_url)
-        result = position_create_modal.add_new_client_project_position(loading_time=Execute.loading_time)
+        result = position_create_modal.add_new_client_project_position(loading_time=Execute().loading_time)
         active_tab = PositionsPage(browser, browser.current_url)
         active_tab.go_to_active_tab()
         time.sleep(1)

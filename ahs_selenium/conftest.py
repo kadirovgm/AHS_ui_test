@@ -15,23 +15,23 @@ from urls import Urls
 def pytest_addoption(parser):
     parser.addoption('--browser_name',
                      action='store',
-                     default=Execute.default_browser,
+                     default=Execute().default_browser,
                      help="Choose browser: chrome or firefox")
     parser.addoption('--os',
                     action='store',
-                    default=Execute.operation_system,
-                    help = "Choose operation system: win or mac")
+                    default=Execute().operation_system,
+                    help="Choose operation system: win or mac")
     parser.addoption('--env',
                     action='store',
-                    default=Execute.env,
-                    help = "Choose environment: 122 (Stage), 137 (QA-137), 139 (QA-139), 152 (Demo), 115 (Production)")
+                    default=Execute().env,
+                    help="Choose environment: 122 (Stage), 137 (QA-137), 139 (QA-139), 152 (Demo), 115 (Production)")
     parser.addoption('--user',
                     action='store',
-                    default=Execute.user,
-                    help = "Choose system user: head, lead, recruiter")
+                    default=Execute().user,
+                    help="Choose system user: head, lead, recruiter")
     parser.addoption('--language',
                      action='store',
-                     default=Execute.language,
+                     default=Execute().language,
                      help="Choose language: ru, en")
 
 @pytest.fixture(scope="class")  
@@ -62,28 +62,27 @@ def get_user(request):
     else:
         raise pytest.UsageError("--user should be head, lead or recruiter")
 
+
+# Initialise browser driver
 @pytest.fixture(scope="class")                                              # initializing browser on every class
 def browser(request, get_operation_system):
     browser_name = request.config.getoption("--browser_name")
     user_language = request.config.getoption("--language")                  # if want to launch eng version of site
-    
-    if browser_name == "chrome":
-        options = Options()
-        options.add_experimental_option('prefs', {'intl.accept_languages': user_language})
+    options = Options()
+    options.add_experimental_option('prefs', {'intl.accept_languages': user_language})
 
+    if browser_name == "chrome":
         print("\nStart chrome browser for test..")
         browser = webdriver.Chrome(options=options, service=get_operation_system)
-        browser.maximize_window()                                           # maximize window
-        browser.implicitly_wait(3)                                          # implicitly wait
 
-    elif browser_name == "firefox":                                         # make sure that you have firefox driver
-        fp = webdriver.FirefoxProfile()
-        fp.set_preference("intl.accept_languages", user_language)
+    elif browser_name == "firefox":                                             # make sure that you have firefox driver
         print("\nStart firefox browser for test..")
-        browser = webdriver.Firefox(firefox_profile=fp)
+        browser = webdriver.Firefox(options=options, service=get_operation_system)
     else:
         raise pytest.UsageError("--browser_name should be chrome or firefox")
 
+    browser.maximize_window()  # maximize window
+    browser.implicitly_wait(3)  # implicitly wait
     yield browser
 
     print("\nquit browser..")

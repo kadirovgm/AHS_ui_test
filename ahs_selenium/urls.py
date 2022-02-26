@@ -1,10 +1,10 @@
 """Project's URLs"""
-from conftest import *
+from settings import Execute
 
-# from settings import Execute
+
 class Urls:
-        
-    env = "122"
+
+    env = Execute().env
     host = f"http://192.168.52.{env}/"  # Stage
 
     """LOGIN"""
