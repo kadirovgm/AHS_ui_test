@@ -17,8 +17,12 @@ class Execute:
 """Project's path and selecting chromdriver version"""
 class Driver:
     PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
-    chromedriver_mac = Service(os.path.join(PROJECT_ROOT, "../bin/chromedriver"))       # execute in mac
-    chromedriver_win = Service(os.path.join(PROJECT_ROOT, "../bin/chromedriver.exe"))   # execute in windows
+    """Chrome"""
+    chromedriver_mac = Service(os.path.join(PROJECT_ROOT, "../bin/chromedriver"))
+    chromedriver_win = Service(os.path.join(PROJECT_ROOT, "../bin/chromedriver.exe"))
+    """Firefox"""
+    geckodriver_mac = Service(os.path.join(PROJECT_ROOT, "../bin/geckodriver"))
+    geckodriver_win = Service(os.path.join(PROJECT_ROOT, "../bin/geckodriver"))
 
 
 """Setup method, that required for logging"""

@@ -34,15 +34,28 @@ def pytest_addoption(parser):
                      default=Execute().language,
                      help="Choose language: ru, en")
 
+
 @pytest.fixture(scope="class")  
 def get_operation_system(request):
     _os = request.config.getoption("--os")
-    if _os == "mac":
-        return Driver.chromedriver_mac
-    elif _os == "win":
-        return Driver.chromedriver_win
+    _browser = request.config.getoption("--browser_name")
+    if _browser == "chrome":
+        if _os == "mac":
+            return Driver.chromedriver_mac
+        elif _os == "win":
+            return Driver.chromedriver_win
+        else:
+            raise pytest.UsageError("--os should be mac or win")
+    elif _browser == "firefox":
+        if _os == "mac":
+            return Driver.geckodriver_mac
+        elif _os == "win":
+            return Driver.geckodriver_win
+        else:
+            raise pytest.UsageError("--os should be mac or win")
     else:
-        raise pytest.UsageError("--os should be mac or win")
+        raise pytest.UsageError("--browser_name should be chrome or firefox")
+
 
 # TODO
 @pytest.fixture(scope="class")  
@@ -91,11 +104,21 @@ def browser(request, get_operation_system):
 
 # Conf test for testing, when need to close browser in every function
 @pytest.fixture(scope="function")
-def browser_login():
-    print("\nstart browser for test..")
-    browser = webdriver.Chrome(service=Driver.chromedriver_win)
+def browser_login(request, get_operation_system):
+    browser_name = request.config.getoption("--browser_name")
+    if browser_name == "chrome":
+        print("\nStart chrome browser for test..")
+        browser = webdriver.Chrome(service=Driver.chromedriver_win)
+
+    elif browser_name == "firefox":                                             # make sure that you have firefox driver
+        print("\nStart firefox browser for test..")
+        browser = webdriver.Firefox(service=get_operation_system)
+    else:
+        raise pytest.UsageError("--browser_name should be chrome or firefox")
+
     browser.maximize_window()
     browser.implicitly_wait(3)
     yield browser
+
     print("\nquit browser..")
     browser.quit()
