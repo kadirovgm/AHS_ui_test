@@ -1,6 +1,8 @@
 # UI testing for AHS
-### `Tools:` Python, Pytest, Selenium Webdriver
 
+![](https://c.tenor.com/7FNVoy6XUd8AAAAM/mr-bean-jumping.gif)
+
+### `Tools:` Python, Pytest, Selenium Webdriver
 ### Official documentations:
 1. [Pytest documentation](https://docs.pytest.org/en/6.2.x/getting-started.html)
 2. [Selenium-python documentation](https://selenium-python.readthedocs.io/getting-started.html)
@@ -11,8 +13,6 @@
 ## 1. Installation
 ## 2. Page objects
 ## 3. Running tests
-
-![](https://i.imgur.com/yPCALBQ.gif)
 
 # Project's catalog
 ```
