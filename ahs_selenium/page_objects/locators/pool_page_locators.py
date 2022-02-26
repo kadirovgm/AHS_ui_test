@@ -57,7 +57,7 @@ class PoolPageLocators:
     F_OK = (By.XPATH, "//div[@class='ant-table-filter-dropdown-btns']/button[2]")
     F_RESET = (By.XPATH, "//div[@class='ant-table-filter-dropdown-btns']/button[1]")
 
-    F_LABEL = (By.XPATH, "(//span[@class='ant-table-filter-trigger-container'])[1]")
+    F_LABEL = (By.XPATH, "//th[1]/div/span[2]/span")
     F_LABEL_bench = (By.XPATH, "//li[@class='ant-dropdown-menu-item']/child::span[text()='Bench']")
     F_LABEL_pre_offer = (By.XPATH, "//li[@class='ant-dropdown-menu-item']/child::span[text()='Pre-offer']")
     F_LABEL_dismiss = (By.XPATH, "//li[@class='ant-dropdown-menu-item']/child::span[text()='Dismiss']")
@@ -81,7 +81,7 @@ class PoolPageLocators:
     F_OFFICE_i = (By.XPATH, "(//span[@class='ant-table-filter-trigger-container'])[6]")
     F_OFFICE_SELECT = (By.CSS_SELECTOR, "#rc_select_0")
     
-    F_ENG_i = (By.XPATH, "(//span[@class='ant-table-filter-trigger-container'])[7]")
+    F_ENG_i = (By.XPATH, "//th[7]/div/span[2]")
 
     F_ENG_SELECT_beginner = (By.XPATH, "//span[text()='Beginner']")
     F_ENG_SELECT_pre_inter = (By.XPATH, "//span[text()='Pre-Intermediate']")
@@ -100,7 +100,7 @@ class PoolPageLocators:
     F_SKILLS_e = (By.XPATH, "(//span[@class='ant-table-filter-trigger-container'])[3]")
     F_CITY_e = (By.XPATH, "(//span[@class='ant-table-filter-trigger-container'])[4]")
     F_OFFICE_e = (By.XPATH, "(//span[@class='ant-table-filter-trigger-container'])[5]")
-    F_ENG_e = (By.XPATH, "(//span[@class='ant-table-filter-trigger-container'])[6]")
+    F_ENG_e = (By.XPATH, "//th[7]/div/span[2]")
     F_VISA_e = (By.XPATH, "(//span[@class='ant-table-filter-trigger-container'])[7]")
     F_HR_e = (By.XPATH, "(//span[@class='ant-table-filter-trigger-container'])[8]")
 

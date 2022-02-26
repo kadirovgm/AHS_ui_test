@@ -324,8 +324,7 @@ class PoolPage(BasePage):
         # check filtering (label, expected label)
         self.is_filter_works(eng_level, expected_eng_level)
 
-    """[FILTERING]  Reset filter by label [All tabs]"""
-
+    """[FILTERING]  Reset filter by eng level [All tabs]"""
     def reset_filter_eng_level(self, tab):
         if tab == "Internal":
             eng_level_filter = PoolPageLocators.F_ENG_i
@@ -387,6 +386,7 @@ class PoolPage(BasePage):
         else:
             raise AssertionError("There is no Reset button after filtering")
         # checking that reset is disabled
+        self.clear_filters()  # TODO
         self.click_to_filter_by(filter_locator)
         if not self.browser.find_element(*reset_locator).is_enabled():
             return True

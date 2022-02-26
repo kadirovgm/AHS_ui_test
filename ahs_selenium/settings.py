@@ -10,7 +10,7 @@ class Execute:
         self.default_browser = "chrome"          # variants: chrome, firefox
         self.operation_system = "win"            # variants: mac, win
         self.user = "head"                       # variants: head, lead, recruiter
-        self.env = "137"                         # variants: 122 (Stage), 137 (QA-137), 139 (QA-139), 152 (Demo), 115 (Production)
+        self.env = "122"                         # variants: 122 (Stage), 137 (QA-137), 139 (QA-139), 152 (Demo), 115 (Production)
         self.loading_time = 1                    # time for loading huge data (depends on internet connection, default=0.7)
         self.language = None                     # language - in feature
 

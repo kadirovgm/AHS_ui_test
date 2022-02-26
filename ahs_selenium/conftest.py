@@ -21,10 +21,12 @@ def pytest_addoption(parser):
                     action='store',
                     default=Execute().operation_system,
                     help="Choose operation system: win or mac")
+    # TODO
     parser.addoption('--env',
                     action='store',
                     default=Execute().env,
                     help="Choose environment: 122 (Stage), 137 (QA-137), 139 (QA-139), 152 (Demo), 115 (Production)")
+    # TODO
     parser.addoption('--user',
                     action='store',
                     default=Execute().user,
@@ -63,6 +65,7 @@ def get_environment(request):
     _env = request.config.getoption("--env")
     return _env
 
+
 # TODO
 @pytest.fixture(scope="class")
 def get_user(request):
@@ -74,6 +77,7 @@ def get_user(request):
 @pytest.fixture(scope="class")                                              # initializing browser on every class
 def browser(request, get_operation_system):
     browser_name = request.config.getoption("--browser_name")
+
     user_language = request.config.getoption("--language")                  # if want to launch eng version of site
     options = Options()
     options.add_experimental_option('prefs', {'intl.accept_languages': user_language})
