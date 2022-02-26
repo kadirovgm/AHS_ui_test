@@ -3,9 +3,8 @@ from settings import Execute
 
 
 class Urls:
-
     env = Execute().env
-    host = f"http://192.168.52.{env}/"  # Stage
+    host = f"http://192.168.52.{env}/"
 
     """LOGIN"""
     LINK_LOGIN_PAGE = f"{host}login"

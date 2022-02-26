@@ -2,7 +2,6 @@ from selenium.webdriver.common.by import By
 
 
 class CreatePersonModalLocators:
-
     CREATE_NEW_PERSON_TEXT = (By.CSS_SELECTOR, "#rcDialogTitle0")
     UPLOAD_PHOTO = (By.XPATH, "//input[@accept='.png,.jpg,.jpeg']")
     UPLOAD_OTHER_CV = (By.XPATH, "//span[text()=' Upload file']")

@@ -1,5 +1,6 @@
 from selenium.webdriver.common.by import By
 
+
 class CreatePositionModalLocators:
     NEW_PROJ_POSITION_TEXT = (By.CSS_SELECTOR, "#rcDialogTitle0")
 

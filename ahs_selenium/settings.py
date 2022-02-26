@@ -40,6 +40,3 @@ class Setup:
         else:
             raise pytest.UsageError("--user should be head, lead or recruiter")
         page.login_new_user(_user)
-
-
-# TODO Users and environment

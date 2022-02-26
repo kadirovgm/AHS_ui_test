@@ -1,16 +1,16 @@
 # UI testing for AHS
 ### `Tools:` Python, Pytest, Selenium Webdriver
-# 
 
+### Official documentations:
+1. [Pytest documentation](https://docs.pytest.org/en/6.2.x/getting-started.html)
+2. [Selenium-python documentation](https://selenium-python.readthedocs.io/getting-started.html)
+3. [Selenium official documentation](https://www.selenium.dev/documentation/)
+4. [Webdriver source code [Python]](https://www.selenium.dev/selenium/docs/api/py/api.html)
 
-As default tests running only on Chrome browser.
-
-In the future, test can be run in Firefox too. (Scalability opportunities in conftest.py)
-
-pytest.ini - for marking test cases
-
-chromedriver.exe - driver for chrome
-
+# Getting started
+## 1. Installation
+## 2. Page objects
+## 3. Running tests
 
 # Project's catalog
 ```
@@ -19,22 +19,28 @@ chromedriver.exe - driver for chrome
  ┣ 📂.idea
  ┣ 📂ahs_selenium
  ┃ ┣ 📂pages
+ ┃ ┃ ┣ 📂FixtureData
+ ┃ ┃ ┃    ┣ 📜fixture_data.py
+ ┃ ┃ ┃    ┗ 📜fixture_users.py
  ┃ ┃ ┣ 📂locators
- ┃ ┃ ┃    ┗ 📜locators.py
- ┃ ┃ ┣ 📂randomData
- ┃ ┃ ┃    ┗ 📜random_data.py
+ ┃ ┃ ┃    ┣ 📜base_page_locators.py
+ ┃ ┃ ┃    ┣ 📜clients_projects_page_locators.py
+ ┃ ┃ ┃    ┣ ...
+ ┃ ┃ ┃    ┗ 📜position_page_locators.py
  ┃ ┃ ┣ 📜base_page.py
  ┃ ┃ ┣ 📜clients_projects_page.py
  ┃ ┃ ┣ 📜create_person_modal_page.py
  ┃ ┃ ┣ 📜create_position_modal_page.py
  ┃ ┃ ┣ 📜help_center_page.py
  ┃ ┃ ┣ 📜login_page.py
+ ┃ ┃ ┣ 📜person_page.py
  ┃ ┃ ┣ 📜pool_page.py
  ┃ ┃ ┣ 📜positions_page.py
  ┃ ┗ ┗ 📜reports_page.py
  ┣ 📜conftest.py
  ┣ 📜pytest.ini
  ┣ 📜settings.py
+ ┣ 📜urls.py
  ┣ 📜test_base_page.py
  ┣ 📜test_clients_projects_page.py
  ┣ 📜test_login_page.py
@@ -43,8 +49,10 @@ chromedriver.exe - driver for chrome
  ┣ 📜test_positions_page.py
  ┗ 📜test_position_create.py
  ┣ 📂bin
+ ┃    ┣ 📜chromedriver.exe
  ┃    ┣ 📜chromedriver
- ┃    ┗ 📜chromedriver.exe
+ ┃    ┣ 📜geckodriver.exe
+ ┃    ┗ 📜geckodriver
  ┣ 📜.gitignore
  ┣ 📜pytest_commands.sh
  ┣ 📜README.md
