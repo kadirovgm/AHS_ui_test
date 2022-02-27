@@ -5,15 +5,10 @@
 ### `Tools:` Python, Pytest, Selenium Webdriver
 
 # Content
-Getting started
-1. Installation
-    1. [Install python](#Installation)
-    2. Clone this repository
-    3. Virtual environment
-    4. Install required packages
-    5. Update drivers for browsers
-2. Running tests
-    
+1. [Installation](https://github.com/kadirovgm/AHS_ui_test/blob/master/README.md#1-installation)
+2. [Running tests](https://github.com/kadirovgm/AHS_ui_test/blob/master/README.md#2-running-tests)
+3. [Page objects](https://github.com/kadirovgm/AHS_ui_test/blob/master/README.md#3-page-objects)
+4. [Project's catalog](https://github.com/kadirovgm/AHS_ui_test/blob/master/README.md#projects-catalog)
 
 ### Official documentations:
 1. [Pytest documentation](https://docs.pytest.org/en/6.2.x/getting-started.html)
