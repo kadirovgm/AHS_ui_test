@@ -10,14 +10,29 @@
 4. [Webdriver source code [Python]](https://www.selenium.dev/selenium/docs/api/py/api.html)
 
 # Getting started
-
 ## 1. Installation
+1.1. Install Python from [python.org](https://www.python.org/downloads/)
+
 1.1. Clone this repository
 `git clone https://github.com/kadirovgm/AHS_ui_test.git`
 
 1.2. Open project on any code editor (e.g. VScode)
 
-1.3. Create virtual environment
+1.3. Create/activate virtual environment:
+
+Go on project's path: `cd my-selenium-project/`
+
+Create virtual environment: `python3 -m venv ./venv_name`
+
+    Activating for Mac/Linux users:
+
+`python3 source venv_name/bin/activate`
+
+    Activating for Windows users:
+
+`python3 venv_name\Scripts\activate`
+
+Deactivating: `python deactivate`
 
 ## 2. Page objects
 ## 3. Running tests
