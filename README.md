@@ -10,7 +10,7 @@
 3. [Page objects](https://github.com/kadirovgm/AHS_ui_test/blob/master/README.md#3-page-objects)
 4. [Project's catalog](https://github.com/kadirovgm/AHS_ui_test/blob/master/README.md#projects-catalog)
 
-### Official documentations:
+### *Official documentations:*
 1. [Pytest documentation](https://docs.pytest.org/en/6.2.x/getting-started.html)
 2. [Selenium-python documentation](https://selenium-python.readthedocs.io/getting-started.html)
 3. [Selenium official documentation](https://www.selenium.dev/documentation/)
@@ -18,13 +18,13 @@
 
 # Getting started
 ## 1. Installation
-### 1.1. Install Python from [python.org](https://www.python.org/downloads/)
+### *1.1. Install Python from [python.org](https://www.python.org/downloads/)*
 
-### 1.2. Clone this repository
+### *1.2. Clone this repository*
 
     $ git clone https://github.com/kadirovgm/AHS_ui_test.git
 
-### 1.3. Create/activate virtual environment:
+### *1.3. Create/activate virtual environment:*
 
 Go on project's path: 
 
@@ -46,11 +46,11 @@ Deactivating:
 
     $ deactivate
 
-### 1.4. Install required packages
+### *1.4. Install required packages*
 
     $ pip install -r requirements.txt
 
-### 1.5. Update drivers for browser (chromedriver, geckodriver)
+### *1.5. Update drivers for browser (chromedriver, geckodriver)*
 As default drivers are stored in [/bin](bin/) directory. 
 
 For updating according to your browser version, please replace actual one with currently downloaded.
@@ -65,7 +65,7 @@ You can easily update them from official sources:
 
 ## 2. Running tests
 
-### 2.1. Pytest - as test runner
+### *2.1. Pytest - as test runner*
 
 - Check [pytest_commands.sh](/pytest_commands.sh) 
 file for using basic pytest commands for effectively run tests and create reports
@@ -74,7 +74,7 @@ Example test run:
 
     $ pytest -sv --tb=line -m regression
 
-### 2.2. Setting configuration for Pytest. File [conftest.py](ahs_selenium/conftest.py)
+### *2.2. Setting configuration for Pytest. File [conftest.py](ahs_selenium/conftest.py)*
 `Conftest.py` - file, that stores all fixtures required for running test cases.
 
 - `Fixtures` are functions performed by pytest before (and sometimes after) the actual test functions. 
@@ -110,7 +110,7 @@ def browser(request, get_operation_system):
     browser.quit()
 ```
 
-### 2.3. Setting environment. File [settings.py](ahs_selenium/settings.py)
+### *2.3. Setting environment. File [settings.py](ahs_selenium/settings.py)*
 File `settings.py` stores some environment settings that are needed for a test run. 
 
 You can easily change the settings of the test run relative to the needs.
@@ -127,7 +127,7 @@ class Execute:
 
 - Also `settings.py` stores drivers paths to "chromedriver" or "geckodriver"
 
-### 2.4. Setting environment as option of pytest command [conftest.py](ahs_selenium/conftest.py).
+### *2.4. Setting environment as option of pytest command [conftest.py](ahs_selenium/conftest.py).*
 
 When executing test cases you can easily set environment setting by command line:
 
@@ -156,7 +156,7 @@ def pytest_addoption(parser):
                      help="Choose language: ru, en")
 ```
 
-### 2.5. Marking test cases. File [pytest.ini](ahs_selenium/pytest.ini)
+### *2.5. Marking test cases. File [pytest.ini](ahs_selenium/pytest.ini)*
 
 - For registering markers test cases use file [pytest.ini](ahs_selenium/pytest.ini)
 
@@ -193,7 +193,7 @@ Benefits of using POM:
 
 Here is an example of using Page object design when creating test case for checking that create person modal is correct.
 
-### 3.1. Test Case
+### *3.1. Test Case*
 - Example `test_case.py`
 ```python
 import unittest
@@ -225,7 +225,7 @@ class PythonOrgSearch(unittest.TestCase):
 if __name__ == "__main__":
     unittest.main()
 ```
-### 3.2. Page object classes
+### *3.2. Page object classes*
 The page object pattern intends to create an object for each part of a web page. This technique helps build 
 a separation between the test code and the actual code that interacts with the web page
 
@@ -277,7 +277,7 @@ class SearchResultsPage(BasePage):
         return "No results found." not in self.driver.page_source
 ```
 
-### 3.3. Page elements
+### *3.3. Page elements*
 - The element.py will look like this:
 ```python
 from selenium.webdriver.support.ui import WebDriverWait
@@ -305,7 +305,7 @@ class BasePageElement(object):
         return element.get_attribute("value")
 ```
 
-### 3.4. Locators
+### *3.4. Locators*
 One of the practices is to separate the locator strings from the place where they are getting used. In this example, 
 locators of the same page belong to the same class.
 
