@@ -36,11 +36,11 @@ Create virtual environment:
 
 Activate for Mac/Linux users: 
 
-    $ python source venv_name/bin/activate
+    $ source venv_name/bin/activate
 
 Activate for Windows users: 
 
-    $ python venv_name\Scripts\activate
+    $ venv_name\Scripts\activate
 
 Deactivating: 
 
