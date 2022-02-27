@@ -65,7 +65,7 @@ You can easily update them from official sources:
 
 ## 2. Running tests
 
-### 2.1. Pytest - as test runner
+>### 2.1. Pytest - as test runner
 
 - Check [pytest_commands.sh](/pytest_commands.sh) 
 file for using basic pytest commands for effectively run tests and create reports
@@ -74,7 +74,7 @@ Example test run:
 
     $ pytest -sv --tb=line -m regression
 
-### 2.2. Setting configuration for Pytest. File [conftest.py](ahs_selenium/conftest.py)
+>### 2.2. Setting configuration for Pytest. File [conftest.py](ahs_selenium/conftest.py)
 `Conftest.py` - file, that stores all fixtures required for running test cases.
 
 - `Fixtures` are functions performed by pytest before (and sometimes after) the actual test functions. 
@@ -110,7 +110,7 @@ def browser(request, get_operation_system):
     browser.quit()
 ```
 
-### 2.3. Setting environment. File [settings.py](ahs_selenium/settings.py)
+>### 2.3. Setting environment. File [settings.py](ahs_selenium/settings.py)
 File `settings.py` stores some environment settings that are needed for a test run. 
 
 You can easily change the settings of the test run relative to the needs.
@@ -127,7 +127,7 @@ class Execute:
 
 - Also `settings.py` stores drivers paths to "chromedriver" or "geckodriver"
 
-### 2.4. Setting environment as option of pytest command [conftest.py](ahs_selenium/conftest.py).
+>### 2.4. Setting environment as option of pytest command [conftest.py](ahs_selenium/conftest.py).
 
 When executing test cases you can easily set environment setting by command line:
 
@@ -156,7 +156,7 @@ def pytest_addoption(parser):
                      help="Choose language: ru, en")
 ```
 
-### 2.5. Marking test cases. File [pytest.ini](ahs_selenium/pytest.ini)
+>### 2.5. Marking test cases. File [pytest.ini](ahs_selenium/pytest.ini)
 
 - For registering markers test cases use file [pytest.ini](ahs_selenium/pytest.ini)
 
