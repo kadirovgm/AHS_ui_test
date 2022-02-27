@@ -3,6 +3,18 @@
 ![](https://c.tenor.com/7FNVoy6XUd8AAAAM/mr-bean-jumping.gif)
 
 ### `Tools:` Python, Pytest, Selenium Webdriver
+
+# Content
+Getting started
+1. Installation
+    1. [Install python](#Installation)
+    2. Clone this repository
+    3. Virtual environment
+    4. Install required packages
+    5. Update drivers for browsers
+2. Running tests
+    
+
 ### Official documentations:
 1. [Pytest documentation](https://docs.pytest.org/en/6.2.x/getting-started.html)
 2. [Selenium-python documentation](https://selenium-python.readthedocs.io/getting-started.html)
@@ -13,11 +25,11 @@
 ## 1. Installation
 ### 1.1. Install Python from [python.org](https://www.python.org/downloads/)
 
-### 1.1. Clone this repository
+### 1.2. Clone this repository
 
     $ git clone https://github.com/kadirovgm/AHS_ui_test.git
 
-### 1.2. Create/activate virtual environment:
+### 1.3. Create/activate virtual environment:
 
 Go on project's path: 
 
@@ -39,11 +51,11 @@ Deactivating:
 
     $ deactivate
 
-### 1.3. Install required packages
+### 1.4. Install required packages
 
     $ pip install -r requirements.txt
 
-### 1.4. Update drivers for browser (chromedriver, geckodriver)
+### 1.5. Update drivers for browser (chromedriver, geckodriver)
 As default drivers are stored in [/bin](bin/) directory. 
 
 For updating according to your browser version, please replace actual one with currently downloaded.
