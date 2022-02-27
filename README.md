@@ -11,27 +11,40 @@
 
 # Getting started
 ## 1. Installation
-1.1. Install Python from [python.org](https://www.python.org/downloads/)
+### 1.1. Install Python from [python.org](https://www.python.org/downloads/)
 
-1.1. Clone this repository
-`git clone https://github.com/kadirovgm/AHS_ui_test.git`
+### 1.1. Clone this repository
 
-1.2. Open project on any code editor (e.g. VScode)
+    $ git clone https://github.com/kadirovgm/AHS_ui_test.git
 
-1.3. Create/activate virtual environment:
+### 1.2. Create/activate virtual environment:
 
-Go on project's path: `cd my-selenium-project/`
+Go on project's path: 
 
-Create virtual environment: `python -m venv ./venv_name`
+    $ cd my-selenium-project/
 
-Activate for Mac/Linux users: `python source venv_name/bin/activate`
+Create virtual environment: 
 
-Activate for Windows users: `python venv_name\Scripts\activate`
+    $ python -m venv ./venv_name
 
-Deactivating: `deactivate`
+Activate for Mac/Linux users: 
 
-## 2. Page objects
-## 3. Running tests
+    $ python source venv_name/bin/activate
+
+Activate for Windows users: 
+
+    $ python venv_name\Scripts\activate
+
+Deactivating: 
+
+    $ deactivate
+
+### 1.3. Install required packages
+
+    $ pip install -r requirements.txt
+
+### 2. Page objects
+### 3. Running tests
 
 # Project's catalog
 ```
