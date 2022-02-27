@@ -10,7 +10,15 @@
 4. [Webdriver source code [Python]](https://www.selenium.dev/selenium/docs/api/py/api.html)
 
 # Getting started
+
 ## 1. Installation
+1.1. Clone this repository
+`git clone https://github.com/kadirovgm/AHS_ui_test.git`
+
+1.2. Open project on any code editor (e.g. VScode)
+
+1.3. Create virtual environment
+
 ## 2. Page objects
 ## 3. Running tests
 
