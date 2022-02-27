@@ -22,17 +22,13 @@
 
 Go on project's path: `cd my-selenium-project/`
 
-Create virtual environment: `python3 -m venv ./venv_name`
+Create virtual environment: `python -m venv ./venv_name`
 
-    Activating for Mac/Linux users:
+Activate for Mac/Linux users: `python source venv_name/bin/activate`
 
-`python3 source venv_name/bin/activate`
+Activate for Windows users: `python venv_name\Scripts\activate`
 
-    Activating for Windows users:
-
-`python3 venv_name\Scripts\activate`
-
-Deactivating: `python deactivate`
+Deactivating: `deactivate`
 
 ## 2. Page objects
 ## 3. Running tests
@@ -45,8 +41,7 @@ Deactivating: `python deactivate`
  ┣ 📂ahs_selenium
  ┃ ┣ 📂pages
  ┃ ┃ ┣ 📂FixtureData
- ┃ ┃ ┃    ┣ 📜fixture_data.py
- ┃ ┃ ┃    ┗ 📜fixture_users.py
+ ┃ ┃ ┃    ┣ 📜fixture_data.py ┃ ┃ ┃    ┗ 📜fixture_users.py
  ┃ ┃ ┣ 📂locators
  ┃ ┃ ┃    ┣ 📜base_page_locators.py
  ┃ ┃ ┃    ┣ 📜clients_projects_page_locators.py
